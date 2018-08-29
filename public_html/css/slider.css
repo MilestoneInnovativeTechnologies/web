@@ -1,0 +1,76 @@
+@charset "utf-8";
+/* CSS Document */
+
+.slide_container .slide {
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	display: none;
+}
+
+.slide_content {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	transition: all 0.3s cubic-bezier(0.42,-0.42, 0.82, 1.49);
+	color: white;
+	display: none;
+	width: 40%;
+	padding: 30px;
+	background: url(../images/transback.png) repeat;
+}
+
+.slide_content div {
+	display: block;
+	transition: all 0.3s 0.5s cubic-bezier(0.42,-0.42, 0.82, 1.49);
+}
+
+.slide_content .heading {
+	font-weight: bold;
+	font-size: 32px;
+}
+
+.slide_container .controllers {
+	position: absolute;
+	top: 0px; left: 0px;
+	width: 100%;
+}
+
+.slide_container .controllers div {
+	width: 60px;
+	cursor: pointer;
+}
+
+.slide_container .controllers div.previous_slide {
+	float: left;
+	background: url(../images/slider/previous.png) no-repeat center;
+}
+
+.slide_container .controllers div.next_slide {
+	float: right;
+	background: url(../images/slider/next.png) no-repeat center;
+}
+
+.slide_container .logo_container {
+	position: absolute;
+	top: 0px;
+	left: 15%;
+	width: 20%;
+	max-width: 168px;
+	background: url(../images/logo_circle_container.png) no-repeat center;
+	background-size: contain;
+}
+
+.slide_container .logo_container .icon {
+	width: 80%;
+	max-width: 85px;
+	height: inherit;
+	margin: auto;
+	background: url(../images/icon.png) no-repeat center;
+	background-size: contain;
+}
+
+
+

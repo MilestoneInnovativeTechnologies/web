@@ -1,0 +1,92 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateGetemailsAndGetcountriesFunctions extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+			
+			$Proc1 = "
+CREATE DEFINER=`root`@`localhost` FUNCTION `GETCOUNTRIES`(
+	`PCODE` CHAR(15)
+)
+RETURNS varchar(5000) CHARSET latin1
+LANGUAGE SQL
+NOT DETERMINISTIC
+CONTAINS SQL
+SQL SECURITY DEFINER
+COMMENT ''
+BEGIN
+	DECLARE V_COUNTRIES VARCHAR(5000);
+	DECLARE V_COUNTRY VARCHAR(120);
+	DECLARE V_CID INT(10);
+	DECLARE V_DONE INT DEFAULT FALSE;
+	DECLARE COUNTRIESCURSOR CURSOR FOR SELECT country FROM partner_countries WHERE partner = PCODE;
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET V_DONE = TRUE;
+		SET V_COUNTRIES = '';
+		OPEN COUNTRIESCURSOR;
+		REPEAT
+		FETCH COUNTRIESCURSOR INTO V_CID;
+		IF NOT V_DONE THEN
+			SELECT name INTO V_COUNTRY FROM countries WHERE id = V_CID;
+			SET V_COUNTRIES = CONCAT(V_COUNTRIES,V_COUNTRY,', ');
+		END IF;
+		UNTIL V_DONE END REPEAT;
+		CLOSE COUNTRIESCURSOR;
+		RETURN SUBSTRING(V_COUNTRIES,1,LENGTH(V_COUNTRIES) -2 );
+END
+			";
+			DB::unprepared("DROP FUNCTION IF EXISTS GETCOUNTRIES");
+			DB::unprepared($Proc1);
+			$Proc2 = "
+CREATE DEFINER=`root`@`localhost` FUNCTION `GETEMAILS`(
+	`PCODE` CHAR(15)
+)
+RETURNS varchar(5000) CHARSET latin1
+LANGUAGE SQL
+NOT DETERMINISTIC
+CONTAINS SQL
+SQL SECURITY DEFINER
+COMMENT ''
+BEGIN
+	DECLARE V_EMAILS VARCHAR(5000);
+	DECLARE V_EMAIL VARCHAR(100);
+	DECLARE V_DONE INT DEFAULT FALSE;
+	DECLARE EMAILCURSOR CURSOR FOR SELECT email FROM partner_logins WHERE partner_logins.partner = PCODE;
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET V_DONE = TRUE;
+	SET V_EMAILS = '';
+	OPEN EMAILCURSOR;
+	REPEAT
+		FETCH EMAILCURSOR INTO V_EMAIL;
+		IF NOT V_DONE THEN
+			SET V_EMAILS = CONCAT(V_EMAILS,V_EMAIL,', ');
+		END IF;
+	UNTIL V_DONE END REPEAT;
+	CLOSE EMAILCURSOR;
+	RETURN SUBSTRING(V_EMAILS,1,LENGTH(V_EMAILS) -2 );
+END
+			";
+			DB::unprepared("DROP FUNCTION IF EXISTS GETEMAILS");
+			DB::unprepared($Proc2);
+        //
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+			DB::unprepared("DROP FUNCTION IF EXISTS GETEMAILS");
+			DB::unprepared("DROP FUNCTION IF EXISTS GETCOUNTRIES");
+    }
+}

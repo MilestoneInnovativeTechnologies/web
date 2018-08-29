@@ -1,0 +1,9 @@
+@charset "utf-8";
+/* CSS Document */
+
+.well { width: 48%; font-size: 22px; }
+.well:nth-child(1) { margin-right: 4%; }
+
+.panel.details_panel .panel-heading a { position: relative; top:-5px; }
+.panel.details_panel .panel-body { display: none; }
+

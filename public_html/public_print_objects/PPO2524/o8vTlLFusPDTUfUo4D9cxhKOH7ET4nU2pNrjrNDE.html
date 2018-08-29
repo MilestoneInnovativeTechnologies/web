@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=EDGE, IE=11; IE=10; IE=9; IE=8;"/>
+	<title>Feedback TvClient Multi Page</title>
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+
+	<script>
+	window.feedbackEnums = {
+		tvClient: "TvClient",
+		Mco: "Mco",
+		TvChromeClient: "TvChromeClient",
+		Servicecamp: "Servicecamp",
+		Unknown: "Unknown",
+		BlizzDesktop: "BlizzDesktop",
+		BlizzWeb: "BlizzWeb",
+		BlizzNative: "BlizzNative"
+	}
+	window.languagesRtl = ["he", "ar"];
+</script>
+
+<script src="/Script/bundle/libs.compiled.min.js?rv=42642"></script>
+
+
+
+
+	<link href="/Content/bundle/common.min.css?rv=42642" rel="stylesheet"/>
+
+	<script type="text/javascript">
+		wsp = {};
+		wsp.tracks = [];
+		wsp.config = {
+			project: "feedbackCloud2"
+		};
+		wsp.track = function() {};
+
+		$.ajaxSettings.converters["json ajaxresult"] = function(data) {
+			return {
+				success: !!data.s,
+				message: data.m,
+				data: data.d,
+				error: data.e || 0
+			};
+		};
+	</script>
+
+		<script>
+			$.getScript("//wsp.teamviewer.com/Scripts/wsp.js")
+		</script>
+</head>
+<body>
+
+
+
+<link href="/Content/bundle/tvClientMultiPage.min.css?rv=42642" rel="stylesheet" />
+
+<!--[if lte IE 9]>
+	<style>
+		input[type="checkbox"] {
+			top: 0 !important;
+			position: static !important;
+			margin-left: -4px !important;
+		}
+		.ie7fix {
+			margin-right: 4px;
+		}
+	</style>
+<![endif]-->
+<!--[if lte IE 8]>
+	<style>
+		.spinner {
+			background-image: none;
+			filter: progid:DXImageTransform.Microsoft.AlphaImageLoader( src='/Content/images/spinner.gif', sizingMethod='scale');
+			-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader( src='/Content/images/spinner.gif', sizingMethod='scale')";
+		}
+	</style>
+<![endif]-->
+<!--[if lte IE 7]>
+	<style>
+		.table.attachLog .table-cell{
+			display:inline;
+			zoom:1;
+		}
+		#secondPage-wrapper .labels {
+			margin-top: 5px;
+		}
+	</style>
+<![endif]-->
+<!--[if IE]>
+	<style>
+		.view.rtl .headline, .attachHeadline{
+			padding-right: 4px;
+		}
+		.field-validation-error span {
+			padding-left: 4px;
+		}
+	</style>
+<![endif]-->
+
+<div id="template-container" data-bind="template: { name: currentView(), afterRender: hookUpValidation }"></div>
+
+
+<script type="text/html" id="main">
+	<div id="wrapper" class="view" data-bind="css: { rtl: isRtl() }">
+		<div id="feedback">
+			<form id="feedbackForm">
+				<div class="group first">
+					<div class="button feelBtn left first" title="I&#39;m happy!" data-bind="css: { selectedLight: satisfied() === true,  disbaleDiv: isSumbitting }, click: setHappy">
+						<span class="left sprites smile"></span>
+						<span class="happy-text">I&#39;m happy!</span>
+					</div>
+					<div class="button feelBtn second" title="Something bothers me" data-bind="css: { selectedLight: satisfied() === false , disbaleDiv: isSumbitting }, click: setSad">
+						<span class="left sprites worried"></span>
+						<span class="worried-text">Something bothers me</span>
+					</div>
+					<div class="clear"></div>
+					<div>
+						<input data-bind="value: satisfied" data-val="true" data-val-required="Please share your satisfaction" id="CustomerSatisfied" name="CustomerSatisfied" type="hidden" value="" />
+						<span class="field-validation-valid" data-valmsg-for="CustomerSatisfied" data-valmsg-replace="true"></span>
+					</div>
+				</div>
+				<div class="group">
+					<div class="headline">
+						<label for="FeedbackText">Do you have any feature requests or comments:</label>
+					</div>
+					<div class="ie7fix">
+						<textarea cols="20" data-bind="attr : {&#39;disabled&#39; : isSumbitting}" data-val="true" data-val-length="The maximum possible character count of 500 is exceeded." data-val-length-max="500" id="FeedbackText" name="FeedbackText" rows="4">
+</textarea>
+					</div>
+					<div>
+						<span class="field-validation-valid" data-valmsg-for="FeedbackText" data-valmsg-replace="true"></span>
+					</div>
+				</div>
+				<div class="group">
+					<div class="headline">
+						<label for="Email">E-Mail (optional, in case we have questions):</label>
+					</div>
+					<div class="ie7fix">
+						<input data-bind="value: email, attr : {&#39;disabled&#39; : isSumbitting}" data-val="true" data-val-length="The maximum possible character count of 250 is exceeded." data-val-length-max="250" data-val-regex="Please provide an E-Mail address." data-val-regex-pattern="^[a-zA-Z0-9_-]+([=&#39;-+.][a-zA-Z0-9_-]+)*@(?!((rppkn|nwldx)\.com|bobmail\.info|asdasd\.ru)$)([a-zA-Z0-9](-?[a-zA-Z0-9])*\.)+[a-zA-Z]{2,}$" id="Email" name="Email" type="email" value="" />
+					</div>
+					<div>
+						<span class="field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+					</div>
+				</div>
+				<div class="group table attachLog">
+					<div class="table-row">
+						<div class="table-cell">
+							<input data-bind="attr : {&#39;disabled&#39; : isSumbitting}" data-val="true" data-val-required="The Attach TeamViewer log files to help us understand what happened field is required." id="AttachLog" name="AttachLog" type="checkbox" value="true" /><input name="AttachLog" type="hidden" value="false" />
+						</div>
+						<div class="table-cell">
+							<label class="attachHeadline" for="AttachLog">Attach TeamViewer log files to help us understand what happened</label>
+						</div>
+					</div>
+				</div>
+				<div class="group table">
+					<div class="table-row AttachScreenshotDiv" data-bind="visible: showScreenshot">
+						<div class="table-cell">
+							<input data-bind="attr : {&#39;disabled&#39; : isSumbitting}" data-val="true" data-val-required="The Attach this screenshot field is required." id="AttachScreenshot" name="AttachScreenshot" type="checkbox" value="true" /><input name="AttachScreenshot" type="hidden" value="false" />
+						</div>
+						<div class="table-cell">
+							<label class="attachHeadline" for="AttachScreenshot">Attach this screenshot</label>
+						</div>
+						<div class="table-cell">
+							<img id="ScreenshotImg" data-bind="click:openImage" />
+						</div>
+					</div>
+				</div>
+				<div class="group" style="margin-bottom: 0;">
+					<div class="buttonWrapper">
+						<input id="btnSend" type="submit" data-bind="attr : {'disabled' : isSumbitting}" value="Send">
+					</div>
+					<div class="spinner" data-bind="visible: isSumbitting"></div>
+					<div style="clear: both;"></div>
+				</div>
+				<input id="OsName" name="OsName" type="hidden" value="WinNT" />
+				<input id="UserLanguage" name="UserLanguage" type="hidden" value="en" />
+				<input data-val="true" data-val-required="The FeedbackSource field is required." id="FeedbackSource" name="FeedbackSource" type="hidden" value="TvClient" />
+				<input id="CustomerName" name="CustomerName" type="hidden" value="" />
+				<input id="Type" name="Type" type="hidden" value="MainWindow" />
+				<input id="TvVersion" name="TvVersion" type="hidden" value="" />
+				<input id="Module" name="Module" type="hidden" value="" />
+				<input id="License" name="License" type="hidden" value="" />
+				<input data-val="true" data-val-number="The field AccountId must be a number." id="AccountId" name="AccountId" type="hidden" value="" />
+				<input data-val="true" data-val-number="The field TeamViewerId must be a number." id="TeamViewerId" name="TeamViewerId" type="hidden" value="" />
+				<input id="UserAgent" name="UserAgent" type="hidden" value="Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)" />
+				<input data-val="true" data-val-required="The Id field is required." id="Id" name="Id" type="hidden" value="369149ff-ce8e-4060-b4eb-c3dfca8df922" />
+			</form>
+		</div>
+	</div>
+</script>
+
+
+<script type="text/html" id="thankYou">
+	<div id="thank-you-wrapper" class="view" data-bind="css: { rtl: isRtl() }">
+		<img class="bg" src="../../Content/images/Header.png" />
+		<div class="feedback-icon">
+			<span class="sprites feedback"></span>
+		</div>
+		<div class="msg-wrapper">
+			<div class="row">
+				<div class="headline cell">
+					Thank you for your feedback!
+				</div>
+			</div>
+			<div class="row">
+				<div class="cell">
+					<div class="subheadline">
+						<table>
+							<tr>
+								<td style="vertical-align: top">
+									<span class="sprites arrow flip"></span>
+								</td>
+								<td class="tdQuestion">
+									Do you have any questions or need support?
+								</td>
+							</tr>
+							<tr>
+								<td style="vertical-align: top" colspan="2" class="support-link">
+									<span>
+										Visit our <a id="lnkSupportSite" href="https://www.teamviewer.com/help/index.aspx" target="blank" data-bind="click: openSupportWebsite">support page</a>
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="height: 50px;">
+				<div class="cell">
+					<div class="subheadline2">
+						<span class="sprites tv_logo"></span>
+						<span class="tv-text">Your TeamViewer Team </span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="cell">
+					<div class="buttonWrapper closeBtnDiv">
+						<input id="btnClose" type="button" value="Close" data-bind="click:close">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</script>
+
+
+<script type="text/html" id="secondPage">
+	<div id="secondPage-wrapper" class="view" data-bind="css: { rtl: isRtl() }">
+		<div class="content">
+			<form id="feedbackFormSecondPage">
+				<div class="heading">
+					How likely is it that you would recommend TeamViewer to a friend or colleague?
+				</div>
+				<table>
+					<tr data-bind="template: { name: 'rating-template', foreach: ratings }"></tr>
+				</table>
+				<div class="labels">
+					<div class="dislike-label"><span>Not at all likely</span></div>
+					<div class="like-label"><span>Extremely likely</span></div>
+				</div>
+				<div class="clearfix"></div>
+				<div class="buttonWrapper">
+					<input id="btnSendSecondPage" type="submit" data-bind="attr : {'disabled' : isSumbitting}" value="Send">
+					<div class="spinner" data-bind="visible: isSumbitting"></div>
+				</div>
+				<input data-bind="value : userRating" data-val="true" data-val-number="The field Rating must be a number." data-val-required="The Rating field is required." id="Rating" name="Rating" type="hidden" value="0" />
+				<input id="UserLanguage" name="UserLanguage" type="hidden" value="en" />
+			</form>
+		</div>
+	</div>
+</script>
+
+
+<script type="text/html" id="rating-template">
+	<td class="rating" data-bind="click: $parent.onSelect">
+		<span class="text" data-bind="text:$data"></span>
+		<span class="rating-item sprites rating-normal"></span>
+	</td>
+</script>
+
+<script src="/Script/bundle/tvClientMultiPage.compiled.min.js?rv=42642"></script>
+<script type="text/html" id="errorPage">
+	
+	<div id="error-page-wrapper" class="view group" data-bind="css: { rtl: isRtl() }">
+		<div class="feedback-icon">
+			<span class="sprites worried_big"></span>
+		</div>
+		<div class="msg-wrapper">
+			<div class="row">
+				<div class="headline cell">
+					<div class="error-message">An unknown error has occurred.</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="cell">
+					<div class="subheadline">
+						<div class="error-message">Sorry for the inconvenience, please try again later.</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="height: 50px;">
+				<div class="cell">
+					<div class="subheadline2">
+						<span class="sprites tv_logo"></span>
+						<span class="tv-text">Your TeamViewer Team </span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="cell">
+					<div class="buttonWrapper closeBtnDiv" data-bind="visible: showCloseButtonInErrorPage">
+						
+						<input id="btnError" type="button" value="Close" data-bind="click: close">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="errorPage-blizz">
+	
+	<div id="error-page-wrapper" class="view group" data-bind="css: { rtl: isRtl() }">
+		<div class="feedback-icon">
+			<span class="sprites worried_big"></span>
+		</div>
+		<div class="msg-wrapper">
+			<div class="row">
+				<div class="headline cell">
+					<div class="error-message">An unknown error has occurred.</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="cell">
+					<div class="subheadline">
+						<div class="error-message">Sorry for the inconvenience, please try again later.</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="height: 50px;">
+				<div class="cell">
+					<div class="subheadline2">
+						<span class="tv-text">Your <span class="sprites logo_blizz"></span> Team </span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="cell">
+					<div class="buttonWrapper closeBtnDiv" data-bind="visible: showCloseButtonInErrorPage">
+						
+						<input id="btnError" type="button" value="Close" data-bind="click: close">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</script>
+</body>
+</html>
+
+<script>
+	$(function () {
+		/* hack jquery validator's html5 input validation. let the regex rule validate it  */
+		$.validator.addMethod("email", function () {
+			return true;
+		});
+	});
+</script>

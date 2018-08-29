@@ -1,0 +1,15 @@
+/* CSS Document */
+
+.top_spacer { height:71px; width:auto; }
+footer { height:51px; }
+
+
+.panel-heading strong { font-size: 20px; }
+table.table thead { background-color: #EEE; }
+
+.pagination { margin: 0px !important; }
+.p0 { padding: 0px !important; }
+
+@media print {
+    .no-print, .no-print * { display: none !important; }
+}

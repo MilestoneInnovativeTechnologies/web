@@ -1,0 +1,39 @@
+@charset "utf-8";
+/* CSS Document */
+
+.conversation_types { width: 50px; height: 55px; }
+	.conversation_types a { display: block; height: inherit; text-decoration: none; }
+.conversation_types .con_type { width: 25px; height: 15px; transition: all .2s linear; background-repeat: no-repeat; background-image: url(../img/chat_icons.png); }
+.conversation_types .con_type.active { width: 45px; height: 40px; }
+.conversation_types .con_type.chat { background-position: -42px -3px; }
+.conversation_types .con_type.file { background-position: -42px -22px; }
+.conversation_types .con_type.chat.active { background-position: 0px 0px !important; }
+.conversation_types .con_type.file.active { background-position: -65px 0px !important; }
+/*.conversation_types .con_type a { display: block; height: inherit; text-decoration: none; }*/
+/*.conversation_types .con_type a:hover { text-decoration: none; }*/
+
+.conversation_control { height: 55px !important; width: calc(100% - 55px) !important; overflow: hidden;  }
+.chat_textarea { height: 55px; }
+.browse_file { padding: 15px 35px 0px 35px; height: 55px; display: none; }
+.browse_file.progress { background-image:url(../img/upload_progress.png); background-repeat: no-repeat; transition: background-position-x 0.4s linear; background-position-y: 0px !important;  }
+
+.chat_window .panel-body { overflow-y: scroll; }
+.chat_window .panel-footer { height: 76px; }
+
+.conv_content { width: 80%; padding: 20px 50px; border-radius: 5px; margin-bottom: 20px; }
+.conv_content.self { float: left; background-color: #E4EAE3; }
+.conv_content.other { float: right; background-color: #EAE3E3; }
+.conv_time { color: #BBBBBB; float: right; }
+.conv_user { color: #BBBBBB; float: left; }
+.conv_text { clear: both; margin-top: 30px; }
+	.conv_text .name { margin-bottom: 10px; }
+	.conv_text .name .image { background-repeat: no-repeat; background-position: top left; background-size: contain; min-height: 30vh; margin-bottom: 10px; }
+	.conv_text .info {  }
+	.conv_text .info div { color: #9B9B9B; }
+		.conv_text .info .type { }
+		.conv_text .info .size { }
+		.conv_text .info .link { }
+.conv_content.info { width: 70%; background-color: #BFB6BA !important; padding: 10px 0px; margin-left: 15%; margin-right: 15%; }
+	.conv_content.info .conv_text { margin-top: 0px !important; text-align: center; color: #FFF; }
+	.conv_content.info .conv_user, .conv_content.info .conv_time { display: none !important; }
+

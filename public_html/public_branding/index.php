@@ -1,0 +1,1 @@
+<?php echo '$_SERVER => ' . $_SERVER['HTTP_HOST']; ?>

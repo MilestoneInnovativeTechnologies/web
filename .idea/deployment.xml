@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="MIT Backend" exclude=".svn;.cvs;.idea;.DS_Store;.git;.hg;*.hprof;*.pyc;*.exe;*.zip;.env;" autoUploadExternalChanges="true">
+    <serverData>
+      <paths name="Localhost">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="MIT Backend">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/laravel" local="$PROJECT_DIR$/laravel" web="/" />
+            <mapping deploy="/public_html" local="$PROJECT_DIR$/public_html" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/laravel/storage" />
+            <excludedPath path="/laravel/storage" />
+            <excludedPath local="true" path="$PROJECT_DIR$/public_html/public_print_objects" />
+            <excludedPath path="/public_html/public_print_objects" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>

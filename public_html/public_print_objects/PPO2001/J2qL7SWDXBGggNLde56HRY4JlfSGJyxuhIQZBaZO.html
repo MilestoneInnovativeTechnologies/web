@@ -1,0 +1,209 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>TeamViewer</title>
+		
+
+<!-- STYLES FOR ALL INTROS -->
+<style type="text/css">
+	body{
+		margin:0;
+		padding:0;
+		font-family: 'Segoe UI', Tahoma, Arial, Helvetica, Sans-Serif;
+		overflow:hidden;
+	}
+
+	::-moz-selection { background:transparent;}
+	::selection { background:transparent;}
+
+	#tv-intro{
+		width:860px;
+		height:584px;
+		background:url(res/img/tv-intro-background.png) repeat-x top left;
+		z-index:1;
+		position:relative;
+	}
+
+	#tv-intro-headline{
+		width:860px;
+		text-align:center;
+		padding:15px 0 0 0;
+		font-weight:lighter; 
+		font-size:26px; 
+		color:#086cd0;
+		cursor:default;
+	}
+
+	.tv-intro-sprite{
+		background: url(res/img/tv-intro-sprite.png) no-repeat;
+		z-index:4;
+	}
+
+	#tv-intro-close-font{
+		position:absolute;
+		font-size:18px;
+		top:542px;
+		color:#fff;
+		right:15px;
+		cursor:pointer;
+		text-decoration:none;
+		z-index:100;
+		padding-right:40px;
+		line-height:30px;
+		height:32px;
+	}
+
+	.tv-intro-navigate-left {
+		margin-left: 95px;
+	}
+	.tv-intro-navigate-top1 {
+		margin-top: 25px;
+	}
+	.tv-intro-navigate-top2 {
+		margin-top: 24px;
+	}
+
+	#topbox1, #topbox2, #bottombox1, #bottombox2{font-size:14px; color:#fff; position:absolute;}
+	#tv-intro-close{ background-position: -32px -117px; width: 32px; height: 32px; position:absolute; top:542px; right:15px;}
+</style>
+
+<!-- STYLES ONLY FOR VERSION 8 AND 10 -->
+
+<style type="text/css">
+	#tv-intro-rc-screen, #tv-intro-meeting-screen{
+		width:334px;
+		height:294px;
+		position:absolute;
+		top:180px;
+		left:189px;
+		z-index:3;
+	}
+
+	#tv-intro-cclist{
+		width:147px;
+		height:294px;
+		position:absolute;
+		top:180px;
+		left:524px;
+		z-index:3;
+	}
+			
+	#tv-intro-shadow{
+		background:url(res/img/shadow.jpg) no-repeat; width: 758px; height: 86px; 
+		top:444px; 
+		left:40px;
+		position:absolute;
+		z-index:2;
+	}
+
+	#topbox1{ right:437px; top:92px; max-width:400px; height:60px; z-index:3;}
+	#topbox2{ left:442px; top:85px; max-width:390px; height:60px; z-index:3;}
+	#bottombox1{ left:16px; top:235px; width:159px; min-height:400px; z-index:3;}
+	#bottombox2{ left:680px; top:305px; width:159px; min-height:400px; z-index:3;}
+
+	.topbox-left{ background-position: -5px -107px; width: 7px; height: 60px; float:left;} 
+	.topbox-right{ background-position: -17px -107px; width: 8px; height: 60px; float:left;} 
+	.topbox-center{ background: url(res/img/topbox-center.png) repeat-x; float:left; height:60px; padding:8px; max-width:350px; cursor:default;}
+	.bottombox-top{ background-position: 0 -96px; width: 159px; height: 6px; } 
+	.bottombox-bottom{ background-position: 0 -84px; width: 159px; height: 10px; }
+	.bottombox-center{ background: url(res/img/bottombox-center.png) repeat-y; width:130px; min-height:45px; padding:2px 16px 5px 16px; cursor:default;}
+
+	#topbox1-arrow-rctab, #topbox1-arrow-meetingtab{ background-position: -141px 0; width: 44px; height: 76px; position:absolute; top:147px; left:320px;} 
+	#topbox1-arrow-meetingtab{ left:220px;}
+	#topbox2-arrow{ background-position: -190px 0; width: 66px; height: 166px; position:absolute; top:140px; left:450px;} 
+	#bottombox1-arrow-rctab, #bottombox1-arrow-meetingtab{ background-position: 0 0; width: 48px; height: 35px; position:absolute; top:262px; left:172px;} 
+	#bottombox1-arrow-meetingtab{top:255px;}
+	#bottombox2-arrow{ background-position: -53px 0; width: 49px; height: 47px; position:absolute; top:310px; left:634px;} 
+	#picslider-active-meeting{ background-position: -105px 0; width: 16px; height: 16px; position:absolute; top:498px; left:427px;} 
+	#picslider-inactive-meeting{ background-position: -124px 0; width: 16px; height: 16px; position:absolute; top:498px; left:408px; cursor:pointer;} 
+	#picslider-active-rc{ background-position: -105px 0; width: 16px; height: 16px; position:absolute; top:498px; left:408px;} 
+	#picslider-inactive-rc{ background-position: -124px 0; width: 16px; height: 16px; position:absolute; top:498px; left:427px; cursor:pointer;} 
+</style>
+
+		<!--[if lt IE 7]>
+<style type="text/css">
+	#topbox1, #topbox2, #bottombox1, #bottombox2{font-size:12px; line-height:19px;}
+
+	.bottombox-center{height:45px;}
+
+	.topbox-left{ 
+		background: url(res/img/ie6/topbox-left.gif) no-repeat;
+	} 
+	.topbox-right{ 
+		background: url(res/img/ie6/topbox-right.gif) no-repeat;
+	} 
+	.topbox-center{ 
+		background: url(res/img/ie6/topbox-center.gif) repeat-x;
+	}
+	.bottombox-top{ 
+		background: url(res/img/ie6/bottombox-top.gif) no-repeat;
+		margin-bottom:-10px;
+	} 
+	.bottombox-bottom{ 
+		background: url(res/img/ie6/bottombox-bottom.gif) no-repeat;
+	} 
+	.bottombox-center{ 
+		background: url(res/img/ie6/bottombox-center.gif) repeat-y;
+	}
+	#topbox1-arrow-rctab, #topbox1-arrow-meetingtab{ 
+		background:none; 
+		filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='res/img/ie6/topbox1-arrow.png', sizingMethod='image');
+	} 
+	#topbox2-arrow{ 
+		background:none; 
+		filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='res/img/ie6/topbox2-arrow.png', sizingMethod='image');
+	} 
+	#bottombox1-arrow-rctab, #bottombox1-arrow-meetingtab{ 
+		background:none; 
+		filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='res/img/ie6/bottombox1-arrow.png', sizingMethod='image');
+	} 
+	#bottombox2-arrow{ 
+		background:none; 
+		filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='res/img/ie6/bottombox2-arrow.png', sizingMethod='image');
+	}
+
+	#picslider-active-meeting{ background: url(res/img/ie6/picslider-active.png) no-repeat; width: 16px; height: 16px; position:absolute; top:498px; left:427px;} 
+	#picslider-inactive-meeting{ background: url(res/img/ie6/picslider-inactive.png) no-repeat; width: 16px; height: 16px; position:absolute; top:498px; left:408px; cursor:pointer;} 
+	#picslider-active-rc{ background: url(res/img/ie6/picslider-active.png) no-repeat;  width:16px; height: 16px; position:absolute; top:498px; left:408px;} 
+	#picslider-inactive-rc{ background: url(res/img/ie6/picslider-inactive.png) no-repeat; width: 16px; height: 16px; position:absolute; top:498px; left:427px; cursor:pointer;}
+	
+	#tv-intro-close{ 
+		background:none; 
+		filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='res/img/ie6/tv-intro-close.png', sizingMethod='image');
+	}
+</style><![endif]-->
+		
+		<script type='text/javascript'>
+			document.oncontextmenu = new Function("return false"); document.onselectstart = new Function("return false");
+		</script>
+	</head>
+
+	<body scroll="no">
+		
+
+<script type="text/javascript" src="/scripts/TvGoogleAnalytics.js?v=4"></script>
+
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5R286M"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<script>	(function (w, d, s, l, i) {w[l] = w[l] || []; w[l].push({
+	'gtm.start':new Date().getTime(), event: 'gtm.js'
+}); var f = d.getElementsByTagName(s)[0],j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+'//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5R286M');</script>
+
+
+
+		<div id="tv-intro">
+			
+				<div id="tv-intro-headline">Navigate quickly and easily with TeamViewer</div>
+				<div class="tv-intro-navigate-left tv-intro-navigate-top1"><img src="res/screenshots/en/intro-mainscreen-rc-win-13.1.391.png" alt="" title="" /></div>
+			
+				<a href="index.aspx?lng=en&version=13.1.3629 &os=win&tab=2" id="picslider-inactive-rc" class="tv-intro-sprite"></a>
+				<div id="picslider-active-rc" class="tv-intro-sprite"></div>
+				<a href="about:close" id="tv-intro-close-font">Close</a>
+				<div id="tv-intro-close" class="tv-intro-sprite"></div>
+		</div>
+	</body>
+</html>
