@@ -2,7 +2,7 @@
 @include('BladeFunctions')
 @section("content")
 @php $ORM = \App\Models\GeneralUpload::latest('updated_at'); @endphp
-@php if(Request()->search_text != ""){ $st = '%'.Request()->search_text.'%'; $ORM->where('name','like',$st)->orWhere('description','like',$st)->orWhere('customer','like',$st)->orWhere('ticket','like',$st); } @endphp
+@php if(Request()->search_text != ""){ $st = '%'.Request()->search_text.'%'; $ORM->where('name','like',$st)->orWhere('description','like',$st)->orWhereHas('customer',function($Q) use($st){ $Q->where('name','like',$st); }); } @endphp
 @php $Data = $ORM->paginate(10); @endphp
 
 <div class="content">
