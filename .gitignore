@@ -1,3 +1,14 @@
 /laravel/vendor
 /laravel/storage
+/public_html/third_party_applications
+/public_html/RestoreDB
+/public_html/public_print_objects
+/public_html/printobject
+/public_html/milestoneeplus.com
+/public_html/mail_images
+/public_html/generalupload
+/public_html/Fullsetup
+/public_html/fonts
+/public_html/ePlus
+/public_html/branding.zip
 .idea

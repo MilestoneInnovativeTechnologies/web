@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e208b7e6-7bf1-437f-9cbb-f185d0b5e71d" name="Default" comment="">
+    <list default="true" id="e208b7e6-7bf1-437f-9cbb-f185d0b5e71d" name="Default" comment="General Upload Search corrected">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/laravel/resources/views/gu/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/laravel/resources/views/gu/index.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +54,7 @@
     <session id="-1205317766">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.opened" value="2" />
@@ -75,12 +74,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="php" value="302" />
+          <entry key="txt" value="31" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Blade" value="200" />
           <entry key="PHP" value="102" />
+          <entry key="PLAIN_TEXT" value="31" />
         </counts>
       </usages-collector>
     </session>
@@ -90,8 +91,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/laravel/resources/views/gu/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="9" column="139" lean-forward="true" selection-start-line="9" selection-start-column="139" selection-end-line="9" selection-end-column="139" />
+            <state relative-caret-position="260">
+              <caret line="13" column="120" lean-forward="true" selection-start-line="13" selection-start-column="120" selection-end-line="13" selection-end-column="120" />
             </state>
           </provider>
         </entry>
@@ -381,12 +382,20 @@
       <workItem from="1532485861850" duration="9643000" />
       <workItem from="1532589299096" duration="2611000" />
       <workItem from="1533018474464" duration="2240000" />
-      <workItem from="1535610817098" duration="869000" />
+      <workItem from="1535610817098" duration="1674000" />
     </task>
+    <task id="LOCAL-00001" summary="General Upload Search corrected">
+      <created>1535612009158</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1535612009158</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="183251000" />
+    <option name="totallyTimeSpent" value="184056000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -414,7 +423,7 @@
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49848714" weight="0.3293919" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.4977307" visible="true" weight="0.1876047" />
+      <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.4977307" weight="0.1876047" />
       <window_info anchor="bottom" id="Database Changes" order="10" weight="0.3289689" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.2179054" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50226927" side_tool="true" weight="0.24324325" />
@@ -432,6 +441,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="General Upload Search corrected" />
+    <option name="LAST_COMMIT_MESSAGE" value="General Upload Search corrected" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/laravel/database/migrations/2018_07_23_080900_create_f_a_q_scopes_table.php">
@@ -762,8 +775,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/laravel/resources/views/gu/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="139" lean-forward="true" selection-start-line="9" selection-start-column="139" selection-end-line="9" selection-end-column="139" />
+        <state relative-caret-position="260">
+          <caret line="13" column="120" lean-forward="true" selection-start-line="13" selection-start-column="120" selection-end-line="13" selection-end-column="120" />
         </state>
       </provider>
     </entry>
