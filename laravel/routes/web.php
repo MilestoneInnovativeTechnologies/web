@@ -25,10 +25,6 @@
 // If the requesting role have the resource, mentioned in wapi are allowed..
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/print_objects', function(){ return view('home.print_objects'); });
-Route::get('/vacancy', function(){ return view('home.vacancies'); });
-Route::get('/print_object/{code}/download', "PublicPrintObjectController@download")->name('home.print_object.download');
-Route::get('/faq', function(){ return view('home.faq'); })->name('faq');
 //Route::get('/', function(){ return 'as'; });
 Route::get('refresh', 'Refresh@index');
 Route::post('refresh','Refresh@post');
@@ -52,7 +48,7 @@ Route::prefix("test")->group(function(){
 	Route::get('5', 'TicketController@ttt');
 	Route::get('3', function(){ return view("emails.download_software"); });
 	Route::get('4', function(){
-		return \App\Models\Ticket::find('18LV144QNU01');
+		return \DB::table('v_dailyticketstatus')->get()->toArray();
 	});
 });
 
@@ -74,6 +70,19 @@ Route::get('article/p/{code}', 'PublicArticleController@serve')->name('article.s
 Route::get("notification/{code}/serve","NotificationController@serve")->name("notification.serve");
 Route::get('article/{code}/serve', 'PrivateArticleController@serve')->name('article.serve.private');
 Route::get('tools/{code}/download/{key}', 'ThirdPartyApplicationController@download')->name('tpa.download');
+
+
+Route::get('sms/post/json',"SmsJsonController@Index");
+
+Route::post('sms/post/json',"SmsJsonController@Store")->name('Test.Store');
+Route::post('sms/post/json',"SmsJsonController@Store");
+//Route::post('sms/post/json',"SmsJsonController@ReadFile");
+
+
+
+
+
+
 
 // Product
 Route::group(["middleware"=>["rolecheck:products"]],function(){
@@ -804,66 +813,7 @@ Route::group(["middleware"	=>	["rolecheck:thirdpartysoftwares"]],function(){
 	});
 });
 
-//Public Print Objects
-Route::group(["middleware"	=>	["rolecheck:publicprintobjects"]],function(){
-	Route::prefix('ppo')->group(function(){
-		Route::prefix('{code}')->group(function(){
-			Route::get("delete",function($code){ return view('ppo.delete',compact('code')); })->name("ppo.delete");
-			Route::post("delete","PublicPrintObjectController@delete");
-			Route::get("edit",function($code){ return view('ppo.edit',compact('code')); })->name("ppo.edit");
-			Route::post("edit","PublicPrintObjectController@update");
-			Route::get("change_preview",function($code){ return view('ppo.change_preview',compact('code')); })->name("ppo.change_preview");
-			Route::post("change_preview","PublicPrintObjectController@preview");
-			Route::get("change_file",function($code){ return view('ppo.change_file',compact('code')); })->name("ppo.change_file");
-			Route::post("change_file","PublicPrintObjectController@file");
-			Route::get("download","PublicPrintObjectController@download")->name("ppo.download");
-			Route::get("view",function($code){ return view('ppo.view',compact('code')); })->name("ppo.view");
-		});
-		Route::get("new",function(){ return view('ppo.new'); })->name("ppo.new");
-		Route::post("new","PublicPrintObjectController@store");
-		Route::get("/",function(){ return view('ppo.index'); })->name("ppo.index");
-	});
-});
 
-//Vacancies
-Route::group(["middleware"	=>	["rolecheck:vacancy"]],function(){
-	Route::prefix('vacancy')->group(function(){
-        Route::get("download/{Applicant}",'VacancyController@download')->name("vacancy.resume.download");
-		Route::prefix('{code}')->group(function(){
-		    Route::get("details",function($code){ return view('vacancy.detail',['code'=>$code]); })->name("vacancy.details");
-		    Route::get("on",'VacancyController@on')->name("vacancy.on");
-		    Route::get("off",'VacancyController@off')->name("vacancy.off");
-		});
-		Route::get("create",function(){ return view('vacancy.create'); })->name("vacancy.create");
-		Route::post("create",'VacancyController@store');
-		Route::get("manage",function(){ return view('vacancy.index'); })->name("vacancy.manage");
-	});
-});
-Route::get('/vacancy/apply/{code}', function($code){ return view('vacancy.apply',['code' => $code]); })->name('vacancy.apply');
-Route::post('/vacancy/apply/{Vacancy}', 'VacancyController@apply');
-Route::post('/vacancy','VacancyController@PreVacancyNotify');
-
-//FAQ
-Route::group(["middleware"	=>	["rolecheck:faq"], "prefix" => "faq"],function(){
-    Route::prefix('{id}')->group(function(){
-        Route::get('view', function(){ return view('faq.view'); })->name('faq.view');
-        Route::get('edit', function(){ return view('faq.edit'); })->name('faq.edit');
-        Route::post('edit', 'FAQController@update');
-        Route::get('scope', function(){ return view('faq.scope'); })->name('faq.scope');
-        Route::post('scope', 'FAQController@scope');
-        Route::get('product', function(){ return view('faq.product'); })->name('faq.product');
-        Route::post('product', 'FAQController@product');
-        Route::get('category', function(){ return view('faq.category'); })->name('faq.category');
-        Route::post('category', 'FAQController@category');
-        Route::get('delete', 'FAQController@delete')->name('faq.delete');
-        Route::get('undelete', 'FAQController@undelete')->name('faq.undelete');
-    });
-    Route::get('create', function(){ return view('faq.create'); })->name('faq.create');
-    Route::post('create', 'FAQController@create');
-    Route::get('index', function(){ return view('faq.index'); })->name('faq.index');
-    Route::get('list', function(){ return view('faq.list'); })->name('faq.list');
-
-});
 
 
 
