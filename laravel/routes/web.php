@@ -77,8 +77,6 @@ Route::get('tools/{code}/download/{key}', 'ThirdPartyApplicationController@downl
 
 
 Route::get('sms/post/json',"SmsJsonController@Index");
-
-Route::post('sms/post/json',"SmsJsonController@Store")->name('Test.Store');
 Route::post('sms/post/json',"SmsJsonController@Store");
 //Route::post('sms/post/json',"SmsJsonController@ReadFile");
 
