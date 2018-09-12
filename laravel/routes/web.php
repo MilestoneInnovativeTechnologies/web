@@ -50,7 +50,10 @@ Route::prefix("test")->group(function(){
   });
 	Route::get('2', 'Test@index');
 	Route::get('5', 'TicketController@ttt');
-	Route::get('3', function(){ return view("emails.download_software"); });
+	Route::get('3', function(){
+	    $Response = \App\Libraries\SMSGateways\SmppSMSHub::init('9495155550','Test Msg From MIT web using API. Time: '.date('Y-m-d H:i:s'))->send();
+	    dd($Response);
+    });
 	Route::get('4', function(){
 		return \DB::table('v_dailyticketstatus')->get()->toArray();
 	});
