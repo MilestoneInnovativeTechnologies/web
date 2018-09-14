@@ -83,7 +83,7 @@ Route::get('sms/post/json',"SmsJsonController@Index");
 Route::post('sms/post/json',"SmsJsonController@Store");
 
 Route::get('backup/database/registration',"DatabaseBackupStoreController@Index");
-//Route::post('backup/database/registration',"DatabaseBackupStoreController@Index");
+Route::post('backup/database/registration',"DatabaseBackupStoreController@addMorePost");
 //Route::Post('backup/database/registration',"DatabaseBackupStoreController@addMorePost");
 
 

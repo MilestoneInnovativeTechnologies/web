@@ -26,7 +26,7 @@
             </div>
             <div class="panel-footer clearfix">
                 <input type="submit" name="submit" value="Upload" class="btn btn-primary pull-right">
-                <a href="#" id="add">Add</a>
+                <a href="" id="add">Add</a>
 
             </div>
         </div>
