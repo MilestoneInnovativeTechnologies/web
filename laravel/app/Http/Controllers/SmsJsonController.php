@@ -27,7 +27,7 @@ class SmsJsonController extends Controller
              $json=Storage::get($File,'contents');
             $array=json_decode($json);
             dd($array);
-            dd($array);
+
         }
     }
 
