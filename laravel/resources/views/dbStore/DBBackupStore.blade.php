@@ -26,22 +26,24 @@
             </div>
             <div class="panel-footer clearfix">
                 <input type="submit" name="submit" value="Upload" class="btn btn-primary pull-right">
-                <a href="" id="add">Add</a>
+                <button type="button" name="add" id="add" class="btn btn-primary pull-right">Add More</button>
 
             </div>
         </div>
     </form>
         <script type="text/javascript">
            $(document).ready(function () {
+               var i=1;
                var html=" <label class=\"control-label col-xs-3 \" style=\"\">File</label>\n" +
-                   "                    <div class=\"col-xs-9\"><input type=\"file\" value=\"\"  class=\"form-control\" name=\"file\"></div></div>"
-               $("#add").click(function ( {
-
-               }) {
+                   "<div class=\"col-xs-9\"><input type=\"file\" value=\"\"  class=\"form-control\" name=\"file\"></div></div>"
+               $("#add").click(function () {
                    $("#UploadControl").append(html);
+                   i++;
+               })
+
 
                })
-           })
+
         </script>
      </body>
     </html>
