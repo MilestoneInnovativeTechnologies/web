@@ -10,7 +10,18 @@ class DatabaseBackupStoreController extends Controller
     {
         return view("dbStore.DBBackupStore");
     }
+    public function Store(Request $request){
 
+        if($request->hasFile('file')) {
+
+            $FileName = $request->file->getClientOriginalName();
+            $File=$request->file->storeAs('public/Upload', $FileName);
+            $json=Storage::get($File,'contents');
+            $array=json_decode($json);
+            dd($array);
+
+        }
+    }
     public function addMorePost(Request $request)
     {
         $rules = [];
