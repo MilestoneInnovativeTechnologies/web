@@ -1,3 +1,5 @@
+/.idea
+/laravel/.idea
 /laravel/vendor
 /laravel/storage
 /public_html/third_party_applications
