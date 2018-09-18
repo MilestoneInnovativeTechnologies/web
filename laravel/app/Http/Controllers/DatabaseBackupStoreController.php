@@ -13,12 +13,19 @@ class DatabaseBackupStoreController extends Controller
     public function Store(Request $request){
 
         if($request->hasFile('file')) {
+            foreach($request->file as $file)
+            {
+                $FileName = $file->getClientOriginalName();
+               $request->file->storeAs('public/Upload', $FileName);
+               // $json=Storage::get($File,'contents');
+              // $array=json_decode($json);
+               // dd($array);
 
-            $FileName = $request->file->getClientOriginalName();
-            $File=$request->file->storeAs('public/Upload', $FileName);
-            $json=Storage::get($File,'contents');
-            $array=json_decode($json);
-            dd($array);
+            }
+
+
+return "yes";
+
 
         }
     }

@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/laravel/app/Http/Controllers/DatabaseBackupStoreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/laravel/app/Http/Controllers/DatabaseBackupStoreController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/laravel/resources/views/dbStore/DBBackupStore.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/laravel/resources/views/dbStore/DBBackupStore.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/laravel/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/laravel/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -101,8 +100,8 @@
       <file leaf-file-name="DBBackupStore.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/laravel/resources/views/dbStore/DBBackupStore.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="44" column="23" selection-start-line="44" selection-start-column="23" selection-end-line="44" selection-end-column="23" />
+            <state relative-caret-position="-136">
+              <caret line="25" column="32" lean-forward="true" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
               <folding>
                 <element signature="e#684#709#0#HTML" expanded="true" />
                 <element signature="e#794#820#0#HTML" expanded="true" />
@@ -115,8 +114,8 @@
       <file leaf-file-name="SmsJsonController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/SmsJsonController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-11">
-              <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
+            <state relative-caret-position="272">
+              <caret line="27" column="38" lean-forward="true" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -124,8 +123,8 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/laravel/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
+            <state relative-caret-position="221">
+              <caret line="90" selection-start-line="90" selection-end-line="90" />
             </state>
           </provider>
         </entry>
@@ -133,8 +132,8 @@
       <file leaf-file-name="DatabaseBackupStoreController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/DatabaseBackupStoreController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="289">
+              <caret line="20" column="30" lean-forward="true" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -329,6 +328,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -346,6 +346,21 @@
               <item name="mit" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="mit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mit" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="mit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mit" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="mit" type="b2602c69:ProjectViewProjectNode" />
@@ -403,20 +418,10 @@
               <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
-            <path>
-              <item name="mit" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mit" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="storage" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Upload" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -511,7 +516,9 @@
       <workItem from="1536379243314" duration="18512000" />
       <workItem from="1536919941223" duration="10000" />
       <workItem from="1536920458461" duration="2440000" />
-      <workItem from="1536986294085" duration="10069000" />
+      <workItem from="1536986294085" duration="10130000" />
+      <workItem from="1537180107548" duration="870000" />
+      <workItem from="1537244242171" duration="5231000" />
     </task>
     <task id="LOCAL-00001" summary="General Upload Search corrected">
       <created>1535612009158</created>
@@ -541,11 +548,18 @@
       <option name="project" value="LOCAL" />
       <updated>1536996758686</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Git ignore updated to avoid updating large files">
+      <created>1537011283148</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1537011283148</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="220929000" />
+    <option name="totallyTimeSpent" value="227091000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -560,17 +574,17 @@
     <frame x="-8" y="-8" width="1376" height="744" extended-state="6" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49848714" weight="0.3293919" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5036765" side_tool="true" visible="true" weight="0.21621622" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50661767" side_tool="true" visible="true" weight="0.21621622" />
       <window_info anchor="bottom" id="Database Changes" order="10" weight="0.3283082" />
-      <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.49632353" weight="0.17329094" />
+      <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.49558824" weight="0.17329094" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4978038" weight="0.3290938" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49632353" visible="true" weight="0.21621622" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49338236" visible="true" weight="0.21621622" />
       <window_info anchor="right" id="Remote Host" order="3" weight="0.32980332" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2992647" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" weight="0.32980332" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49926472" weight="0.3290938" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4985294" weight="0.3290938" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
@@ -580,9 +594,9 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info active="true" anchor="bottom" id="Command Line Tools Console" order="13" sideWeight="0.49926794" visible="true" weight="0.3290938" />
-      <window_info anchor="bottom" id="Database Console" order="14" weight="0.3294893" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Database Console" order="14" weight="0.3294893" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -916,31 +930,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/SmsJsonController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11">
-          <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/laravel/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
+        <state relative-caret-position="221">
+          <caret line="90" selection-start-line="90" selection-end-line="90" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/DatabaseBackupStoreController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="289">
+          <caret line="20" column="30" lean-forward="true" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/SmsJsonController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="27" column="38" lean-forward="true" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/laravel/resources/views/dbStore/DBBackupStore.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="44" column="23" selection-start-line="44" selection-start-column="23" selection-end-line="44" selection-end-column="23" />
+        <state relative-caret-position="-136">
+          <caret line="25" column="32" lean-forward="true" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
           <folding>
             <element signature="e#684#709#0#HTML" expanded="true" />
             <element signature="e#794#820#0#HTML" expanded="true" />

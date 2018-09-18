@@ -22,7 +22,7 @@
                 <div class="form-group clearfix form-horizontal" id="UploadControl">
                     <label class="control-label col-xs-3 " style="">File</label>
                     <div class="col-xs-9">
-                        <input name= "filesToUpload[]" id="filesToUpload" type="file" multiple=""  class="form-control" />
+                        <input name= "filesToUpload[]" id="filesToUpload" type="file" multiple  class="form-control" />
                     </div></div>
 
             </div>
@@ -34,19 +34,18 @@
         </div>
     </form>
         <script type="text/javascript">
-           $(document).ready(function () {
-               var i=1;
-               var html=" <label class=\"control-label col-xs-3 \" style=\"\">File</label>\n" +
-                   "<div class=\"col-xs-9\">\n" +
-                   "<input name= \"filesToUpload[]\" id=\"filesToUpload\" type=\"file\" multiple=\"\"  class=\"form-control\" />\n" +
-                   "</div>"
-               $("#add").click(function () {
-                   $("#UploadControl").append(html);
-                   i++;
-               })
+         //  $(document).ready(function () {
+            //   var i=1;
+              // var html=" <label class=\"control-label col-xs-3 \" style=\"\">File</label>\n" +
+                //   "<div class=\"col-xs-9\">\n" +
+                //   "<input name= \"filesToUpload[]\" id=\"filesToUpload\" type=\"file\" multiple=\"true\"  class=\"form-control\" />\n" +
+                //   "</div>"
+             //  $("#add").click(function () {
+           //        $("#UploadControl").append(html);
+               //    i++;
+            //   })
+              // })
 
-
-               })
 
         </script>
      </body>
