@@ -21,11 +21,10 @@ class DatabaseBackupStoreController extends Controller
         if($request->hasFile('filename')) {
             foreach($request->file('filename') as $file)
             {
-                //$FileName = $file->getClientOriginalName();
-               // $file->storeAs('public/Upload', $FileName);
-                Storage::putFile(storage_path('public/Upload'),new File('file'));
+                Storage::putFile(('public/Upload'),new File($file));
 
             }
+            return "File uploaded successfully";
         }
     }
 
