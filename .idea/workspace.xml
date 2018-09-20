@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e208b7e6-7bf1-437f-9cbb-f185d0b5e71d" name="Default" comment="Git ignore updated to avoid updating large files">
+    <list default="true" id="e208b7e6-7bf1-437f-9cbb-f185d0b5e71d" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laravel/app/Http/Controllers/DatabaseBackupStoreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/laravel/app/Http/Controllers/DatabaseBackupStoreController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -95,11 +96,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DBBackupStore.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DBBackupStore.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/laravel/resources/views/dbStore/DBBackupStore.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
-              <caret line="43" column="40" lean-forward="true" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
+              <caret line="43" column="40" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -122,11 +123,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseBackupStoreController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DatabaseBackupStoreController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/DatabaseBackupStoreController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
+            <state relative-caret-position="255">
+              <caret line="15" column="34" lean-forward="true" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+              <folding>
+                <element signature="e#40#68#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -222,8 +226,8 @@
         <option value="$PROJECT_DIR$/laravel/app/Http/Controllers/SmsJsonController.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/laravel/routes/web.php" />
-        <option value="$PROJECT_DIR$/laravel/app/Http/Controllers/DatabaseBackupStoreController.php" />
         <option value="$PROJECT_DIR$/laravel/resources/views/dbStore/DBBackupStore.blade.php" />
+        <option value="$PROJECT_DIR$/laravel/app/Http/Controllers/DatabaseBackupStoreController.php" />
       </list>
     </option>
   </component>
@@ -321,7 +325,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -396,10 +399,20 @@
               <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+            <path>
+              <item name="mit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mit" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="storage" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Upload" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -498,7 +511,8 @@
       <workItem from="1537180107548" duration="870000" />
       <workItem from="1537244242171" duration="5496000" />
       <workItem from="1537328960454" duration="5598000" />
-      <workItem from="1537350300784" duration="3081000" />
+      <workItem from="1537350300784" duration="3128000" />
+      <workItem from="1537414850166" duration="5013000" />
     </task>
     <task id="LOCAL-00001" summary="General Upload Search corrected">
       <created>1535612009158</created>
@@ -549,11 +563,18 @@
       <option name="project" value="LOCAL" />
       <updated>1537336490179</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Multiple files uploaded">
+      <created>1537356856948</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1537356856949</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="236035000" />
+    <option name="totallyTimeSpent" value="241095000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -566,17 +587,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1376" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49848714" weight="0.3293919" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5058824" side_tool="true" visible="true" weight="0.17329094" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5117647" side_tool="true" visible="true" weight="0.21621622" />
       <window_info anchor="bottom" id="Database Changes" order="10" weight="0.3283082" />
-      <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.49411765" visible="true" weight="0.17329094" />
+      <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.49338236" weight="0.17329094" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4978038" weight="0.3290938" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49044117" weight="0.21621622" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.4882353" visible="true" weight="0.21621622" />
       <window_info anchor="right" id="Remote Host" order="3" weight="0.32980332" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2992647" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2992647" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" weight="0.32980332" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -603,7 +623,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="General Upload Search corrected" />
     <MESSAGE value="Git ignore updated to avoid updating large files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Git ignore updated to avoid updating large files" />
+    <MESSAGE value="Multiple files uploaded" />
+    <option name="LAST_COMMIT_MESSAGE" value="Multiple files uploaded" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/laravel/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Signers/DKIMSigner.php">
@@ -926,13 +947,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/DatabaseBackupStoreController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/SmsJsonController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
@@ -943,7 +957,17 @@
     <entry file="file://$PROJECT_DIR$/laravel/resources/views/dbStore/DBBackupStore.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="43" column="40" lean-forward="true" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
+          <caret line="43" column="40" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/DatabaseBackupStoreController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="34" lean-forward="true" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+          <folding>
+            <element signature="e#40#68#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
