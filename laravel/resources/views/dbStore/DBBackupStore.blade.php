@@ -33,10 +33,10 @@
             <div class="panel-body">
                 <div class="form-group clearfix form-horizontal">
                     <label class="control-label col-xs-3 " style="padding-left: 20%">File Count</label>
-                    <div class="form-inline"> <input type="text" style="padding-right: 10%" class="form-control" ></div>
+                    <div class="form-inline"> <input id="Count" type="text" style="padding-right: 10%" class="form-control" ></div>
                 </div><br>
-                <div class="input-group control-group increment" >
-                    <input type="file" name="filename[]" class="form-control">
+               <div class="input-group control-group increment" >
+                  <input type="file" name="filename[]" class="form-control">
                     <div class="input-group-btn">
                         <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
                     </div>
@@ -54,20 +54,42 @@
             <div class="panel-footer clearfix">
                 <input type="submit" name="submit" value="Upload" class="btn btn-primary pull-right">
 
-
             </div>
         </div>
+            <p></p><l></l>
     </form>
         <script type="text/javascript">
+          // To read the number entered in the text box
+          var Limit;
+          var i=0;
+          var Total=0;
+          $(document).ready(function() {
 
-            $(document).ready(function() {
+            $( '#Count' )
+                .keyup(function() {
+                    Limit = $( this ).val();
 
-                $(".btn-success").click(function(){
+                })
+                .keyup();
 
-                    var html = $(".clone").html();
-                    $(".increment").after(html);
-                });
+            // Adding controls dynamically
 
+                                Limit = $( '#Count' ).val();
+                                var OldLimit=Limit;
+                                $(".btn-success").click(function () {
+                                    if(Limit<=1){
+                                        $('#Add').removeAttribute('enabled');
+                                        Limit = $( '#Count' ).val();
+                                    }
+
+                                    var html = $(".clone").html();
+                                    $(".increment").after(html);
+                                    Limit--;
+                                   // Total++;
+                                   // $("p").text(Total);
+
+                                });
+            // Removes controls using a Remove button
                 $("body").on("click",".btn-danger",function(){
                     $(this).parents(".control-group").remove();
                 });
