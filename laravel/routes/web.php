@@ -82,8 +82,11 @@ Route::get('tools/{code}/download/{key}', 'ThirdPartyApplicationController@downl
 Route::get('sms/post/json',"SmsJsonController@Index");
 Route::post('sms/post/json',"SmsJsonController@Store");
 
-Route::get('backup/database/registration',"DatabaseBackupStoreController@Index");
-Route::post('backup/database/registration',"DatabaseBackupStoreController@Store");
+Route::get('backup/database/upload',"DatabaseBackupStoreController@Index");
+Route::post('backup/database/upload',"DatabaseBackupStoreController@Store");
+
+Route::get('backup/database/registration',"DatabaseBackupRegistrationController@Index");
+Route::post('backup/database/registration',"DatabaseBackupRegistrationController@Index");
 
 
 

@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e208b7e6-7bf1-437f-9cbb-f185d0b5e71d" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/laravel/resources/views/dbStore/DBBackupRegistration.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/laravel/resources/views/dbStore/DBBackupStore.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/laravel/resources/views/dbStore/DBBackupStore.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laravel/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/laravel/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -96,25 +98,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DBBackupStore.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/laravel/resources/views/dbStore/DBBackupStore.blade.php">
+      <file leaf-file-name="FileUpload.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/laravel/resources/views/Test/FileUpload.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="46" column="53" lean-forward="true" selection-start-line="46" selection-start-column="53" selection-end-line="46" selection-end-column="53" />
-              <folding>
-                <element signature="e#1278#1303#0#HTML" expanded="true" />
-                <element signature="e#1388#1414#0#HTML" expanded="true" />
-                <element signature="e#1940#1963#0#HTML" expanded="true" />
-              </folding>
+            <state relative-caret-position="221">
+              <caret line="13" column="22" lean-forward="true" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SmsJsonController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/SmsJsonController.php">
+      <file leaf-file-name="DBBackupRegistration.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/laravel/resources/views/dbStore/DBBackupRegistration.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="37" column="19" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
+            <state relative-caret-position="187">
+              <caret line="11" column="93" selection-start-line="11" selection-start-column="93" selection-end-line="11" selection-end-column="93" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseBackupRegistrationController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/DatabaseBackupRegistrationController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -122,8 +128,8 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/laravel/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1156">
-              <caret line="86" selection-start-line="86" selection-end-line="86" />
+            <state relative-caret-position="357">
+              <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
             </state>
           </provider>
         </entry>
@@ -131,8 +137,8 @@
       <file leaf-file-name="DatabaseBackupStoreController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/DatabaseBackupStoreController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="187">
+              <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
               <folding>
                 <element signature="e#40#68#0#PHP" expanded="true" />
               </folding>
@@ -182,8 +188,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/laravel/resources/views/vacancy/detail.blade.php" />
-        <option value="$PROJECT_DIR$/laravel/app/Models/PublicPrintObjectSpecs.php" />
         <option value="$PROJECT_DIR$/public_html/css/main.css" />
         <option value="$PROJECT_DIR$/laravel/resources/views/distributor/transactions.blade.php" />
         <option value="$PROJECT_DIR$/laravel/storage/framework/views/9b0c11512ab088b0adf74cf8965b5371b2b84536.php" />
@@ -230,9 +234,11 @@
         <option value="$PROJECT_DIR$/laravel/resources/views/gu/index.blade.php" />
         <option value="$PROJECT_DIR$/laravel/app/Http/Controllers/SmsJsonController.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/laravel/routes/web.php" />
         <option value="$PROJECT_DIR$/laravel/app/Http/Controllers/DatabaseBackupStoreController.php" />
         <option value="$PROJECT_DIR$/laravel/resources/views/dbStore/DBBackupStore.blade.php" />
+        <option value="$PROJECT_DIR$/laravel/app/Http/Controllers/DatabaseBackupRegistrationController.php" />
+        <option value="$PROJECT_DIR$/laravel/routes/web.php" />
+        <option value="$PROJECT_DIR$/laravel/resources/views/dbStore/DBBackupRegistration.blade.php" />
       </list>
     </option>
   </component>
@@ -358,6 +364,21 @@
               <item name="mit" type="b2602c69:ProjectViewProjectNode" />
               <item name="mit" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="mit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mit" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="mit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mit" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -410,15 +431,6 @@
               <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
-            <path>
-              <item name="mit" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mit" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="storage" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Upload" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -443,15 +455,15 @@
     <property name="settings.editor.selected.configurable" value="com.chrisrm.idea.config" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\htdocs\Milestone\laravel\app\Models" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\htdocs\Milestone\laravel\resources\views\faq" />
       <recent name="D:\htdocs\Milestone\laravel\resources\views\home" />
       <recent name="D:\htdocs\Milestone\laravel\resources\views\vacancy" />
       <recent name="D:\htdocs\Milestone\laravel\app\Sms" />
       <recent name="D:\htdocs\Milestone\laravel\resources\views\careers" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\htdocs\Milestone\laravel\app\Models" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -523,7 +535,8 @@
       <workItem from="1537328960454" duration="5598000" />
       <workItem from="1537350300784" duration="3128000" />
       <workItem from="1537414850166" duration="9771000" />
-      <workItem from="1537500596045" duration="18665000" />
+      <workItem from="1537500596045" duration="18892000" />
+      <workItem from="1537940174526" duration="11908000" />
     </task>
     <task id="LOCAL-00001" summary="General Upload Search corrected">
       <created>1535612009158</created>
@@ -595,11 +608,18 @@
       <option name="project" value="LOCAL" />
       <updated>1537443275652</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Adding controls according to the limit has partially been completed">
+      <created>1537529550652</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1537529550652</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="264518000" />
+    <option name="totallyTimeSpent" value="276653000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -615,17 +635,16 @@
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49848714" weight="0.3293919" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5029412" side_tool="true" visible="true" weight="0.3290938" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.51617646" side_tool="true" visible="true" weight="0.21621622" />
       <window_info anchor="bottom" id="Database Changes" order="10" weight="0.3283082" />
-      <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.49264705" weight="0.17329094" />
+      <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.49191177" weight="0.17329094" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4978038" weight="0.3290938" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.48602942" weight="0.21621622" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.48382354" visible="true" weight="0.21621622" />
       <window_info anchor="right" id="Remote Host" order="3" weight="0.32980332" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2992647" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" weight="0.32980332" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4970588" visible="true" weight="0.3290938" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
@@ -638,6 +657,7 @@
       <window_info anchor="bottom" id="Database Console" order="14" weight="0.3294893" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4970588" weight="0.3290938" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -652,44 +672,10 @@
     <MESSAGE value="Multiple files uploaded" />
     <MESSAGE value="Changed the code for changing the filename" />
     <MESSAGE value="File name has changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="File name has changed" />
+    <MESSAGE value="Adding controls according to the limit has partially been completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding controls according to the limit has partially been completed" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/laravel/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Signers/DKIMSigner.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="232" column="7" selection-start-line="232" selection-start-column="7" selection-end-line="232" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/resources/views/vacancy/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="180" column="30" selection-start-line="180" selection-start-column="30" selection-end-line="180" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/resources/views/ppo/view.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="64" lean-forward="true" selection-end-line="27" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/database/migrations/2018_07_24_175237_create_f_a_q_categories_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/laravel/app/Models/FAQAllCategory.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -962,24 +948,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/laravel/storage/app/public/Upload/ForumPart1.Database Backup.rar" />
     <entry file="file://$PROJECT_DIR$/laravel/storage/app/public/Upload/BeforeJVClosing.Database Backup.rar" />
-    <entry file="file://$PROJECT_DIR$/laravel/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1156">
-          <caret line="86" selection-start-line="86" selection-end-line="86" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/DatabaseBackupRegistration.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/RegController.php">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/SmsJsonController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="37" column="19" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
+        <state relative-caret-position="238">
+          <caret line="19" column="5" lean-forward="true" selection-start-line="16" selection-start-column="3" selection-end-line="19" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/DatabaseBackupStoreController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="187">
+          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
           <folding>
             <element signature="e#40#68#0#PHP" expanded="true" />
           </folding>
@@ -988,13 +973,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/laravel/resources/views/dbStore/DBBackupStore.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="46" column="53" lean-forward="true" selection-start-line="46" selection-start-column="53" selection-end-line="46" selection-end-column="53" />
-          <folding>
-            <element signature="e#1278#1303#0#HTML" expanded="true" />
-            <element signature="e#1388#1414#0#HTML" expanded="true" />
-            <element signature="e#1940#1963#0#HTML" expanded="true" />
-          </folding>
+        <state relative-caret-position="187">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/DatabaseBackupRegistrationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/resources/views/Test/FileUpload.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="22" lean-forward="true" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/resources/views/dbStore/DBBackupRegistration.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="93" selection-start-line="11" selection-start-column="93" selection-end-line="11" selection-end-column="93" />
         </state>
       </provider>
     </entry>
