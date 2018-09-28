@@ -99,8 +99,8 @@
       <file leaf-file-name="FileUpload.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/laravel/resources/views/Test/FileUpload.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="11" lean-forward="true" selection-start-line="4" selection-start-column="3" selection-end-line="20" selection-end-column="11" />
+            <state relative-caret-position="302">
+              <caret line="18" column="14" lean-forward="true" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -108,12 +108,8 @@
       <file leaf-file-name="DBBackupRegistration.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/laravel/resources/views/dbStore/DBBackupRegistration.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="30" column="26" lean-forward="true" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
-              <folding>
-                <element signature="e#608#634#0#HTML" expanded="true" />
-                <element signature="e#897#924#0#HTML" expanded="true" />
-              </folding>
+            <state relative-caret-position="761">
+              <caret line="49" column="11" lean-forward="true" selection-start-line="49" selection-start-column="11" selection-end-line="49" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -130,7 +126,7 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/laravel/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1530">
+            <state relative-caret-position="1224">
               <caret line="90" selection-start-line="90" selection-end-line="90" />
             </state>
           </provider>
@@ -343,7 +339,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -437,6 +432,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -539,7 +535,8 @@
       <workItem from="1537414850166" duration="9771000" />
       <workItem from="1537500596045" duration="18892000" />
       <workItem from="1537940174526" duration="12241000" />
-      <workItem from="1538030034803" duration="4532000" />
+      <workItem from="1538030034803" duration="5491000" />
+      <workItem from="1538111285034" duration="8613000" />
     </task>
     <task id="LOCAL-00001" summary="General Upload Search corrected">
       <created>1535612009158</created>
@@ -625,11 +622,18 @@
       <option name="project" value="LOCAL" />
       <updated>1537962020496</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Registration form designing">
+      <created>1538043298800</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1538043298800</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="281518000" />
+    <option name="totallyTimeSpent" value="291090000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -644,12 +648,12 @@
     <frame x="-8" y="-8" width="1376" height="744" extended-state="6" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49848714" weight="0.3293919" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5176471" side_tool="true" visible="true" weight="0.21621622" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.51911765" side_tool="true" visible="true" weight="0.21621622" />
       <window_info anchor="bottom" id="Database Changes" order="10" weight="0.3283082" />
-      <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.49117646" weight="0.17329094" />
+      <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.49044117" weight="0.17329094" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4978038" weight="0.3290938" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.48235294" visible="true" weight="0.21621622" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.48088235" visible="true" weight="0.21621622" />
       <window_info anchor="right" id="Remote Host" order="3" weight="0.32980332" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2992647" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
@@ -683,7 +687,8 @@
     <MESSAGE value="File name has changed" />
     <MESSAGE value="Adding controls according to the limit has partially been completed" />
     <MESSAGE value="Changes to file upload" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes to file upload" />
+    <MESSAGE value="Registration form designing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Registration form designing" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/laravel/app/Http/Controllers/DatabaseBackupStoreController.php">
@@ -700,10 +705,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
-          <folding>
-            <element signature="e#608#634#0#HTML" expanded="true" />
-            <element signature="e#897#924#0#HTML" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1005,15 +1006,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/laravel/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
+        <state relative-caret-position="1224">
           <caret line="90" selection-start-line="90" selection-end-line="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/resources/views/Test/FileUpload.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="11" lean-forward="true" selection-start-line="4" selection-start-column="3" selection-end-line="20" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -1024,14 +1018,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/resources/views/Test/FileUpload.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="18" column="14" lean-forward="true" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/laravel/resources/views/dbStore/DBBackupRegistration.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="30" column="26" lean-forward="true" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
-          <folding>
-            <element signature="e#608#634#0#HTML" expanded="true" />
-            <element signature="e#897#924#0#HTML" expanded="true" />
-          </folding>
+        <state relative-caret-position="761">
+          <caret line="49" column="11" lean-forward="true" selection-start-line="49" selection-start-column="11" selection-end-line="49" selection-end-column="11" />
         </state>
       </provider>
     </entry>
