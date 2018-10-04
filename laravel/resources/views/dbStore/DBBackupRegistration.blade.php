@@ -14,37 +14,20 @@
             <div class="panel-heading"><strong>Database Backup Registration</strong></div>
             <div class="panel-body">
 
-                <div class="form-group">
-                    <label for="DBName" class="col-sm-4 control-label" style="padding-left: 200px">Database Name</label>
+                <div style="padding-top: 50px" class="form-group {{$errors->has('DatabaseUserName')?'has_error':''  }}">
+                    <label for="UserName" class="col-sm-4 control-label" style="padding-left: 200px">Database User Name</label>
                     <div class="col-sm-5">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Database Name">
+                        <input type="DatabaseUserName" id="DatabaseUserName" class="form-control" placeholder="Enter Database User Name"  value="{{old('DatabaseUserName')}}">
+                        <span class="text-danger">{{$errors->first('DatabaseUserName')}}</span>
+
                     </div>
                 </div>
                 <br><br>
-                 <div class="form-group">
-                    <label for="DBPassword" class="col-sm-4 control-label" style="padding-left: 200px">Database Password</label>
-                     <div class="col-sm-5">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Database Password">
-                    </div>
-                 </div> <br><br>
-                <div class="form-group">
-                    <label for="BackupType" class="col-sm-4 control-label" style="padding-left: 200px">Backup Types</label>
-                    <div class="col-sm-5">
-                        <div class="dropdown">
+                 <br><br>
 
-                                <select class="form-control"  >
-                                    <option>--Select--</option>
-                                    <option>  7 Days </option>
-                                    <option> 30 Days </option>
-                                    <option>1 Year </option>
-                                </select>
-
-                        </div>
-                    </div>
-                    </div>
                 </div>
             <div class="panel-footer clearfix">
-                <input type="submit" name="Register" value="Register" class="btn btn-primary pull-right" >
+                <input type="submit" name="Register" value="Package>>" class="btn btn-primary pull-right" >
             </div>
         </div>
     </form>

@@ -86,7 +86,7 @@ Route::get('backup/database/upload',"DatabaseBackupStoreController@Index");
 Route::post('backup/database/upload',"DatabaseBackupStoreController@Store");
 
 Route::get('backup/database/registration',"DatabaseBackupRegistrationController@Index");
-Route::post('backup/database/registration',"DatabaseBackupRegistrationController@Index");
+Route::post('backup/database/registration',"DatabaseBackupRegistrationController@formValidation");
 
 
 
