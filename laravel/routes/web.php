@@ -89,11 +89,6 @@ Route::get('backup/database/registration',"DatabaseBackupRegistrationController@
 Route::post('backup/database/registration',"DatabaseBackupRegistrationController@formValidation");
 
 
-
-
-
-
-
 // Product
 Route::group(["middleware"=>["rolecheck:products"]],function(){
 	Route::prefix("products")->group(function(){
