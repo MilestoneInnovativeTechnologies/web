@@ -33,7 +33,7 @@
 
     </style>
 
-    <form method="post" enctype="multipart/ form-data" data-toggle="validation" role="form">
+    <form method="post" enctype="multipart/ form-data" data-toggle="validation" role="form" action="Store">
         {{ csrf_field() }}
 
 
@@ -59,11 +59,17 @@
                                 <label class="col-sm-4 control-label" style="padding-left: 200px" for="inputName">Database User Name</label>
                                     <div class="col-sm-5">
                                      <input class="form-control" data-error="Please enter the Database User name." id="DBUserName" placeholder="DBUserName"  type="text" required name="DBUserName"/>
+                                        <span id="error_DatabaseName" class="text-danger"></span>
                                      <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="panel-footer clearfix">
+
+                                <button type="button" name="Register" id="btnPackage" class="btn btn-primary pull-centre" style="margin-left: 500px">Package</button>
+                            </div>
                         </div>
+
 
 
                     <div class="tab-pane fade" id="Package_details">
@@ -71,31 +77,48 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label" style="padding-left: 200px" for="inputName">Package</label>
                                     <div class="col-sm-5">
-                                    <input type="text" name="first_name" id="first_name" class="form-control" />
-                                    <span id="error_first_name" class="text-danger"></span>
+                                    <input type="text" name="package_name" id="PackageName" class="form-control" />
+
+                                    <span id="error_PackageName" class="text-danger"></span>
                                     </div>
                                 </div>
                          </div>
+                        <div  class="panel-footer clearfix" >
+                            <button type="button" name="btnPrevious" id="btnPrevious" class="btn btn-primary pull-centre" style="margin-left: 500px">Previous</button></div>
+                        <button type="button" name="btnRegister" id="btnRegister" class="btn btn-primary pull-centre" style="margin-left: 500px">Register</button></div>
                     </div>
-            <div class="panel-footer clearfix">
-                <input type="submit" name="Register" value="Package" id="Package" class="btn btn-primary pull-centre" style="margin-left: 500px">
 
-            </div>
         </div>
             </div></div>
     </form>
     </html>
 
-
     <script>
         $(document).ready(function () {
-            $('#Package').click(
+
+            $('#btnPackage').click(
                 function(){
 
-                    if(('#DBUserName').valueOf()=='')
-                    {
-                        return false;
-                    }
+                    var error_DatabaseName='';
+
+                    if(($('#DBUserName').val()).length == 0)
+                   {
+                        error_DatabaseName="Database username is required";
+                        $('#error_DatabaseName').text(error_DatabaseName);
+                        $('#DBUserName').addClass('has_error');
+                   }
+
+                   else
+                   {
+                       error_DatabaseName='';
+                       $('#error_DatabaseName').text(error_DatabaseName);
+                       $('#DBUserName').removeClass('has_error');
+
+                   }
+                   if(error_DatabaseName!='')
+                   {
+                       return false;
+                   }
                     else {
                         $('#list_DatabaseDetails').removeClass('active active_tab1');
                         $('#list_DatabaseDetails').removeAttr('href data-toggle');
@@ -107,9 +130,7 @@
                         $('#list_PackageDetails').attr('data-toggle', 'tab');
                         $('#Package_details').addClass('active in');
                     }
-                }
-            )
-
+                } );
         });
     </script>
 @endsection
