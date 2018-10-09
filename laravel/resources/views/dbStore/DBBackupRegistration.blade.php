@@ -84,8 +84,14 @@
                                 </div>
                          </div>
                         <div  class="panel-footer clearfix" >
-                            <button type="button" name="btnPrevious" id="btnPrevious" class="btn btn-primary pull-centre" style="margin-left: 500px">Previous</button></div>
-                        <button type="button" name="btnRegister" id="btnRegister" class="btn btn-primary pull-centre" style="margin-left: 500px">Register</button></div>
+                            <table>
+                                <tr>
+                                    <td><button type="button" name="btnPrevious" id="btnPrevious" class="btn btn-primary pull-centre" style="margin-left: 400px">Previous</button></div></td>
+                                    <td><button type="button" name="btnRegister" id="btnRegister" class="btn btn-primary pull-centre" style="margin-left: 30px">Register</button></div></td>
+                                </tr>
+                            </table>
+
+
                     </div>
 
         </div>
@@ -131,6 +137,19 @@
                         $('#Package_details').addClass('active in');
                     }
                 } );
+
+            $('#btnPrevious').click(
+                function(){
+                    $('#list_PackageDetails').removeClass('active active_tab1');
+                    $('#list_PackageDetails').removeAttr('href data-toggle');
+                    $('#Package_details').removeClass('active in');
+                    $('#list_PackageDetails').addClass('inactive_tab1');
+                    $('#list_DatabaseDetails').removeClass('inactive_tab1');
+                    $('#list_DatabaseDetails').addClass('active_tab1 active');
+                    $('#list_DatabaseDetails').attr('href', '#Database_details');
+                    $('#list_DatabaseDetails').attr('data-toggle', 'tab');
+                    $('#Database_details').addClass('active in');
+                })
         });
     </script>
 @endsection
