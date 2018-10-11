@@ -7,7 +7,11 @@
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+       <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />  -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
     </head>
 
@@ -32,6 +36,17 @@
         }
 
     </style>
+    <script>
+        function bigDiv(x) {
+          x.style.height="100px";
+          x.style.width="100px";
+        }
+        function NormalDiv(x)
+        {
+            x.style.height="20px";
+            x.style.width="20px";
+        }
+    </script>
 
     <form method="post" enctype="multipart/ form-data" data-toggle="validation" role="form" action="Store">
         {{ csrf_field() }}
@@ -74,16 +89,24 @@
 
                     <div class="tab-pane fade" id="Package_details">
                         <div class="panel-body">
-                                <div class="form-group">
-                                    <label class="col-sm-4 control-label" style="padding-left: 200px" for="inputName">Package</label>
-                                    <div class="col-sm-5">
-                                    <input type="text" name="package_name" id="PackageName" class="form-control" />
+                            <div class="form-group">
 
-                                    <span id="error_PackageName" class="text-danger"></span>
-                                    </div>
+                                <div class="dropdown" style="margin-left: 420px">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select a Package
+                                        <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">1 year</a></li>
+                                        <li><a href="#">6 Months</a></li>
+                                        <li><a href="#">3 Months</a></li>
+                                    </ul>
                                 </div>
+                                <div style="background-color: #32383e; height: 20px;width: 20%;" onmouseover="bigDiv(this)" onmouseout="NormalDiv(this)"></div>
+
+                            </div>
+
+
                          </div>
-                        <div  class="panel-footer clearfix" >
+                        <div  class="panel-footer clearfix" style="margin-top: 70px;  " >
                             <table>
                                 <tr>
                                     <td><button type="button" name="btnPrevious" id="btnPrevious" class="btn btn-primary pull-centre" style="margin-left: 400px">Previous</button></div></td>
@@ -107,7 +130,7 @@
 
                     var error_DatabaseName='';
 
-                    if(($('#DBUserName').val()).length == 0)
+                    if($.trim($('#DBUserName').val()).length == 0)
                    {
                         error_DatabaseName="Database username is required";
                         $('#error_DatabaseName').text(error_DatabaseName);
