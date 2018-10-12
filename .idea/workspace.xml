@@ -99,7 +99,7 @@
       <file leaf-file-name="FileUpload.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/laravel/resources/views/Test/FileUpload.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
+            <state relative-caret-position="187">
               <caret line="11" column="32" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="32" />
             </state>
           </provider>
@@ -108,12 +108,31 @@
       <file leaf-file-name="DBBackupRegistration.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/laravel/resources/views/dbStore/DBBackupRegistration.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="110" column="36" lean-forward="true" selection-start-line="110" selection-start-column="36" selection-end-line="110" selection-end-column="36" />
+            <state relative-caret-position="384">
+              <caret line="210" column="36" selection-start-line="210" selection-start-column="36" selection-end-line="210" selection-end-column="36" />
               <folding>
-                <element signature="e#3512#3538#0#HTML" expanded="true" />
-                <element signature="e#4156#4215#0#HTML" expanded="true" />
-                <element signature="e#4353#4380#0#HTML" expanded="true" />
+                <element signature="e#4781#4799#0#HTML" expanded="true" />
+                <element signature="e#5131#5208#0#HTML" expanded="true" />
+                <element signature="e#5297#5339#0#HTML" expanded="true" />
+                <element signature="e#5197#5203#0#HTML" expanded="true" />
+                <element signature="e#5238#5257#0#HTML" expanded="true" />
+                <element signature="e#5952#6009#0#HTML" expanded="true" />
+                <element signature="e#6821#6842#0#HTML" expanded="true" />
+                <element signature="e#6918#6924#0#HTML" expanded="true" />
+                <element signature="e#6959#6978#0#HTML" expanded="true" />
+                <element signature="e#6534#6671#0#HTML" expanded="true" />
+                <element signature="e#6933#6991#0#HTML" expanded="true" />
+                <element signature="e#8544#8565#0#HTML" expanded="true" />
+                <element signature="e#8641#8647#0#HTML" expanded="true" />
+                <element signature="e#8682#8701#0#HTML" expanded="true" />
+                <element signature="e#9822#9959#0#HTML" expanded="true" />
+                <element signature="e#7953#8011#0#HTML" expanded="true" />
+                <element signature="e#8267#8288#0#HTML" expanded="true" />
+                <element signature="e#8399#8405#0#HTML" expanded="true" />
+                <element signature="e#8480#8499#0#HTML" expanded="true" />
+                <element signature="e#8685#8822#0#HTML" expanded="true" />
+                <element signature="e#9453#9481#0#HTML" expanded="true" />
+                <element signature="e#9682#9689#1#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -131,8 +150,8 @@
       <file leaf-file-name=".env" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/laravel/.env">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="28" column="19" lean-forward="true" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+            <state relative-caret-position="476">
+              <caret line="28" column="19" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -547,7 +566,8 @@
       <workItem from="1538996551247" duration="1033000" />
       <workItem from="1539075188513" duration="1760000" />
       <workItem from="1539147644032" duration="2566000" />
-      <workItem from="1539247342720" duration="6216000" />
+      <workItem from="1539247342720" duration="6270000" />
+      <workItem from="1539316489183" duration="17705000" />
     </task>
     <task id="LOCAL-00001" summary="General Upload Search corrected">
       <created>1535612009158</created>
@@ -682,11 +702,18 @@
       <option name="project" value="LOCAL" />
       <updated>1539084782755</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Backup registration designing">
+      <created>1539257373006</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1539257373006</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="361022000" />
+    <option name="totallyTimeSpent" value="378781000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -699,16 +726,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1376" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49848714" weight="0.3293919" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="12" sideWeight="0.51911765" side_tool="true" visible="true" weight="0.17329094" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5360294" side_tool="true" visible="true" weight="0.21621622" />
       <window_info anchor="bottom" id="Database Changes" order="10" weight="0.3283082" />
-      <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.48088235" visible="true" weight="0.17329094" />
+      <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.48014706" weight="0.17329094" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4978038" weight="0.3290938" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.46617648" weight="0.21621622" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.4639706" visible="true" weight="0.21621622" />
       <window_info anchor="right" id="Remote Host" order="3" weight="0.32980332" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29264706" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17941177" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" weight="0.32980332" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -753,9 +781,28 @@
         <state relative-caret-position="1258">
           <caret line="74" column="66" lean-forward="true" selection-start-line="74" selection-start-column="66" selection-end-line="74" selection-end-column="66" />
           <folding>
-            <element signature="e#3512#3538#0#HTML" expanded="true" />
-            <element signature="e#4156#4215#0#HTML" expanded="true" />
-            <element signature="e#4353#4380#0#HTML" expanded="true" />
+            <element signature="e#4781#4799#0#HTML" expanded="true" />
+            <element signature="e#5131#5208#0#HTML" expanded="true" />
+            <element signature="e#5297#5339#0#HTML" expanded="true" />
+            <element signature="e#5197#5203#0#HTML" expanded="true" />
+            <element signature="e#5238#5257#0#HTML" expanded="true" />
+            <element signature="e#5952#6009#0#HTML" expanded="true" />
+            <element signature="e#6821#6842#0#HTML" expanded="true" />
+            <element signature="e#6918#6924#0#HTML" expanded="true" />
+            <element signature="e#6959#6978#0#HTML" expanded="true" />
+            <element signature="e#6534#6671#0#HTML" expanded="true" />
+            <element signature="e#6933#6991#0#HTML" expanded="true" />
+            <element signature="e#8544#8565#0#HTML" expanded="true" />
+            <element signature="e#8641#8647#0#HTML" expanded="true" />
+            <element signature="e#8682#8701#0#HTML" expanded="true" />
+            <element signature="e#9822#9959#0#HTML" expanded="true" />
+            <element signature="e#7953#8011#0#HTML" expanded="true" />
+            <element signature="e#8267#8288#0#HTML" expanded="true" />
+            <element signature="e#8399#8405#0#HTML" expanded="true" />
+            <element signature="e#8480#8499#0#HTML" expanded="true" />
+            <element signature="e#8685#8822#0#HTML" expanded="true" />
+            <element signature="e#9453#9481#0#HTML" expanded="true" />
+            <element signature="e#9682#9689#1#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1069,26 +1116,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/laravel/.env">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="28" column="19" lean-forward="true" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+        <state relative-caret-position="476">
+          <caret line="28" column="19" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/laravel/resources/views/Test/FileUpload.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
+        <state relative-caret-position="187">
           <caret line="11" column="32" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/laravel/resources/views/dbStore/DBBackupRegistration.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="110" column="36" lean-forward="true" selection-start-line="110" selection-start-column="36" selection-end-line="110" selection-end-column="36" />
+        <state relative-caret-position="384">
+          <caret line="210" column="36" selection-start-line="210" selection-start-column="36" selection-end-line="210" selection-end-column="36" />
           <folding>
-            <element signature="e#3512#3538#0#HTML" expanded="true" />
-            <element signature="e#4156#4215#0#HTML" expanded="true" />
-            <element signature="e#4353#4380#0#HTML" expanded="true" />
+            <element signature="e#4781#4799#0#HTML" expanded="true" />
+            <element signature="e#5131#5208#0#HTML" expanded="true" />
+            <element signature="e#5297#5339#0#HTML" expanded="true" />
+            <element signature="e#5197#5203#0#HTML" expanded="true" />
+            <element signature="e#5238#5257#0#HTML" expanded="true" />
+            <element signature="e#5952#6009#0#HTML" expanded="true" />
+            <element signature="e#6821#6842#0#HTML" expanded="true" />
+            <element signature="e#6918#6924#0#HTML" expanded="true" />
+            <element signature="e#6959#6978#0#HTML" expanded="true" />
+            <element signature="e#6534#6671#0#HTML" expanded="true" />
+            <element signature="e#6933#6991#0#HTML" expanded="true" />
+            <element signature="e#8544#8565#0#HTML" expanded="true" />
+            <element signature="e#8641#8647#0#HTML" expanded="true" />
+            <element signature="e#8682#8701#0#HTML" expanded="true" />
+            <element signature="e#9822#9959#0#HTML" expanded="true" />
+            <element signature="e#7953#8011#0#HTML" expanded="true" />
+            <element signature="e#8267#8288#0#HTML" expanded="true" />
+            <element signature="e#8399#8405#0#HTML" expanded="true" />
+            <element signature="e#8480#8499#0#HTML" expanded="true" />
+            <element signature="e#8685#8822#0#HTML" expanded="true" />
+            <element signature="e#9453#9481#0#HTML" expanded="true" />
+            <element signature="e#9682#9689#1#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

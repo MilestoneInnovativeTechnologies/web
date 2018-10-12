@@ -35,18 +35,28 @@
             background-color: #ffff99;
         }
 
+     .Package {
+         background: #FEFEFE;
+
+         box-shadow: 0 1px 2px 1px rgba(0,0,0,0.12);
+         float: left;
+         height: 270px;
+         width: 188px;
+         overflow: visible;
+         position: relative;
+         border-color: #761c19;
+         border-radius: 15px 50px 30px;
+
+     }
+     .Package:hover{
+         -ms-transform: scale(1.1); /* IE 9 */
+         -webkit-transform: scale(1.1); /* Safari 3-8 */
+         transform: scale(1.1);
+         border: 3px steelblue;
+
+     }
     </style>
-    <script>
-        function bigDiv(x) {
-          x.style.height="100px";
-          x.style.width="100px";
-        }
-        function NormalDiv(x)
-        {
-            x.style.height="20px";
-            x.style.width="20px";
-        }
-    </script>
+
 
     <form method="post" enctype="multipart/ form-data" data-toggle="validation" role="form" action="Store">
         {{ csrf_field() }}
@@ -60,17 +70,14 @@
                     <li class="nav-item">
                         <a class="nav-link active-tab1" style="border:1px solid #ccc" id="list_DatabaseDetails">Database Details</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link inactive-tab1" style="border:1px solid #ccc" id="list_PackageDetails">Package Details</a>
                     </li>
                 </ul>
                 <div class="tab-content" style="margin-top:16px;">
-
-
-                        <div class="tab-pane active" id="Database_details">
-                             <div class="panel-body">
-                                <div class="form-group">
+                    <div class="tab-pane active" id="Database_details">
+                        <div class="panel-body">
+                            <div class="form-group">
                                 <label class="col-sm-4 control-label" style="padding-left: 200px" for="inputName">Database User Name</label>
                                     <div class="col-sm-5">
                                      <input class="form-control" data-error="Please enter the Database User name." id="DBUserName" placeholder="DBUserName"  type="text" required name="DBUserName"/>
@@ -79,18 +86,17 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="panel-footer clearfix">
-
+                            <div class="panel-footer clearfix" >
                                 <button type="button" name="Register" id="btnPackage" class="btn btn-primary pull-centre" style="margin-left: 500px">Package</button>
                             </div>
                         </div>
 
 
 
+
                     <div class="tab-pane fade" id="Package_details">
                         <div class="panel-body">
                             <div class="form-group">
-
                                 <div class="dropdown" style="margin-left: 420px">
                                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select a Package
                                         <span class="caret"></span></button>
@@ -100,25 +106,117 @@
                                         <li><a href="#">3 Months</a></li>
                                     </ul>
                                 </div>
-                                <div style="background-color: #32383e; height: 20px;width: 20%;" onmouseover="bigDiv(this)" onmouseout="NormalDiv(this)"></div>
-
                             </div>
+                        </div>
 
-
-                         </div>
-                        <div  class="panel-footer clearfix" style="margin-top: 70px;  " >
+                        <div>
+                            <div class="Package-container" data-type="any" id="Package-container" style="margin:1px">
+                                <div class="Package" id="Package1" style="margin:2px;left:100px; background-color: #ebf5fb;" data-toggle="modal" data-target="#exampleModalCenter">
+                                    <div class="product-info"> <div class="product-name product-info-font" style="display:block" >1 Year Plan</div>
+                                        <div class="product-price product-info-font">from ₹&nbsp;510</div>
+                                        <div class="product-cta" style="width:180px">Book Now</div>
+                                    </div>
+                                    <div class="fixed-features">
+                                    </div>
+                                </div>
+                                <div class="Package" id="Package2" style="margin:2px;left:120px;  background-color: #ebf5fb;">
+                                    <div class="product-info">
+                                        <div class="product-name product-info-font" style="display:block">6 Months Plan</div>
+                                        <div class="product-price product-info-font">from ₹&nbsp;445</div>
+                                        <div class="product-cta" style="width:180px">Book Now</div>
+                                    </div> <div class="fixed-features">
+                                    </div> <a id="product1-clickOverlay" href="#" target="_blank" style="background: rgba(0, 0, 0, 0); z-index: 1001; cursor: pointer; position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;"></a>
+                                </div>
+                                <div class="Package" id="Package3" style="margin:2px;left:140px;  background-color: #ebf5fb;">
+                                    <div class="product-info">
+                                        <div class="product-name product-info-font" style="display:block">3 Moths Plan</div>
+                                        <div class="product-price product-info-font">from ₹&nbsp;567</div>
+                                        <div class="product-cta" style="width:180px">Book Now</div>
+                                    </div> <div class="fixed-features">
+                                    </div> <a id="product2-clickOverlay" href="#" target="_blank" style="background: rgba(0, 0, 0, 0); z-index: 1001; cursor: pointer; position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;"></a>
+                                </div>
+                                <div class="Package" id="Package4" style="margin:2px;left:160px;  background-color: #ebf5fb;">
+                                    <div class="product-info">
+                                        <div class="product-name product-info-font" style="display:block">3 Moths Plan</div>
+                                        <div class="product-price product-info-font">from ₹&nbsp;567</div>
+                                        <div class="product-cta" style="width:180px">Book Now</div>
+                                    </div> <div class="fixed-features">
+                                    </div> <a id="product2-clickOverlay" href="#" target="_blank" style="background: rgba(0, 0, 0, 0); z-index: 1001; cursor: pointer; position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;"></a>
+                                </div>
+                            </div>
+                            </div>
+                           <div  class="panel-footer clearfix" style="margin-top: 300px;  " >
                             <table>
                                 <tr>
-                                    <td><button type="button" name="btnPrevious" id="btnPrevious" class="btn btn-primary pull-centre" style="margin-left: 400px">Previous</button></div></td>
-                                    <td><button type="button" name="btnRegister" id="btnRegister" class="btn btn-primary pull-centre" style="margin-left: 30px">Register</button></div></td>
+                                    <td><button type="button" name="btnPrevious" id="btnPrevious" class="btn btn-primary pull-centre" style="margin-left: 400px">Previous</button></td>
+                                    <td><button type="button" name="btnRegister" id="btnRegister" class="btn btn-primary pull-centre" style="margin-left: 30px">Register</button></td>
                                 </tr>
                             </table>
-
-
+                          </div>
                     </div>
+                    </div>
+                </div>
+           </div>
 
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Package Details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        hdfgihjdifofgjf
+                        gjf
+                        gjfgjfgjfggfgjfgj
+                        fgjfgjgddjjjfgjtrjtrureuyreyredyewty
+                        ewyreyreyrey
+                        hdfgihjdifofgjf
+                        gjf
+                        gjfgjfgjfggfgjfgj
+                        fgjfgjgddjjjfgjtrjtrureuyreyredyewty
+                        ewyreyreyrey
+                        hdfgihjdifofgjf
+                        gjf
+                        gjfgjfgjfggfgjfgj
+                        fgjfgjgddjjjfgjtrjtrureuyreyredyewty
+                        ewyreyreyrey
+                        hdfgihjdifofgjf
+                        gjf
+                        gjfgjfgjfggfgjfgj
+                        fgjfgjgddjjjfgjtrjtrureuyreyredyewty
+                        ewyreyreyrey
+                        hdfgihjdifofgjf
+                        gjf
+                        gjfgjfgjfggfgjfgj
+                        fgjfgjgddjjjfgjtrjtrureuyreyredyewty
+                        ewyreyreyrey
+                        hdfgihjdifofgjf
+                        gjf
+                        gjfgjfgjfggfgjfgj
+                        fgjfgjgddjjjfgjtrjtrureuyreyredyewty
+                        ewyreyreyrey
+                        hdfgihjdifofgjf
+                        gjf
+                        gjfgjfgjfggfgjfgj
+                        fgjfgjgddjjjfgjtrjtrureuyreyredyewty
+                        ewyreyreyrey
+                        hdfgihjdifofgjf
+                        gjf
+                        gjfgjfgjfggfgjfgj
+                        fgjfgjgddjjjfgjtrjtrureuyreyredyewty
+                        ewyreyreyrey
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary">Select</button>
+                    </div>
+                </div>
+            </div>
         </div>
-            </div></div>
     </form>
     </html>
 
