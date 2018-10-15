@@ -114,7 +114,7 @@
                                 <div class="Package" id="Package1" style="margin:2px;left:100px; background-color: #ebf5fb;" data-toggle="modal" data-target="#exampleModalCenter">
                                     <div class="product-info"> <div class="product-name product-info-font" style="display:block" >1 Year Plan</div>
                                         <div class="product-price product-info-font">from ₹&nbsp;510</div>
-                                        <div class="product-cta" style="width:180px">Book Now</div>
+                                        <div class="product-cta" style="width:180px"></div>
                                     </div>
                                     <div class="fixed-features">
                                     </div>
@@ -123,7 +123,7 @@
                                     <div class="product-info">
                                         <div class="product-name product-info-font" style="display:block">6 Months Plan</div>
                                         <div class="product-price product-info-font">from ₹&nbsp;445</div>
-                                        <div class="product-cta" style="width:180px">Book Now</div>
+                                        <div class="product-cta" style="width:180px"></div>
                                     </div> <div class="fixed-features">
                                     </div> <a id="product1-clickOverlay" href="#" target="_blank" style="background: rgba(0, 0, 0, 0); z-index: 1001; cursor: pointer; position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;"></a>
                                 </div>
@@ -131,7 +131,7 @@
                                     <div class="product-info">
                                         <div class="product-name product-info-font" style="display:block">3 Moths Plan</div>
                                         <div class="product-price product-info-font">from ₹&nbsp;567</div>
-                                        <div class="product-cta" style="width:180px">Book Now</div>
+                                        <div class="product-cta" style="width:180px"></div>
                                     </div> <div class="fixed-features">
                                     </div> <a id="product2-clickOverlay" href="#" target="_blank" style="background: rgba(0, 0, 0, 0); z-index: 1001; cursor: pointer; position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;"></a>
                                 </div>
