@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DatabaseBackupRegistrationController extends Controller
 {
@@ -13,18 +14,19 @@ class DatabaseBackupRegistrationController extends Controller
     }
 
     /**
-     * @param  \Illuminate\Http\Request $request
-     * @return  \Illuminate\Http\Response
+     * @param  Request $request
+     * @return  Response
      *
      */
-    public function Store(Request $request)
+    public function Validation(Request $request)
     {
       $this->validate($request,[
          'DBUserName'=>'required|min:3',
+
           ]);
 
 
 
     }
-    //
+
 }

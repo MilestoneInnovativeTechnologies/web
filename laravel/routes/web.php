@@ -85,8 +85,12 @@ Route::post('sms/post/json',"SmsJsonController@Store");
 Route::get('backup/database/upload',"DatabaseBackupStoreController@Index");
 Route::post('backup/database/upload',"DatabaseBackupStoreController@Store");
 
-Route::get('backup/database/registration',"DatabaseBackupRegistrationController@Index");
-Route::post('backup/database/registration',"DatabaseBackupRegistrationController@Store");
+Route::get('backup/database/registration','DatabaseBackupRegistrationController@Index');
+Route::post('backup/database/registration','DatabaseBackupRegistrationController@Validation');
+
+Route::get('backup/package/create','DatabaseBackupPackageController@Index');
+Route::post('backup/package/create','DatabaseBackupPackageController@Validation');
+
 
 
 // Product
