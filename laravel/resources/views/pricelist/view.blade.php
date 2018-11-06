@@ -8,12 +8,12 @@
 		<div class="panel-body">
 			<p>{{ $Details["description"] }}</p><hr>
 			<table class="table table-striped">
-				<thead><tr><th>No</th><th>Product</th><th>Edition</th><th>MOP</th><th>Price</th><th>MRP</th><th>Currency</th></tr></thead>
+				<thead><tr><th>No</th><th>Product</th><th>Edition</th><th>Dealer Price</th><th>MRP</th><th>Currency</th></tr></thead>
 				<tbody>
 					@foreach($Details["items"] as $k => $item)
 						<tr>
 							<td>{{ $k+1 }}</td>
-							@foreach(["product","edition","mop","price","mrp","currency"] as $key)
+							@foreach(["product","edition","price","mrp","currency"] as $key)
 								<td>{{ $item[$key] }}</td>
 							@endforeach
 						</tr>
