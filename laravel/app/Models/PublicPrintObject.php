@@ -80,6 +80,10 @@ class PublicPrintObject extends Model
         return ['rules' => $Rule, 'messages' => $Message];
     }
 
+    public function scopeWeb($Q){
+        $Q->where('web','Yes');
+    }
+
     public function create_new($name, $description = null, $code = null){
         $created_by = ($this->_GETAUTHUSER()) ? $this->_GETAUTHUSER()->partner : null;
         return $this->create(compact('code','name','description','created_by'));

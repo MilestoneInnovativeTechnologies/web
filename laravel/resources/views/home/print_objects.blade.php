@@ -80,7 +80,7 @@
 @php
 	$ORM = new \App\Models\PublicPrintObject; $DOrm = $ORM->query();
 	if(Request()->search_text){ $st = '%'.Request()->search_text.'%'; $DOrm = $DOrm->where(function($Q)use($st){ $Q->where('name','like',$st)->orWhere('code','like',$st)->orWhere('description','like',$st)->orWhereHas('Specs',function($Q)use($st){ foreach(range(0,9) as $C){ $N = 'spec'.$C; if($C) $Q->orWhere($N,'like',$st); else $Q->where($N,'like',$st); } }); }); }
-	$Data = $DOrm->paginate(9);
+	$Data = $DOrm->web()->paginate(9);
 @endphp
 
 <div class="page_contents">
