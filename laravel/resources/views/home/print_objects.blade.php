@@ -112,6 +112,7 @@
 									<div class="preview" style="background-image: url('{{ \Storage::disk($ORM->storage_disk)->url($Item->preview) }}')">
 										<div class="aholder">
 											@if($Item->preview)<a href="{{ \Storage::disk($ORM->storage_disk)->url($Item->preview) }}" class="btn btn-default" target="_blank">Preview</a>@endif
+												<div class="text-center bg-primary small">{!! nl2br($Item->description) !!}</div>
 											@if($Item->Specs && $Item->Specs->details) <ul>
 												@foreach($Item->Specs->details as $Name => $Value)
 													<li title="{{ $Name }}"><span class="glyphicon glyphicon-chevron-right"></span> &nbsp; {{ $Name }} <b>&gt;</b> {{ $Value }}</li>
@@ -120,7 +121,7 @@
 										</div>
 									</div>
 									<div class="clearfix base">
-										<small class="pull-left">{!! nl2br($Item->description) !!}</small>
+										<!--<small class="pull-left">{!! nl2br($Item->description) !!}</small>-->
 										<div class="actions pull-right">
 											<a href="{{ route('home.print_object.download',$Item->code) }}" title="Download this print object" class="btn btn-info" style="margin-top:0.6em;">Download</a>
 										</div>
