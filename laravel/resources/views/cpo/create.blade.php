@@ -113,7 +113,11 @@ function DSR_Presales(R){
 	return PRS;
 }
 function DSR_Products(R){
-	var PRD = new Object({});	$.each(R,function(i,P){ PRD[P.seqno] = [P.product.name,P.edition.name,'Edition'].join(' '); });
+	var PRD = new Object({});
+	if(R.length>1)
+        $.each(R,function(i,P){ rem = P.remarks ? '('+P.remarks+')' : null; PRD[P.seqno] = [P.product.name,P.edition.name,'Edition',rem].join(' '); });
+	else
+		$.each(R,function(i,P){ PRD[P.seqno] = [P.product.name,P.edition.name,'Edition'].join(' '); });
 	return PRD;
 }
 function AddCSData(C,D,S,P,U){
