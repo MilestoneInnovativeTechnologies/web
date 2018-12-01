@@ -28,6 +28,11 @@ Route::get("appinit/{key}","AppInitController@init");
 Route::post("ifv","FAQController@ifv");
 Route::post("ifb","FAQController@ifb");
 
+Route::prefix("keycode")->group(function(){
+    Route::get('encode', 'KeyCodeEncDecController@encode');
+    Route::get('decode/{code?}', 'KeyCodeEncDecController@decode');
+});
+
 Route::prefix("v1")->group(function(){
 	
 	Route::group(["middleware"	=>	"wapi:*"],function(){
@@ -355,7 +360,7 @@ Route::prefix("v1")->group(function(){
 
 	Route::group(["middleware"	=>	"wapi:*"],function(){
 	    Route::get('faq/get/prt','FAQController@prt');
-	    Route::post('faq/add/fct','FAQController@fct');
+	    Route::post('faq/addAppLogController/fct','FAQController@fct');
 	});
 
 
