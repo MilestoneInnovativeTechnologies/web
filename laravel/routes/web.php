@@ -588,6 +588,17 @@ Route::group(["middleware"	=>	["rolecheck:tickettask"]],function(){
 //Maintenance Contract
 Route::group(["middleware"	=>	["rolecheck:maintenancecontract"]],function(){
 	Route::prefix('mc')->group(function(){
+        Route::get('/', 'MaintenanceContractController@index')->name('mc.index');
+        Route::get('sc', 'MaintenanceContractController@search_customer')->name('mc.sc');
+        Route::get('new', 'MaintenanceContractController@new_contract')->name('mc.new');
+        Route::post('new', 'MaintenanceContractController@store_contract');
+        Route::get('es', 'MaintenanceContractController@expiring_soon')->name('mc.es');
+        Route::get('iac', 'MaintenanceContractController@inactive')->name('mc.inactive');
+        Route::get('jexp', 'MaintenanceContractController@just_expired')->name('mc.jexp');
+        Route::get('upcoming', 'MaintenanceContractController@upcoming')->name('mc.upcoming');
+        Route::get('details', 'MaintenanceContractController@details')->name('mc.details');
+        Route::get('req', 'MaintenanceContractController@renew_req')->name('mc.renew_req');
+        Route::get('contract', 'MaintenanceContractController@contract_req')->name('mc.contract_req');
 		Route::prefix('{mc}')->group(function(){
 			Route::get('view', 'MaintenanceContractController@view')->name('mc.view');
 			Route::get('modify', 'MaintenanceContractController@modify')->name('mc.modify');
@@ -600,17 +611,6 @@ Route::group(["middleware"	=>	["rolecheck:maintenancecontract"]],function(){
 			Route::get('je_mail', 'MaintenanceContractController@mail')->name('mc.je_mail');
 			Route::get('ex_mail', 'MaintenanceContractController@mail')->name('mc.ex_mail');
 		});
-		Route::get('/', 'MaintenanceContractController@index')->name('mc.index');
-		Route::get('sc', 'MaintenanceContractController@search_customer')->name('mc.sc');
-		Route::get('new', 'MaintenanceContractController@new_contract')->name('mc.new');
-		Route::post('new', 'MaintenanceContractController@store_contract');
-		Route::get('es', 'MaintenanceContractController@expiring_soon')->name('mc.es');
-		Route::get('iac', 'MaintenanceContractController@inactive')->name('mc.inactive');
-		Route::get('jexp', 'MaintenanceContractController@just_expired')->name('mc.jexp');
-		Route::get('upcoming', 'MaintenanceContractController@upcoming')->name('mc.upcoming');
-		Route::get('details', 'MaintenanceContractController@details')->name('mc.details');
-		Route::get('req', 'MaintenanceContractController@renew_req')->name('mc.renew_req');
-		Route::get('contract', 'MaintenanceContractController@contract_req')->name('mc.contract_req');
 	});
 });
 
