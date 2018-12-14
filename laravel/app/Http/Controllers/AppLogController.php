@@ -56,8 +56,8 @@ class AppLogController extends Controller
 		$WHArray = $this->getWhereHasArray($B,$T);
 		if($WHArray) $Result = $ORM->whereHas($WHArray[0],function($Q) use($WHArray){ $Q->where($WHArray[1],'LIKE',$WHArray[2]); })->get();
 		else $Result = $this->filterByDistributor($ORM,$T);
-		$Result = $this->flatDealerToDistributor($Result);
-		return $this->flatternResult($Result);
+        $Result = $this->flatDealerToDistributor($Result);
+        return $this->flatternResult($Result);
 	}
 
 	private function getSimiliarProducts($S){
@@ -86,7 +86,7 @@ class AppLogController extends Controller
 					},'Logins'	=>	function($Q){
 						$SelectFields = ['partner','email'];
 						$Q->select($SelectFields);
-					},'Parent.ParentDetails'	=>	function($Q){
+					},'Parent1.ParentDetails'	=>	function($Q){
 						$Q->select('code','name')
 							->with(['Roles'	=>	function($Q){ $Q->select('code','name'); },'Parent.ParentDetails'	=>	function($Q){ $Q->select('code','name')->with(['Roles'	=>	function($Q){ $Q->select('code','name'); }]); }]);
 					}]);
@@ -95,7 +95,8 @@ class AppLogController extends Controller
 			},'Edition'	=>	function($Q){
 				$Q->select('code','name');
 			}])
-			->has('Customer.Parent');
+			->has('Customer.Parent1')
+            ;
 	}
 	
 	private function getWhereHasArray($B,$T){
@@ -126,17 +127,17 @@ class AppLogController extends Controller
 	private function flatDealerToDistributor($Result){
 		$Result = $Result->toArray();
 		foreach($Result as $K => $Array){
-			$Roles = $Array['customer']['parent']['parent_details']['roles'];
+			$Roles = $Array['customer']['parent1']['parent_details']['roles'];
 			$RolNames = array_column($Roles,'name');
 			if(in_array('distributor',$RolNames)){
-				$Result[$K]['customer']['distributor'] = $Result[$K]['customer']['parent']['parent_details']['name'];
+				$Result[$K]['customer']['distributor'] = $Result[$K]['customer']['parent1']['parent_details']['name'];
 				unset($Result[$K]['customer']['parent']);
 			} else {
-				$Roles = $Array['customer']['parent']['parent_details']['parent']['parent_details']['roles'];
+				$Roles = $Array['customer']['parent1']['parent_details']['parent']['parent_details']['roles'];
 				$RolNames = array_column($Roles,'name');
 				if(in_array('distributor',$RolNames)){
-					$Result[$K]['customer']['distributor'] = $Result[$K]['customer']['parent']['parent_details']['parent']['parent_details']['name'];
-					unset($Result[$K]['customer']['parent']);
+					$Result[$K]['customer']['distributor'] = $Result[$K]['customer']['parent1']['parent_details']['parent']['parent_details']['name'];
+					unset($Result[$K]['customer']['parent1']);
 				}
 			}
 		}
