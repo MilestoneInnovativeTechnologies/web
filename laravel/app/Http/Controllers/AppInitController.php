@@ -11,8 +11,8 @@ class AppInitController extends Controller
 {
 	
 	private $GuestLogItems = ['pid','cmp','brc','app','ver','eml','phn'];
-	private $CustomerLogItems = ['cus','seq','ver','key'];
-	private $Path = "customlog/AppInit"; //Static function 'SetProductVersion' using same path
+	private $CustomerLogItems = ['cus','seq','prd','edn','ver','key'];
+	private $Path = "customlog/AppInit"; //Static function 'SetProductVersion','GetProductVersion' using same path
 	protected $MapData = [];
 	protected $VersionData = [];
   
@@ -40,7 +40,7 @@ class AppInitController extends Controller
 		$this->logMap($Ary['pid'],$Ary['brc'],$MapDetails);
 		$MapData = $this->unsetMapData($Ary['pid'],$Ary['brc']);
 		$this->setMapContent($MapData);
-		return KeyCodeController::Encode(['cus','seq'],$MapDetails);
+		return KeyCodeController::Encode(['cus','seq','prd','edn'],$MapDetails);
 	}
 	
 	private function storeGuestLog($Ary){
@@ -53,11 +53,10 @@ class AppInitController extends Controller
 	}
 	
 	private function logCustomer($Ary){
-		$this->storeCustomerLog($Ary);
+		$version = $this->storeCustomerLog($Ary);
 		$isVerChange = $this->isVersionChange($Ary);
-		if(!$isVerChange) return 1;
-		event(new \App\Events\UpdateCustomerVersion($Ary['cus'],$Ary['seq'],$Ary['ver'],$this->getVersion($Ary['cus'],$Ary['seq'])));
-		return 1;
+		if($isVerChange) event(new \App\Events\UpdateCustomerVersion($Ary['cus'],$Ary['seq'],$Ary['ver'],$this->getVersion($Ary['cus'],$Ary['seq'])));
+		return $version;
 	}
 	
 	private function getLogContents($Fields, $Array){
@@ -161,6 +160,7 @@ class AppInitController extends Controller
 		$Content = implode("\t",array_merge($TimeArray,$ContentArray));
 		$LogPath = $this->getCustomerFilePath();
 		Storage::append($LogPath,$Content);
+		return static::GetProductVersion($Ary['prd'],$Ary['edn']);
 	}
 	
 	private function isVersionChange($Ary){
