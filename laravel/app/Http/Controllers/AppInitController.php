@@ -12,7 +12,7 @@ class AppInitController extends Controller
 	
 	private $GuestLogItems = ['pid','cmp','brc','app','ver','eml','phn'];
 	private $CustomerLogItems = ['cus','seq','ver','key'];
-	private $Path = "customlog/AppInit";
+	private $Path = "customlog/AppInit"; //Static function 'SetProductVersion' using same path
 	protected $MapData = [];
 	protected $VersionData = [];
   
@@ -214,7 +214,14 @@ class AppInitController extends Controller
 	
 	private function setLogMap($Content){
 		if(is_array($Content)) return $this->setLogMap(json_encode($Content));
-		Storage::put($this->getLogMapFile(),$Content);
+		return Storage::put($this->getLogMapFile(),$Content);
 	}
+
+	static function SetProductVersion($PRD,$EDN,$VER){
+	    $File = "customlog/AppInit/PRDVERSION.json";
+	    $VS = \Illuminate\Support\Facades\Storage::exists($File) ? json_decode(\Illuminate\Support\Facades\Storage::get($File),true) : [];
+	    if(!array_key_exists($PRD,$VS)) $VS[$PRD] = []; if(!array_key_exists($EDN,$VS[$PRD])) $VS[$PRD][$EDN] = '0';
+	    $VS[$PRD][$EDN] = $VER; \Illuminate\Support\Facades\Storage::put($File,json_encode($VS));
+    }
 	
 }
