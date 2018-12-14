@@ -20,7 +20,8 @@ class AppInitController extends Controller
 		$Ary = $this->getPVArray($key);
 		$isCustomer = $this->isCustomer($Ary);
 		if($isCustomer) return $this->logCustomer($Ary);
-		return $this->logGuest($Ary);
+		if(!$this->isIgnorable($Ary)) return $this->logGuest($Ary);
+		return 0;
 	}
 	
 	private function getPVArray($key){
@@ -216,6 +217,24 @@ class AppInitController extends Controller
 		if(is_array($Content)) return $this->setLogMap(json_encode($Content));
 		return Storage::put($this->getLogMapFile(),$Content);
 	}
+
+	private function isIgnorable($Ary){
+        $ignorable = $this->getIgnorableContents();
+        foreach ($ignorable as $key => $ignoreArray){
+            if(!empty($ignoreArray) && in_array($Ary[$key],$ignoreArray))
+                return true;
+        }
+        return false;
+    }
+
+    private function getIgnorableContents(){
+        return json_decode(Storage::get($this->getIgnorableFile()),true);
+    }
+
+    private function getIgnorableFile(){
+        $File = "ignore.json";
+        return $this->PathVerify($this->PrepPath($File),json_encode(["pid"=>[],"hdk"=>[],"prs"=>[],"cus"=>[]]));
+    }
 
 	static function SetProductVersion($PRD,$EDN,$VER){
 	    $File = "customlog/AppInit/PRDVERSION.json";
