@@ -153,8 +153,8 @@ class AppLogController extends Controller
 			$Result[$K]['customer']['city'] = $Array['customer']['details']['city']['name'];
 			$Result[$K]['customer']['state'] = $Array['customer']['details']['city']['state']['name'];
 			$Result[$K]['customer']['country'] = $Array['customer']['details']['city']['state']['country']['name'];
-			$Result[$K]['product'] = $Array['product']['name'];
-			$Result[$K]['edition'] = $Array['edition']['name'];
+			$Result[$K]['product'] = $Array['product']['name']; $Result[$K]['product_id'] = $Array['product']['code'];
+			$Result[$K]['edition'] = $Array['edition']['name']; $Result[$K]['edition_id'] = $Array['edition']['code'];
 			unset($Result[$K]['customer']['details'],$Result[$K]['customer']['logins'],$Result[$K]['customer']['code'],$Result[$K]['customer']['partner']);
 			$Data[$Array['customer']['code']."-".$Array['seqno']] = $Result[$K];
 		}
