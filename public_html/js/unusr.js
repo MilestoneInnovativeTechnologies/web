@@ -251,12 +251,12 @@ function FillModalCDData(code){
 function MapSelectedCustomer(){
 	SC = $('table.map_customer tr.selected_customer');
 	if(SC.length == 0) return alert('Please select a customer');
-	cus = SC.attr('data-code'); seq = SC.attr('data-seqno'); pid = unusr_data[current_vdmc[0]][current_vdmc[1]][2][current_vdmc[2]][0]; brc = current_vdmc[1];
-	DoMap(pid,brc,cus,seq,0)
+	cus = SC.attr('data-code'); seq = SC.attr('data-seqno'); pid = unusr_data[current_vdmc[0]][current_vdmc[1]][2][current_vdmc[2]][0]; brc = current_vdmc[1]; prd = customer_details[selected_customer]['product_id']; edn = customer_details[selected_customer]['edition_id'];
+	DoMap(pid,brc,cus,seq,prd,edn,0)
 }
 
-function DoMap(pid,brc,cus,seq,frc){
-	FireAPI('api/v1/log/unusr/map',MapStatus,{pid:pid,brc:brc,cus:cus,seq:seq,frc:frc})
+function DoMap(pid,brc,cus,seq,prd,edn,frc){
+	FireAPI('api/v1/log/unusr/map',MapStatus,{pid:pid,brc:brc,cus:cus,seq:seq,prd:prd,edn:edn,frc:frc});
 	$('#modalMapExist').modal('hide');
 }
 
@@ -314,7 +314,7 @@ function MapExistConfirmButton(R){
 	M = R[3];
 	MapConfirmModal().find('.modal-footer').html([
 		btn('Close','','').attr({class:'btn btn-default','data-dismiss':'modal'}).append('Close'),
-		btn('Force create MAP Data','javascript:DoMap("'+M[0]+'","'+M[1]+'","'+M[2]+'","'+M[3]+'","1")','retweet').attr({class:'btn btn-default'}).append(' Force create MAP Data.').addClass('btn-info')
+		btn('Force create MAP Data','javascript:DoMap("'+M[0]+'","'+M[1]+'","'+M[2]+'","'+M[3]+'","'+M[4]+'","'+M[5]+'","1")','retweet').attr({class:'btn btn-default'}).append(' Force create MAP Data.').addClass('btn-info')
 	])
 }
 //btn('Force create MAP Data','javascript:alert("'+M[0]+'","'+M[1]+'","'+M[2]+'","'+M[3]+'","1")','retweet').attr({class:'btn btn-default','data-dismiss':'modal'}).append(' Force create MAP Data.').addClass('btn-info')

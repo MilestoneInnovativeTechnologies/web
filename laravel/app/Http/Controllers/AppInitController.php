@@ -111,17 +111,17 @@ class AppInitController extends Controller
 	}
 	
 	public function map(Request $request){
-		$Fields = ['pid','brc','cus','seq']; $AllFields = true;
+		$Fields = ['pid','brc','cus','seq','prd','edn']; $AllFields = true;
 		foreach($Fields as $Field) $AllFields = ($AllFields && $request->$Field);
 		if(!$AllFields) return ['false','Required fields are empty'];
 		$frc = ($request->frc && $request->frc != "0" && $request->frc != 0) ? true : false;
-		return $this->addMap($request->only('pid','brc','cus','seq'),$frc);
+		return $this->addMap($request->only('pid','brc','cus','seq','prd','edn'),$frc);
 	}
 	
 	private function addMap($Ary, $Frc){
 		$isMap = $this->isMapExist($Ary['pid'],$Ary['brc']);
 		if($isMap){
-			if(!$Frc) return [true,false,$this->MapData[$Ary['pid']][$Ary['brc']],[$Ary['pid'],$Ary['brc'],$Ary['cus'],$Ary['seq']]];
+			if(!$Frc) return [true,false,$this->MapData[$Ary['pid']][$Ary['brc']],[$Ary['pid'],$Ary['brc'],$Ary['cus'],$Ary['seq'],$Ary['prd'],$Ary['edn']]];
 			else return $this->updateMapData($Ary);
 		}
 		return $this->addMapData($Ary);
@@ -130,7 +130,8 @@ class AppInitController extends Controller
 	private function updateMapData($Ary){
 		$PID = $Ary['pid']; $BRC = $Ary['brc'];
 		$CUS = $Ary['cus']; $SEQ = $Ary['seq'];
-		$MapData = $this->putMapData($PID, $BRC, $CUS, $SEQ);
+		$PRD = $Ary['prd']; $EDN = $Ary['edn'];
+		$MapData = $this->putMapData($PID, $BRC, $CUS, $SEQ, $PRD, $EDN);
 		$this->setMapContent($MapData);
 		return [true,true];
 	}
@@ -140,15 +141,15 @@ class AppInitController extends Controller
 		$PID = $Ary['pid']; $BRC = $Ary['brc'];
 		if(!array_key_exists($PID,$MapData)) $MapData[$PID] = [];
 		if(!array_key_exists($BRC,$MapData[$PID])) $MapData[$PID][$BRC] = [];
-		$CUS = $Ary['cus']; $SEQ = $Ary['seq'];
-		$MapData = $this->putMapData($PID, $BRC, $CUS, $SEQ);
+		$CUS = $Ary['cus']; $SEQ = $Ary['seq']; $PRD = $Ary['prd']; $EDN = $Ary['edn'];
+		$MapData = $this->putMapData($PID, $BRC, $CUS, $SEQ, $PRD, $EDN);
 		$this->setMapContent($MapData);
 		return [true,true];
 	}
 	
-	private function putMapData($PID, $BRC, $CUS, $SEQ){
+	private function putMapData($PID, $BRC, $CUS, $SEQ, $PRD, $EDN){
 		$MapData = $this->MapData;
-		$MapData[$PID][$BRC] = [$CUS, $SEQ];
+		$MapData[$PID][$BRC] = [$CUS, $SEQ, $PRD, $EDN];
 		$this->MapData = $MapData;
 		return $MapData;
 	}
