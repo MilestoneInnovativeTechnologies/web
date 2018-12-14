@@ -223,5 +223,11 @@ class AppInitController extends Controller
 	    if(!array_key_exists($PRD,$VS)) $VS[$PRD] = []; if(!array_key_exists($EDN,$VS[$PRD])) $VS[$PRD][$EDN] = '0';
 	    $VS[$PRD][$EDN] = $VER; \Illuminate\Support\Facades\Storage::put($File,json_encode($VS));
     }
+
+    static function GetProductVersion($PRD,$EDN){
+        $File = "customlog/AppInit/PRDVERSION.json";
+        $VS = \Illuminate\Support\Facades\Storage::exists($File) ? json_decode(\Illuminate\Support\Facades\Storage::get($File),true) : [];
+        return (array_key_exists($PRD,$VS) && array_key_exists($EDN,$VS[$PRD])) ? $VS[$PRD][$EDN] : 0;
+    }
 	
 }
