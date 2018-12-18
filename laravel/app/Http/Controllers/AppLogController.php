@@ -38,7 +38,7 @@ class AppLogController extends Controller
 			if(!array_key_exists($brc,$Data[$cmp])) $Data[$cmp][$brc] = [];
 			if(empty($Data[$cmp][$brc])) $Data[$cmp][$brc] = [$Set[8],$Set[9],[]];
 			$app = $Set[6];
-			if(!array_key_exists($app,$Data[$cmp][$brc][2])) $Data[$cmp][$brc][2][$app] = [$Set[3],[]];
+			if(!array_key_exists($app,$Data[$cmp][$brc][2])) $Data[$cmp][$brc][2][$app] = [$Set[3],[],$Set[10],$Set[11],$Set[12],$Set[13],$Set[14],$Set[15]];
 			$ver = $Set[7];
 			if(!array_key_exists($ver,$Data[$cmp][$brc][2][$app][1])) $Data[$cmp][$brc][2][$app][1][$ver] = [];
 			$date = $Set[1];
@@ -165,5 +165,15 @@ class AppLogController extends Controller
 		$this->AIC = $AIC = new AppInitController();
 		return $AIC->getlogMapArray($request->page?:0);
 	}
-	
+
+	public function ignore(Request $request){
+        $this->AIC = $AIC = new AppInitController();
+        $AIC->addIgnorableContent($request->igf,$request->igt);
+    }
+
+	public function ignored(){
+        $this->AIC = $AIC = new AppInitController();
+        return $AIC->getIgnorableContents();
+    }
+
 }
