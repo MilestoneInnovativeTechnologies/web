@@ -165,6 +165,8 @@ Route::prefix("v1")->group(function(){
 		Route::prefix('log')->group(function(){
 			Route::prefix('unusr')->group(function(){
 				Route::get('map/search','AppLogController@searchcustomer');
+				Route::get('ignore','AppLogController@ignore');
+				Route::get('ignored','AppLogController@ignored');
 				Route::get('mapped','AppLogController@mapped');
 				Route::get('map','AppInitController@map');
 				Route::get('/','AppLogController@getunknownuserdata');
