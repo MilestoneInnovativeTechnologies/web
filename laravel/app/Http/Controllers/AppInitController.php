@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CustomerRegistration;
 use Illuminate\Http\Request;
-use App\Http\Controllers\KeyCodeController;
 
 use Storage;
 
 class AppInitController extends Controller
 {
 	
-	private $GuestLogItems = ['pid','cmp','brc','app','ver','eml','phn'];
+	private $GuestLogItems = ['pid','cmp','brc','app','ver','eml','phn'/*,'hdk','prs','ops','com','dbn','isd'*/];
 	private $CustomerLogItems = ['cus','seq','prd','edn','ver','key'];
 	private $Path = "customlog/AppInit"; //Static function 'SetProductVersion','GetProductVersion' using same path
 	protected $MapData = [];
@@ -47,6 +47,7 @@ class AppInitController extends Controller
 	private function storeGuestLog($Ary){
 		$GuestLogItems = $this->GuestLogItems;
 		$ContentArray = $this->getLogContents($GuestLogItems,$Ary);
+		array_push($ContentArray,"","","","","","");
 		$TimeArray = $this->getLogTime();
 		$Content = implode("\t",array_merge($TimeArray,$ContentArray));
 		$LogPath = $this->getGuestFilePath();
@@ -115,13 +116,13 @@ class AppInitController extends Controller
 		foreach($Fields as $Field) $AllFields = ($AllFields && $request->$Field);
 		if(!$AllFields) return ['false','Required fields are empty'];
 		$frc = ($request->frc && $request->frc != "0" && $request->frc != 0) ? true : false;
-		return $this->addMap($request->only('pid','brc','cus','seq','prd','edn'),$frc);
+		return $this->addMap($request->only('pid','brc','cus','seq','prd','edn','hdk','prs','ops','com','dbn','isd'),$frc);
 	}
 	
 	private function addMap($Ary, $Frc){
 		$isMap = $this->isMapExist($Ary['pid'],$Ary['brc']);
 		if($isMap){
-			if(!$Frc) return [true,false,$this->MapData[$Ary['pid']][$Ary['brc']],[$Ary['pid'],$Ary['brc'],$Ary['cus'],$Ary['seq'],$Ary['prd'],$Ary['edn']]];
+			if(!$Frc) return [true,false,$this->MapData[$Ary['pid']][$Ary['brc']],[$Ary['pid'],$Ary['brc'],$Ary['cus'],$Ary['seq'],$Ary['prd'],$Ary['edn'],$Ary['hdk'],$Ary['prs'],$Ary['ops'],$Ary['com'],$Ary['dbn'],$Ary['isd']]];
 			else return $this->updateMapData($Ary);
 		}
 		return $this->addMapData($Ary);
@@ -130,9 +131,9 @@ class AppInitController extends Controller
 	private function updateMapData($Ary){
 		$PID = $Ary['pid']; $BRC = $Ary['brc'];
 		$CUS = $Ary['cus']; $SEQ = $Ary['seq'];
-		$PRD = $Ary['prd']; $EDN = $Ary['edn'];
-		$MapData = $this->putMapData($PID, $BRC, $CUS, $SEQ, $PRD, $EDN);
+		$MapData = $this->putMapData($PID, $BRC, $CUS, $SEQ, $Ary['prd'], $Ary['edn']);
 		$this->setMapContent($MapData);
+		$this->updateRegistration($CUS, $SEQ, $Ary);
 		return [true,true];
 	}
 	
@@ -141,11 +142,18 @@ class AppInitController extends Controller
 		$PID = $Ary['pid']; $BRC = $Ary['brc'];
 		if(!array_key_exists($PID,$MapData)) $MapData[$PID] = [];
 		if(!array_key_exists($BRC,$MapData[$PID])) $MapData[$PID][$BRC] = [];
-		$CUS = $Ary['cus']; $SEQ = $Ary['seq']; $PRD = $Ary['prd']; $EDN = $Ary['edn'];
-		$MapData = $this->putMapData($PID, $BRC, $CUS, $SEQ, $PRD, $EDN);
+		$CUS = $Ary['cus']; $SEQ = $Ary['seq'];
+		$MapData = $this->putMapData($PID, $BRC, $CUS, $SEQ, $Ary['prd'], $Ary['edn']);
 		$this->setMapContent($MapData);
+        $this->updateRegistration($CUS, $SEQ, $Ary);
 		return [true,true];
 	}
+
+	private function updateRegistration($CUS, $SEQ, $Ary){
+        $Data = array_combine(['product_id','hard_disk','processor','os','computer','database','installed_on'],array_only($Ary,['pid','hdk','prs','ops','com','dbn','isd']));
+        $Data['installed_on'] = date('Y-m-d',strtotime($Data['installed_on']));
+        CustomerRegistration::where('customer',$CUS)->where('seqno',$SEQ)->update($Data);
+    }
 	
 	private function putMapData($PID, $BRC, $CUS, $SEQ, $PRD, $EDN){
 		$MapData = $this->MapData;
@@ -227,13 +235,25 @@ class AppInitController extends Controller
         return false;
     }
 
-    private function getIgnorableContents(){
+    public function getIgnorableContents(){
         return json_decode(Storage::get($this->getIgnorableFile()),true);
     }
 
     private function getIgnorableFile(){
         $File = "ignore.json";
-        return $this->PathVerify($this->PrepPath($File),json_encode(["pid"=>[],"hdk"=>[],"prs"=>[],"cus"=>[]]));
+        return $this->PathVerify($this->PrepPath($File),json_encode(["pid"=>[],"hdk"=>[],"prs"=>[]]));
+    }
+
+    public function addIgnorableContent($Field,$Value){
+        $ignorable = $this->getIgnorableContents();
+        if(!array_key_exists($Field,$ignorable)) $ignorable[$Field] = [];
+        if(!in_array($Value,$ignorable[$Field])) array_push($ignorable[$Field],$Value);
+        $this->setIgnorableContents($ignorable);
+    }
+
+    private function setIgnorableContents($ignorable){
+	    $File = $this->getIgnorableFile();
+	    Storage::put($File,json_encode($ignorable));
     }
 
 	static function SetProductVersion($PRD,$EDN,$VER){
