@@ -10,7 +10,7 @@ use Storage;
 class AppInitController extends Controller
 {
 	
-	private $GuestLogItems = ['pid','cmp','brc','app','ver','eml','phn'/*,'hdk','prs','ops','com','dbn','isd'*/];
+	private $GuestLogItems = ['pid','cmp','brc','app','ver','eml','phn','hdk','prs','ops','com','dbn','isd'];
 	private $CustomerLogItems = ['cus','seq','prd','edn','ver','key'];
 	private $Path = "customlog/AppInit"; //Static function 'SetProductVersion','GetProductVersion' using same path
 	protected $MapData = [];
@@ -47,7 +47,7 @@ class AppInitController extends Controller
 	private function storeGuestLog($Ary){
 		$GuestLogItems = $this->GuestLogItems;
 		$ContentArray = $this->getLogContents($GuestLogItems,$Ary);
-		array_push($ContentArray,"","","","","","");
+		//array_push($ContentArray,"","","","","","");
 		$TimeArray = $this->getLogTime();
 		$Content = implode("\t",array_merge($TimeArray,$ContentArray));
 		$LogPath = $this->getGuestFilePath();
