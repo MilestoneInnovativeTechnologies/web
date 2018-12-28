@@ -11,7 +11,7 @@ class MaintenanceContractController extends Controller
 	
 	private $MCObj = '';
 	public function __construct(){
-		$Apply = ['modify','renew'];
+		$Apply = ['modify','renew','dorenew'];
 		$this->middleware(function($request, $next){
 			$segs = $request->segments(); $mc = $segs[1]; $action = $segs[2]; $MC = \App\Models\MaintenanceContract::find($mc);
 			if(!$MC) return back()->with(['info'	=>	true, 'type'	=>	'danger', 'text'	=>	'Contract doesn\'t exists.']);
@@ -131,7 +131,7 @@ class MaintenanceContractController extends Controller
 	
 	public function search_for_customer(Request $request){
 		$like = '%'.$request->st.'%';
-		return \App\Models\Customer::with(['Details.City.State.Country','Registration' => function($Q){ $Q->select('customer','seqno','product','edition')->whereNotNull('serialno')->whereNotNull('key')->whereNotNull('registered_on'); }])
+		return \App\Models\Customer::with(['Details.City.State.Country','Registration' => function($Q){ $Q->select('customer','seqno','product','edition','remarks')->whereNotNull('serialno')->whereNotNull('key')->whereNotNull('registered_on'); }])
 			->whereHas('Registration',function($Q){
 				$Q->whereNotNull('serialno')->whereNotNull('key')->whereNotNull('registered_on');
 			})->where(function($Q)use($like){

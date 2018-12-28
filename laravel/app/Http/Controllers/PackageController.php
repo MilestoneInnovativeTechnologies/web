@@ -259,6 +259,7 @@ class PackageController extends Controller
 			switch($submit){
 				case "Approve":
 					$UpdateArray["status"] = "APPROVED"; $UpdateArray["approved_date"] = date('Y-m-d H:i:s');
+                    if($Request->package === "PKG003") AppInitController::SetProductVersion($Request->product,$Request->edition,$Obj->first()->version_numeric);
 					break;
 				case "Download":
 					return response()->download(storage_path() . "/app/" . $Obj->select("file")->first()->file);
@@ -268,6 +269,7 @@ class PackageController extends Controller
 					break;
 			}
 			$Obj->update($UpdateArray);
+
 			return redirect()->back()->with(["info"=>true,"type"=>"success","text"=>"Action completed successfully."]);
 		} else {
 			return redirect()->back()->with(["info"=>true,"type"=>"danger","text"=>"No such package to verify."]);
@@ -292,6 +294,7 @@ class PackageController extends Controller
 		$PV = PackageVersion::where(['product'=>$request->product,'edition'=>$request->edition,'package'=>$request->package,'version_sequence'=>$request->sequence,'status'=>$status]);
 		$new_status = 'REVERTED'; $new_reason = $request->reason;
 		$PV->update(['status'	=>	$new_status, 'status_reason'	=>	$new_reason]);
+        if($request->package === "PKG003") AppInitController::SetProductVersion($request->product,$request->edition,PackageVersionController::get_latest($request->product,$request->edition,'PKG003')->version_numeric);
 		return redirect()->back()->with(["info"=>true,"type"=>"success","text"=>"Package Reverted Successfully"]);
 	}
 	

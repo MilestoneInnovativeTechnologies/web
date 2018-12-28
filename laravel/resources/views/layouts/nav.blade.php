@@ -20,21 +20,24 @@ $_MENU = [
 			['View Latest Packages','package/latest'], ['Upload Package','package/upload'], ['Verify Package','verify'], ['Delete Package Record','pkg/delete'], ['Approve Package','approve'], ['Revert Package','revert']
 		],
 		'Mail'	=>	[
-			['Updates to Customer/Distributor','','product.update.mailer'], ['Emails','','mail.index'], 
+			['Updates to Customer/Distributor','','product.update.mailer'], ['Emails','','mail.index'],
 		],
 		'Registration'	=>	[
 			['Registration Requests','regreqs']
 		],
+        'AMC'	=>	[
+            ['Add New','','mc.sc'], ['Upcoming Contracts','','mc.upcoming'], 'divider',
+            ['All Active','','mc.index'], ['Expiring Soon','','mc.es'], 'divider',
+            ['All Inactive','','mc.inactive'], ['Just Expired','','mc.jexp'],
+        ],
 		'Misc'	=>	[
-			['Log :: Unknown Users','','log.unusr'], ['SMS Gateways','','smsg.index'], ['Public Articles','','pa.index'], ['Private Articles','','pra.index'], ['Notification','','notification.index'], ['Third Party Applications','','tpa.index'], 
+			['Log :: Unknown Users','','log.unusr'], ['SMS Gateways','','smsg.index'], ['Public Articles','','pa.index'], ['Private Articles','','pra.index'], ['Notification','','notification.index'], ['Third Party Applications','','tpa.index'],
 		],
 		'Tickets'	=>	[
 			['Create ticket','','tkt.create'], ['New Tickets','','tkt.new'], ['Opened Tickets','','tkt.opened'], 'divider',
 			['Active tickets','','tkt.index'], ['In Progress Tickets','','tkt.inprogress'], ['Holded Tickets','','tkt.holded'], 'divider',
-			['Closed Tickets','','tkt.closed'], ['Completed tickets','','tkt.completed']
-		],
-		'Tasks'	=>	[
-			['All Tasks','','tsk.index'], ['New Tasks','','tsk.new'], ['Working Tasks','','tsk.working'], ['Holded Tasks','','tsk.holded'], ['Closed tasks','','tsk.closed'],
+			['Closed Tickets','','tkt.closed'], ['Completed tickets','','tkt.completed'], 'divider',
+            ['All Tasks','','tsk.index'], ['New Tasks','','tsk.new'], ['Working Tasks','','tsk.working'], ['Holded Tasks','','tsk.holded'], ['Closed tasks','','tsk.closed'],
 		],
 	],
 	'distributor'	=>	[
@@ -65,7 +68,7 @@ $_MENU = [
 		['Roles','role'], ['Resources','resource'],/* ['Actions','action'],*/
 		'Maintenance'	=>	[
 			['Add New','','mc.sc'], ['Upcoming Contracts','','mc.upcoming'], 'divider',
-			['All Active','','mc.index'], ['Expiring Soon','','mc.es'], 'divider', 
+			['All Active','','mc.index'], ['Expiring Soon','','mc.es'], 'divider',
 			['All Inactive','','mc.inactive'], ['Just Expired','','mc.jexp'],
 		],
 		'Distributor Branding' =>	[
@@ -95,11 +98,11 @@ $_MENU = [
 			['Customer Cookie','','tscc.index'], ['Remote Connections','','crc.index'], 'divider',
 			['Customer Print Objects','','cpo.index'], ['Customer Print Object Previews','','cpo.previews'], ['Public Print Objects','','ppo.index'], 'divider',
 			['General Uploads','','gu.index'], ['Database Backups','','dbb.index'], 'divider',
-			['Service Requests','','sreq.index'], ['Third Party Applications','','tpa.index'], 
-			
+			['Service Requests','','sreq.index'], ['Third Party Applications','','tpa.index'],
+
 		],
 		'Misc'	=>	[
-			['Public Articles','','pa.index'], ['Emails','','mail.index'], 
+			['Public Articles','','pa.index'], ['Emails','','mail.index'],
 		],
 		'Tickets'	=>	[
 			['Create ticket','','tkt.create'], ['New Tickets','','tkt.new'], ['Opened Tickets','','tkt.opened'], 'divider',
@@ -126,10 +129,10 @@ $_MENU = [
 			['Customer Cookie','','tscc.index'], ['Remote Connections','','crc.index'], 'divider',
 			['Customer Print Objects','','cpo.index'], ['Customer Print Object Previews','','cpo.previews'], ['Public Print Objects','','ppo.index'], 'divider',
 			['General Uploads','','gu.index'], ['Database Backups','','dbb.index'], 'divider',
-			['Service Requests','','sreq.index'], ['Third Party Applications','','tpa.index'], 
+			['Service Requests','','sreq.index'], ['Third Party Applications','','tpa.index'],
 		],
 		'Misc'	=>	[
-			['Public Articles','','pa.index'], ['Emails','','mail.index'], 
+			['Public Articles','','pa.index'], ['Emails','','mail.index'],
 		],
 		'Tickets'	=>	[
 			['Create ticket','','tkt.create'], ['New Tickets','','tkt.new'], ['Opened Tickets','','tkt.opened'], 'divider',
@@ -139,10 +142,12 @@ $_MENU = [
 		'Tasks'	=>	[
 			['All Tasks','','tsk.index'], ['New Tasks','','tsk.new'], ['Working Tasks','','tsk.working'], ['Holded Tasks','','tsk.holded'], ['Closed tasks','','tsk.closed'],
 		]
-	], 
+	],
 	'customer'	=>	[
 		'Support Tickets'	=>	[
-			['Create Ticket','','tkt.create'], 'divider', ['Active Tickets','','tkt.index'], 'divider', ['Closed Tickets','','tkt.closed'], ['Completed tickets','','tkt.completed']
+			['Create Ticket','','tkt.create'], 'divider',
+			['Active Tickets','','tkt.index'], 'divider',
+			['Closed Tickets','','tkt.closed'], ['Completed tickets','','tkt.completed']
 		],
 		['Print Objects','','cpo.index'], ['Database Backups','','dbb.index'],
         //['FAQ','','faq.list']
@@ -200,7 +205,7 @@ $_MENU = [
 		$N = $Ary[0]; $H = ($Ary[1])?:Route($Ary[2]);
 		return '<li class="nav-link"><a href="'.$H.'">'.$N.'</a></li>';
 	}
-	
+
 	function _NAVDROPDOWNUL($SMAry){
 		$LIs = '';
 		foreach($SMAry as $Parent => $Ary){
@@ -209,12 +214,12 @@ $_MENU = [
 		}
 		return '<ul class="dropdown-menu">'.$LIs.'</ul>';
 	}
-	
+
 	function _NAVPARENTA($N){
 		if($N == '' || empty($N)) return 'IM emprt';
 		return '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'.$N.'<span class="caret"></span></a>';
 	}
-	
+
 	function _NAVDROPDOWNLI($P,$S){
 		return '<li class="dropdown">'.(_NAVPARENTA($P)).(_NAVDROPDOWNUL($S)).'</li>';
 	}

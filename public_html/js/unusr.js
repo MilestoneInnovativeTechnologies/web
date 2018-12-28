@@ -3,7 +3,6 @@
 $(function(){
 	VDoMC_Close();
 	LoadUnusrLog(0);
-	LoadMappedLog(0)
 	$('body').append(GetBSModal('Customer Details').attr('id','modalCustomerDetails'));
 	SetupModalTable();
 });
@@ -13,6 +12,7 @@ var neg_off = 0;
 var current_vdmc = [];
 var customer_details = {};
 var selected_customer = '';
+var product_log_position = { product_id:0, hard_disk:2, processor:3, os:4, computer:5, database:6, installed_on:7 };
 
 function LoadUnusrLog(p){
 	FireAPI('api/v1/log/unusr?page='+p,DistributeUnusr);
@@ -21,6 +21,18 @@ function LoadUnusrLog(p){
 
 function LoadMappedLog(p){
 	FireAPI('api/v1/log/unusr/mapped',DistributeMapStatus,{page:p});
+}
+
+function LoadIgnored(){
+	FireAPI('api/v1/log/unusr/ignored',function(ignored){
+		data_loop = ['pid','hdk','prs'];
+		$('.unusr_tbl_bd tr').each(function(i,tr){
+			$.each(data_loop,function(j,loop){
+                if($.inArray($(tr).data(loop), ignored[loop]) > -1)
+                    $(tr).find('.map_status').text('Ignored');
+			})
+		})
+	});
 }
 
 function DistributeUnusr(R){
@@ -34,9 +46,9 @@ function DistributeUnusr(R){
 		$.each(cmpObj, function(brc, brcObj){
 			eml = brcObj[0]; phn = brcObj[1];
 			$.each(brcObj[2],function(app,appObj){
-				pid = appObj[0];
+				pid = appObj[0]; hdk = appObj[2]; prs = appObj[3];
 				$.each(appObj[1],function(ver,verObj){
-					TR = $('<tr>').appendTo(TBD).attr({'data-cmp':cmp,'data-brc':brc,'data-pid':pid});
+					TR = $('<tr>').appendTo(TBD).attr({'data-cmp':cmp,'data-brc':brc,'data-pid':pid,'data-hdk':hdk,'data-prs':prs});
 					$('<td>').text(++row).appendTo(TR);
 					$('<td>').text(cmp).appendTo(TR);
 					$('<td>').text(brc).appendTo(TR);
@@ -47,7 +59,8 @@ function DistributeUnusr(R){
 				})
 			})
 		})
-	})
+	});
+    LoadMappedLog(0); LoadIgnored();
 }
 
 function DistributeMapStatus(M){
@@ -85,7 +98,40 @@ function SetVDMCSection(){
 }
 
 function SetDetailsTable(VDMCBody){
-	VDMCBody.find('.col.col-md-5').html(GetBSTable('striped')).css({/*'border-right':'1px solid #DDD',*/'padding-right':'0px'})
+	VDMCBody.find('.col.col-md-5').html(GetBSTable('striped').find('table').append(GetIgnoreTFoot()).end()).css({/*'border-right':'1px solid #DDD',*/'padding-right':'0px'})
+}
+
+function GetIgnoreTFoot() {
+    return $('<tfoot>').html($('<tr>').html($('<th>').attr('colspan',2).text('Add to Ignore List'))).append(
+    	$('<tr>')
+			.append($('<td>').html(GetIgnorableSelect()))
+			.append($('<td>').html([GetIgnorableText(),GetIgnorableButton()]))
+	)
+}
+
+function GetIgnorableSelect(){
+	OPTS = { '':'Select Field',pid:'Product ID',hdk:'Hard Disk',prs:'Processor' };
+	return $('<select>').addClass('form-control').attr({ name:'igf'}).html($.map(OPTS,function(n,v){ return $('<option>').attr('value',v).text(n); })).bind('change',IgnoreSelect);
+}
+
+function GetIgnorableText(){
+	return $('<input>').addClass('form-control pull-left').attr({ name:'igt'}).css('width','50%');
+}
+
+function GetIgnorableButton(){
+	return $('<a>').addClass('btn btn-info pull-right').attr({ href:'javascript:AddToIgnore()'}).text('Add to Ignore List');
+}
+
+function IgnoreSelect() {
+	map = { pid:'product_id',hdk:'hard_disk',prs:'processor' };
+	prd = unusr_data[current_vdmc[0]][current_vdmc[1]][2][current_vdmc[2]];
+	$('[name="igt"]').val(prd[product_log_position[map[$('[name="igf"]').val()]]]);
+}
+
+function AddToIgnore() {
+	igf = $('[name="igf"]').val().trim(); igt = $('[name="igt"]').val().trim();
+	if(igf === "" || igt === "") return alert('Either Ignorable text or Ignorable field is empty. Cannot proceed.');
+    FireAPI('api/v1/log/unusr/ignore',function(){ alert('Ignore list updated accordingly.'); },{ igf:igf,igt:igt });
 }
 
 function getGrid(){
@@ -93,7 +139,7 @@ function getGrid(){
 }
 
 function GetUnusrDetailsTR(){
-	heads = ['Company Name','Branch Code','Software','Version','Product ID','Email','Phone','Logins'];
+	heads = ['Company','Branch','Email','Phone','Software','Installed On','Computer','Database','OS','Product ID','Hard disk','Processor','Version','Logins'];
 	return $.map(heads,function(head){
 		cls = head.toLowerCase().replace(/\s/g,"_");
 		return $('<tr>').addClass(cls).html([$('<th>').addClass('th_data').text(head),$('<td>').addClass('td_data').text('')])
@@ -101,7 +147,7 @@ function GetUnusrDetailsTR(){
 }
 
 function FillUnusrDetailsTR(C,B,S,V){
-	heads = ['Company Name','Branch Code','Software','Version','Product ID','Email','Phone','Logins'];
+	heads = ['Company','Branch','Email','Phone','Software','Installed On','Computer','Database','OS','Product ID','Hard disk','Processor','Version','Logins'];
 	$.each(heads,function(i,head){
 		cls = head.toLowerCase().replace(/\s/g,"_");
 		$('tr.'+cls+' .td_data').html(window['FUDTR'](cls,C,B,S,V))
@@ -110,11 +156,12 @@ function FillUnusrDetailsTR(C,B,S,V){
 
 function FUDTR(cls,C,B,S,V){
 	D = unusr_data[C][B];
+	P = D[2][S];
 	switch (cls) {
-		case 'company_name':
+		case 'company':
 			return C;
 			break;
-		case 'branch_code':
+		case 'branch':
 			return B;
 			break;
 		case 'software':
@@ -123,9 +170,6 @@ function FUDTR(cls,C,B,S,V){
 		case 'version':
 			return V;
 			break;
-		case 'product_id':
-			return D[2][S][0];
-			break;
 		case 'email':
 			return D[0];
 			break;
@@ -133,14 +177,17 @@ function FUDTR(cls,C,B,S,V){
 			return D[1];
 			break;
 		case 'logins':
-			VERs = D[2][S][1][V];
-			DL=$('<dl>')
+			VERs = P[1][V];
+			DL=$('<dl>');
 			$.each(VERs,function(Dt,TmAry){
 				$('<dt>').text(Dt).appendTo(DL);
-				TmAR = TmAry.reverse()
+				TmAR = TmAry.reverse();
 				$('<dd>').text($.map(TmAR,function(Tm){ return ToAmPm(Tm); }).join(", ")).appendTo(DL);
-			})
+			});
 			return DL;
+			break;
+		default:
+            return P[product_log_position[cls]];
 			break;
 	}
 }
@@ -251,12 +298,15 @@ function FillModalCDData(code){
 function MapSelectedCustomer(){
 	SC = $('table.map_customer tr.selected_customer');
 	if(SC.length == 0) return alert('Please select a customer');
-	cus = SC.attr('data-code'); seq = SC.attr('data-seqno'); pid = unusr_data[current_vdmc[0]][current_vdmc[1]][2][current_vdmc[2]][0]; brc = current_vdmc[1];
-	DoMap(pid,brc,cus,seq,0)
+	cus = SC.attr('data-code'); seq = SC.attr('data-seqno');
+	prd = customer_details[selected_customer]['product_id']; edn = customer_details[selected_customer]['edition_id'];
+    P = unusr_data[current_vdmc[0]][current_vdmc[1]][2][current_vdmc[2]];
+    pid = P[0]; brc = current_vdmc[1]; hdk = P[2]; prs = P[3]; ops = P[4]; com = P[5]; dbn = P[6]; isd = P[7];
+	DoMap(pid,brc,cus,seq,prd,edn,hdk,prs,ops,com,dbn,isd,0)
 }
 
-function DoMap(pid,brc,cus,seq,frc){
-	FireAPI('api/v1/log/unusr/map',MapStatus,{pid:pid,brc:brc,cus:cus,seq:seq,frc:frc})
+function DoMap(pid,brc,cus,seq,prd,edn,hdk,prs,ops,com,dbn,isd,frc){
+	FireAPI('api/v1/log/unusr/map',MapStatus,{pid:pid,brc:brc,cus:cus,seq:seq,prd:prd,edn:edn,hdk:hdk,prs:prs,ops:ops,com:com,dbn:dbn,isd:isd,frc:frc});
 	$('#modalMapExist').modal('hide');
 }
 
@@ -314,7 +364,7 @@ function MapExistConfirmButton(R){
 	M = R[3];
 	MapConfirmModal().find('.modal-footer').html([
 		btn('Close','','').attr({class:'btn btn-default','data-dismiss':'modal'}).append('Close'),
-		btn('Force create MAP Data','javascript:DoMap("'+M[0]+'","'+M[1]+'","'+M[2]+'","'+M[3]+'","1")','retweet').attr({class:'btn btn-default'}).append(' Force create MAP Data.').addClass('btn-info')
+		btn('Force create MAP Data','javascript:DoMap("'+M[0]+'","'+M[1]+'","'+M[2]+'","'+M[3]+'","'+M[4]+'","'+M[5]+'","'+M[6]+'","'+M[7]+'","'+M[8]+'","'+M[9]+'","'+M[10]+'","'+M[11]+'","1")','retweet').attr({class:'btn btn-default'}).append(' Force create MAP Data.').addClass('btn-info')
 	])
 }
 //btn('Force create MAP Data','javascript:alert("'+M[0]+'","'+M[1]+'","'+M[2]+'","'+M[3]+'","1")','retweet').attr({class:'btn btn-default','data-dismiss':'modal'}).append(' Force create MAP Data.').addClass('btn-info')

@@ -38,7 +38,7 @@ class AppLogController extends Controller
 			if(!array_key_exists($brc,$Data[$cmp])) $Data[$cmp][$brc] = [];
 			if(empty($Data[$cmp][$brc])) $Data[$cmp][$brc] = [$Set[8],$Set[9],[]];
 			$app = $Set[6];
-			if(!array_key_exists($app,$Data[$cmp][$brc][2])) $Data[$cmp][$brc][2][$app] = [$Set[3],[]];
+			if(!array_key_exists($app,$Data[$cmp][$brc][2])) $Data[$cmp][$brc][2][$app] = [$Set[3],[],$Set[10],$Set[11],$Set[12],$Set[13],$Set[14],$Set[15]];
 			$ver = $Set[7];
 			if(!array_key_exists($ver,$Data[$cmp][$brc][2][$app][1])) $Data[$cmp][$brc][2][$app][1][$ver] = [];
 			$date = $Set[1];
@@ -56,8 +56,8 @@ class AppLogController extends Controller
 		$WHArray = $this->getWhereHasArray($B,$T);
 		if($WHArray) $Result = $ORM->whereHas($WHArray[0],function($Q) use($WHArray){ $Q->where($WHArray[1],'LIKE',$WHArray[2]); })->get();
 		else $Result = $this->filterByDistributor($ORM,$T);
-		$Result = $this->flatDealerToDistributor($Result);
-		return $this->flatternResult($Result);
+        $Result = $this->flatDealerToDistributor($Result);
+        return $this->flatternResult($Result);
 	}
 
 	private function getSimiliarProducts($S){
@@ -86,7 +86,7 @@ class AppLogController extends Controller
 					},'Logins'	=>	function($Q){
 						$SelectFields = ['partner','email'];
 						$Q->select($SelectFields);
-					},'Parent.ParentDetails'	=>	function($Q){
+					},'Parent1.ParentDetails'	=>	function($Q){
 						$Q->select('code','name')
 							->with(['Roles'	=>	function($Q){ $Q->select('code','name'); },'Parent.ParentDetails'	=>	function($Q){ $Q->select('code','name')->with(['Roles'	=>	function($Q){ $Q->select('code','name'); }]); }]);
 					}]);
@@ -95,7 +95,8 @@ class AppLogController extends Controller
 			},'Edition'	=>	function($Q){
 				$Q->select('code','name');
 			}])
-			->has('Customer.Parent');
+			->has('Customer.Parent1')
+            ;
 	}
 	
 	private function getWhereHasArray($B,$T){
@@ -126,17 +127,17 @@ class AppLogController extends Controller
 	private function flatDealerToDistributor($Result){
 		$Result = $Result->toArray();
 		foreach($Result as $K => $Array){
-			$Roles = $Array['customer']['parent']['parent_details']['roles'];
+			$Roles = $Array['customer']['parent1']['parent_details']['roles'];
 			$RolNames = array_column($Roles,'name');
 			if(in_array('distributor',$RolNames)){
-				$Result[$K]['customer']['distributor'] = $Result[$K]['customer']['parent']['parent_details']['name'];
+				$Result[$K]['customer']['distributor'] = $Result[$K]['customer']['parent1']['parent_details']['name'];
 				unset($Result[$K]['customer']['parent']);
 			} else {
-				$Roles = $Array['customer']['parent']['parent_details']['parent']['parent_details']['roles'];
+				$Roles = $Array['customer']['parent1']['parent_details']['parent']['parent_details']['roles'];
 				$RolNames = array_column($Roles,'name');
 				if(in_array('distributor',$RolNames)){
-					$Result[$K]['customer']['distributor'] = $Result[$K]['customer']['parent']['parent_details']['parent']['parent_details']['name'];
-					unset($Result[$K]['customer']['parent']);
+					$Result[$K]['customer']['distributor'] = $Result[$K]['customer']['parent1']['parent_details']['parent']['parent_details']['name'];
+					unset($Result[$K]['customer']['parent1']);
 				}
 			}
 		}
@@ -152,8 +153,8 @@ class AppLogController extends Controller
 			$Result[$K]['customer']['city'] = $Array['customer']['details']['city']['name'];
 			$Result[$K]['customer']['state'] = $Array['customer']['details']['city']['state']['name'];
 			$Result[$K]['customer']['country'] = $Array['customer']['details']['city']['state']['country']['name'];
-			$Result[$K]['product'] = $Array['product']['name'];
-			$Result[$K]['edition'] = $Array['edition']['name'];
+			$Result[$K]['product'] = $Array['product']['name']; $Result[$K]['product_id'] = $Array['product']['code'];
+			$Result[$K]['edition'] = $Array['edition']['name']; $Result[$K]['edition_id'] = $Array['edition']['code'];
 			unset($Result[$K]['customer']['details'],$Result[$K]['customer']['logins'],$Result[$K]['customer']['code'],$Result[$K]['customer']['partner']);
 			$Data[$Array['customer']['code']."-".$Array['seqno']] = $Result[$K];
 		}
@@ -164,5 +165,15 @@ class AppLogController extends Controller
 		$this->AIC = $AIC = new AppInitController();
 		return $AIC->getlogMapArray($request->page?:0);
 	}
-	
+
+	public function ignore(Request $request){
+        $this->AIC = $AIC = new AppInitController();
+        $AIC->addIgnorableContent($request->igf,$request->igt);
+    }
+
+	public function ignored(){
+        $this->AIC = $AIC = new AppInitController();
+        return $AIC->getIgnorableContents();
+    }
+
 }

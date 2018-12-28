@@ -80,7 +80,7 @@
 @php
 	$ORM = new \App\Models\PublicPrintObject; $DOrm = $ORM->query();
 	if(Request()->search_text){ $st = '%'.Request()->search_text.'%'; $DOrm = $DOrm->where(function($Q)use($st){ $Q->where('name','like',$st)->orWhere('code','like',$st)->orWhere('description','like',$st)->orWhereHas('Specs',function($Q)use($st){ foreach(range(0,9) as $C){ $N = 'spec'.$C; if($C) $Q->orWhere($N,'like',$st); else $Q->where($N,'like',$st); } }); }); }
-	$Data = $DOrm->paginate(9);
+	$Data = $DOrm->web()->paginate(9);
 @endphp
 
 <div class="page_contents">
@@ -112,6 +112,7 @@
 									<div class="preview" style="background-image: url('{{ \Storage::disk($ORM->storage_disk)->url($Item->preview) }}')">
 										<div class="aholder">
 											@if($Item->preview)<a href="{{ \Storage::disk($ORM->storage_disk)->url($Item->preview) }}" class="btn btn-default" target="_blank">Preview</a>@endif
+												<div class="text-center bg-primary small">{!! nl2br($Item->description) !!}</div>
 											@if($Item->Specs && $Item->Specs->details) <ul>
 												@foreach($Item->Specs->details as $Name => $Value)
 													<li title="{{ $Name }}"><span class="glyphicon glyphicon-chevron-right"></span> &nbsp; {{ $Name }} <b>&gt;</b> {{ $Value }}</li>
@@ -120,7 +121,7 @@
 										</div>
 									</div>
 									<div class="clearfix base">
-										<small class="pull-left">{!! nl2br($Item->description) !!}</small>
+										<!--<small class="pull-left">{!! nl2br($Item->description) !!}</small>-->
 										<div class="actions pull-right">
 											<a href="{{ route('home.print_object.download',$Item->code) }}" title="Download this print object" class="btn btn-info" style="margin-top:0.6em;">Download</a>
 										</div>

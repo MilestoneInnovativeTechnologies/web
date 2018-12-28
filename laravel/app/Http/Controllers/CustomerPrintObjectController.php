@@ -81,7 +81,7 @@ class CustomerPrintObjectController extends Controller
 	
 	public function search_for_customer(Request $request){
 		$like = '%'.$request->st.'%';
-		return \App\Models\Customer::with(['Details.City.State.Country','Registration' => function($Q){ $Q->select('customer','seqno','product','edition','registered_on'); }])
+		return \App\Models\Customer::with(['Details.City.State.Country','Registration' => function($Q){ $Q->select('customer','seqno','product','edition','registered_on','remarks'); }])
 			->where(function($Q)use($like){
 				$Q->where('code','like',$like)->orWhere('name','like',$like)
 					->orWhereHas('Details',function($Q)use($like){

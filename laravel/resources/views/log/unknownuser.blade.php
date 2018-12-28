@@ -10,5 +10,5 @@
 
 @endsection
 @push("js")
-<script type="text/javascript" src="js/unusr.js"></script>
+<script type="text/javascript" src="js/unusr.js?_=20181218"></script>
 @endpush

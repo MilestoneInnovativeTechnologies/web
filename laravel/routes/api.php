@@ -28,6 +28,11 @@ Route::get("appinit/{key}","AppInitController@init");
 Route::post("ifv","FAQController@ifv");
 Route::post("ifb","FAQController@ifb");
 
+Route::prefix("keycode")->group(function(){
+    Route::get('encode', 'KeyCodeEncDecController@encode');
+    Route::get('decode/{code?}', 'KeyCodeEncDecController@decode');
+});
+
 Route::prefix("v1")->group(function(){
 	
 	Route::group(["middleware"	=>	"wapi:*"],function(){
@@ -160,6 +165,8 @@ Route::prefix("v1")->group(function(){
 		Route::prefix('log')->group(function(){
 			Route::prefix('unusr')->group(function(){
 				Route::get('map/search','AppLogController@searchcustomer');
+				Route::get('ignore','AppLogController@ignore');
+				Route::get('ignored','AppLogController@ignored');
 				Route::get('mapped','AppLogController@mapped');
 				Route::get('map','AppInitController@map');
 				Route::get('/','AppLogController@getunknownuserdata');
@@ -355,7 +362,7 @@ Route::prefix("v1")->group(function(){
 
 	Route::group(["middleware"	=>	"wapi:*"],function(){
 	    Route::get('faq/get/prt','FAQController@prt');
-	    Route::post('faq/add/fct','FAQController@fct');
+	    Route::post('faq/addAppLogController/fct','FAQController@fct');
 	});
 
 
