@@ -62,6 +62,11 @@ $Vacancy->increment('views')
     <div class="page vacancies products" style="background-color: #EBEBEB">
         <div class="container">
             <div style="height: 150px;">&nbsp;</div>
+            @if($Vacancy->live  == "0" || $Vacancy->live  === 0)
+                <div class="alert alert-danger">
+                    This vacancy is not available right now!
+                </div>
+            @endif
             @if(session()->has('info'))
                 <div class="alert alert-success">
                     Thank you, {{ session()->get('applicant')->name }}. Your application has been registered successfully.
