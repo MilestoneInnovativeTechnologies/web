@@ -63,7 +63,7 @@ $Vacancy->increment('views')
         <div class="container">
             <div style="height: 150px;">&nbsp;</div>
             @if($Vacancy->live  == "0" || $Vacancy->live  === 0)
-                <div class="alert alert-danger">
+                <div class="alert alert-danger font-weight-bold">
                     This vacancy is not available right now!
                 </div>
             @endif
