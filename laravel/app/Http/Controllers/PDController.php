@@ -32,10 +32,9 @@ class PDController extends Controller
     }
 
     public function interact($code){
-        $CR = $this->getCustomerReg($code);
-        $PD = $this->getCustomerPD($CR['customer'],$CR['seqno']);
-        $data = array_merge($CR,$PD);
-        return $data;
+        $CR = $this->getCustomerReg($code); if(is_null($CR)) return 0;
+        $PD = $this->getCustomerPD($CR['customer'],$CR['seqno']); if(is_null($PD)) return 0;
+        return array_merge($CR,$PD);
     }
 
     private function getCustomerReg($code){
