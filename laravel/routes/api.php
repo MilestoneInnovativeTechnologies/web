@@ -365,6 +365,10 @@ Route::prefix("v1")->group(function(){
 	    Route::post('faq/addAppLogController/fct','FAQController@fct');
 	});
 
-
 	
+});
+
+Route::group(["middleware"	=>	"wapi:*"],function(){
+    Route::get('pd/interact/{code}','PDController@interact');
+    Route::get('pd/interact/update/{code}','PDController@intupd');
 });
