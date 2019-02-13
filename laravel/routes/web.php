@@ -881,3 +881,13 @@ Route::group(["middleware"	=>	["rolecheck:faq"], "prefix" => "faq"],function(){
     Route::get('index', function(){ return view('faq.index'); })->name('faq.index');
     Route::get('list', function(){ return view('faq.list'); })->name('faq.list');
 });
+
+//PD
+Route::group(["middleware"	=>	["rolecheck:pd"], "prefix" => "pd"],function(){
+    Route::get('', function(){ return view('pd.index'); })->name('pd.index');
+    Route::get('{id}/view', function(){ return view('pd.view'); })->name('pd.view');
+    Route::get('new', function(){ return view('pd.form'); })->name('pd.new');
+    Route::post('new','PDController@store');
+    Route::get('{id}/edit', function(){ return view('pd.form'); })->name('pd.edit');
+    Route::post('{id}/edit','PDController@update');
+});
