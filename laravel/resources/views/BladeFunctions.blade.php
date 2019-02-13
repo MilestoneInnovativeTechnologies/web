@@ -67,6 +67,7 @@ function selectOptions($optAry,$default = NULL){
 	if($optAry == '') return '';
 	$Options = []; $A = ''; $T = '';
 	foreach($optAry as $Key => $VAry){
+	    if(is_null($VAry)) continue;
 		if(is_string($VAry)) {
 			$T = $VAry;
 			$V = is_int($Key)?$T:$Key;
