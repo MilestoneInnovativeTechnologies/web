@@ -6,6 +6,7 @@ use App\Models\CustomerRegistration;
 use App\Models\PD;
 use App\Models\PDTable;
 use App\Http\Requests\NewPD;
+use Illuminate\Http\Request;
 
 class PDController extends Controller
 {
@@ -68,6 +69,14 @@ class PDController extends Controller
     private function getIntUpdateArray($code){
         list($key,$val) = KeyCodeController::Decode($code);
         return array_combine($key,$val);
+    }
+
+    public function api(Request $request){
+        return $request->code ? $this->getAPIArgs(PD::with('Customer')->where('code',$request->code)->first()) : null;
+    }
+    private function getAPIArgs($model){
+        if(is_null($model)) return null;
+        return collect($model)->only(['url_web','url_api'])->merge(['customer' => $model->Customer->name]);
     }
 
 }
