@@ -368,7 +368,8 @@ Route::prefix("v1")->group(function(){
 	
 });
 
-Route::group(["middleware"	=>	"wapi:*"],function(){
-    Route::get('pd/interact/{code}','PDController@interact');
-    Route::get('pd/interact/update/{code}','PDController@intupd');
+Route::group(["middleware"	=>	"wapi:*", "prefix" => "pd"],function(){
+    Route::get('/','PDController@api');
+    Route::get('interact/{code}','PDController@interact');
+    Route::get('interact/update/{code}','PDController@intupd');
 });
