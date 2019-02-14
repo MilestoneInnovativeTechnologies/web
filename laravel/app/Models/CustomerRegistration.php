@@ -41,7 +41,7 @@ class CustomerRegistration extends Model
 	
 	protected $appends = ['available_actions'/*,'dealer','distributor'*/];
 	public function getAvailableActionsAttribute($value = null){
-		$role = $this->_GETAUTHUSER()->rolename;
+		$role = $this->_GETAUTHUSER() ? $this->_GETAUTHUSER()->rolename : [];
 		$role_actions = $this->_GETROLEACTIONS($role);
 		if(!$this->exists) return $this->_GETARRAYVALUES($this->actions,$role_actions);
 		$actions = array_filter($role_actions,function($ra){ return ($this->conditional_action && array_key_exists($ra,$this->conditional_action)) ? call_user_func([$this,$this->conditional_action[$ra]],$this) : true; });
