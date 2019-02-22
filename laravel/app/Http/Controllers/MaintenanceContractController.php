@@ -26,7 +26,7 @@ class MaintenanceContractController extends Controller
 	
 	
 	private $IndexTitles = ['active' => 'Maintenance Contracts', 'expsoon' => 'Expiring Soon Contracts', 'expiring' => 'Expiring Contracts', 'inactive' => 'Expired/Inactive Contracts', 'justexp' => 'Recently expired contracts', 'expired' => 'Expired contracts', 'upcoming' => 'Upcoming Contracts'];
-	private $AnnualMaintenancePercentage = 30;
+	private $AnnualMaintenancePercentage = 20;
 	
 	public function index($status = 'active'){
 		//return MC::all();
