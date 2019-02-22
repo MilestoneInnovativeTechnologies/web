@@ -64,9 +64,10 @@ class TicketController extends Controller
 	}
 	
 	public function store(Request $request){
-		$Validate = $this->getTicketValidation($request);
-		if($Validate->fails()) return redirect()->back()->withInput()->withErrors($Validate);
-		$customer = ($request->customer)?:$this->getAuthUser()->partner;
+        $customer = ($request->customer)?:$this->getAuthUser()->partner;
+        $request->merge(compact('customer'));
+        $Validate = $this->getTicketValidation($request);
+        if($Validate->fails()) return redirect()->back()->withInput()->withErrors($Validate);
 		$Ticket = $this->CreateTicketBasic($customer,$request->only('title','description','category','product'));
 		$this->TicketCategoryUpdate($Ticket,$request);
 		$this->AddAttachments($Ticket,$request);
@@ -81,10 +82,12 @@ class TicketController extends Controller
 	
 	private function getTicketValidation($request){
 		$Rule = ['title'	=>	'required']; $Message = ['title.required'	=>	'Please enter the title of your ticket'];
-		if($this->getAuthUser()->rolename != "customer"){
-			$Rule['customer']	=	'required'; $Message['customer.required'] = 'Please select the customer for which the ticket is for.';
+		//if($this->getAuthUser()->rolename != "customer"){
+			$Rule['customer']	=	['required','AMCActiveCustomer'];
+			$Message['customer.required'] = 'Please select the customer for which the ticket is for.';
+			$Message['customer.a_m_c_active_customer'] = 'AMC Expired, Please renew for further proceedings.';
 			$Rule['product']	=	'required'; $Message['product.required'] = 'Please select the product of customer for which the ticket is for.';
-		}
+		//}
 		return \Validator::make($request->all(),$Rule,$Message);
 	}
 	
