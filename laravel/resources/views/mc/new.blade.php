@@ -1,4 +1,4 @@
-@extends("tsk.page")
+@extends("mc.page")
 @include('BladeFunctions')
 @section("content")
 @php $modify = isset($MC); @endphp
