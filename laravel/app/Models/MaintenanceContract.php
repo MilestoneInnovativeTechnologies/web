@@ -45,7 +45,7 @@ class MaintenanceContract extends Model
 	private $status_time = ['ACTIVE' => ['EXPIRE TODAY' => 86400, 'EXPIRE WITHIN ' => 86400*10, 'EXPIRING SOON' => 86400*45],
 													'INACTIVE' => ['JUST EXPIRED' => 86400*7, 'EXPIRED ' => 86400*14, 'EXPIRED' => 86400*45]];
 	private $actions = ['view','modify','delete','renew','et_mail','es_mail','je_mail','ex_mail'];
-	private $status_actions = ['UPCOMING' => [0,1/*,2*/], 'ACTIVE' => [0], 'INACTIVE' => [0,7], 'EXPIRE TODAY' => [0,3,4], 'EXPIRING SOON' => [0,3,5], 'JUST EXPIRED' => [0,3,6], 'EXPIRED' => [0,3,7]];
+	private $status_actions = ['UPCOMING' => [0,1/*,2*/], 'ACTIVE' => [0], 'INACTIVE' => [0,3,7], 'EXPIRE TODAY' => [0,3,4], 'EXPIRING SOON' => [0,3,5], 'JUST EXPIRED' => [0,3,6], 'EXPIRED' => [0,3,7]];
 	private $dyn_status_state = ['EXPIRE WITHIN' => 'EXPIRING SOON', 'EXPIRED' => 'EXPIRED'];
 	
 	public function NewCode(){
