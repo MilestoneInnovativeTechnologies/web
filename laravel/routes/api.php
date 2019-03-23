@@ -31,7 +31,7 @@ Route::post("ifb","FAQController@ifb");
 
 Route::prefix("keycode")->group(function(){
     Route::get('encode', 'KeyCodeEncDecController@encode');
-    Route::get('decode/{code?}', 'KeyCodeEncDecController@decode');
+    Route::get('decode/{code?}', 'KeyCodeEncDecController@decode')->name('keycode.decode');
 });
 
 Route::prefix("v1")->group(function(){

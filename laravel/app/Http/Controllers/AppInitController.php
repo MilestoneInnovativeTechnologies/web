@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\CustomerRegistration;
 use Illuminate\Http\Request;
 
-use Illuminate\Session\Store;
 use Storage;
 
 class AppInitController extends Controller
@@ -14,7 +13,7 @@ class AppInitController extends Controller
     {
         $this->middleware(function($request,$next){
             $code = $request->segments()[2]; $values = KeyCodeController::Decode($code)[1];
-            $log = date('D d/m/y H:i:s') . "\n" . ((strlen($values[1]) > 2) ? $values[1] : $values[0]) . "\n" . $code . "\n";
+            $log = '' . date('D d/m/y H:i:s') . " => " . ((strlen($values[1]) > 2) ? $values[1] : $values[0]) . " => <a target='_blank' href='".route('keycode.decode',compact('code'))."'>Decode Code</a><br><br>";
             Storage::append($this->PrepPath('entry.log'),$log);
             return $next($request);
         })->only('init');
@@ -282,7 +281,7 @@ class AppInitController extends Controller
 
     public function entry(){
         $log = Storage::get($this->PrepPath('entry.log'));
-        return response($log, 200)->header('Content-Type', 'text/plain');
+        return $log;
     }
 	
 }
