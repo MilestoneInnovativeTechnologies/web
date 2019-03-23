@@ -24,6 +24,7 @@ Route::get("{Country}/states","GeoLocationApi@States");
 Route::get("{State}/cities","GeoLocationApi@Cities");
 Route::post("sdl","HomeController@sdl");
 Route::get("features/{pid}","HomeController@features");
+Route::get("appinit/entry","AppInitController@entry");
 Route::get("appinit/{key}","AppInitController@init");
 Route::post("ifv","FAQController@ifv");
 Route::post("ifb","FAQController@ifb");

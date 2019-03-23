@@ -5,12 +5,23 @@ namespace App\Http\Controllers;
 use App\Models\CustomerRegistration;
 use Illuminate\Http\Request;
 
+use Illuminate\Session\Store;
 use Storage;
 
 class AppInitController extends Controller
 {
-	
-	private $GuestLogItems = ['pid','cmp','brc','app','ver','eml','phn','hdk','prs','ops','com','dbn','isd'];
+    public function __construct()
+    {
+        $this->middleware(function($request,$next){
+            $code = $request->segments()[2]; $values = KeyCodeController::Decode($code)[1];
+            $log = date('D d/m/y H:i:s') . "\n" . ((strlen($values[1]) > 2) ? $values[1] : $values[0]) . "\n" . $code . "\n";
+            Storage::append($this->PrepPath('entry.log'),$log);
+            return $next($request);
+        })->only('init');
+    }
+
+
+    private $GuestLogItems = ['pid','cmp','brc','app','ver','eml','phn','hdk','prs','ops','com','dbn','isd'];
 	private $CustomerLogItems = ['cus','seq','prd','edn','ver','key'];
 	private $Path = "customlog/AppInit"; //Static function 'SetProductVersion','GetProductVersion' using same path
 	protected $MapData = [];
@@ -267,6 +278,11 @@ class AppInitController extends Controller
         $File = "customlog/AppInit/PRDVERSION.json";
         $VS = \Illuminate\Support\Facades\Storage::exists($File) ? json_decode(\Illuminate\Support\Facades\Storage::get($File),true) : [];
         return (array_key_exists($PRD,$VS) && array_key_exists($EDN,$VS[$PRD])) ? $VS[$PRD][$EDN] : 0;
+    }
+
+    public function entry(){
+        $log = Storage::get($this->PrepPath('entry.log'));
+        return response($log, 200)->header('Content-Type', 'text/plain');
     }
 	
 }
