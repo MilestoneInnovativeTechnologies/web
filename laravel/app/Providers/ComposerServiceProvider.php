@@ -7,6 +7,10 @@ use Illuminate\Support\ServiceProvider;
 
 class ComposerServiceProvider extends ServiceProvider
 {
+    private $composers = [
+        'notification.notifications' => 'App\Http\Controllers\NotificationController',
+        'log.comp_recentusage' => \App\Composer\RecentAppUsages::class,
+    ];
     /**
      * Bootstrap the application services.
      *
@@ -14,8 +18,8 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-				View::composer('notification.notifications','App\Http\Controllers\NotificationController');
-        //
+        foreach ($this->composers as $name => $class)
+            View::composer($name,$class);
     }
 
     /**

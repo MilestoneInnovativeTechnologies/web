@@ -23,6 +23,12 @@ $Customer = \App\Models\Customer::whereCode(Request()->code)->with(['Details.Ind
 				</tbody></table></div>				
 			</div></div>
 		</div>
+		<div class="col col-md-3" style="padding-left: 0px;">
+			<div class="panel panel-default">
+				<div class="panel-heading"><div class="panel-title">Recent App usages</div></div>
+				<div class="panel-body">@component('log.comp_recentusage') @endcomponent</div>
+			</div>
+		</div>
 	</div>
 	<div class="panel panel-default"><div class="panel-heading"><div class="panel-title">Products</div></div><div class="panel-body">
 	@component('crd.comp_registrations',['Registrations' => $Customer->Registration, 'Supportteams' => $Customer->Supportteam]) @endcomponent

@@ -22,7 +22,7 @@ class AppInitController extends Controller
 
     private $GuestLogItems = ['pid','cmp','brc','app','ver','eml','phn','hdk','prs','ops','com','dbn','isd'];
 	private $CustomerLogItems = ['cus','seq','prd','edn','ver','key'];
-	private $Path = "customlog/AppInit"; //Static function 'SetProductVersion','GetProductVersion' using same path
+	public $Path = "customlog/AppInit"; //Static function 'SetProductVersion','GetProductVersion' using same path
 	protected $MapData = [];
 	protected $VersionData = [];
   
@@ -282,6 +282,10 @@ class AppInitController extends Controller
     public function entry(){
         $log = Storage::get($this->PrepPath('entry.log'));
         return $log;
+    }
+
+    public static function getCustomerFile($NegOffset = 0){
+	    return (new self)->getCustomerFilePath($NegOffset);
     }
 	
 }
