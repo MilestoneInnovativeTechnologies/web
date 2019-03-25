@@ -41,7 +41,7 @@ class SupportTeamCustomer extends Model
 	}
 	
 	public function product(){
-		return $this->belongsToMany('App\Models\Product','customer_registrations','customer','product')->select('code','name')->withPivot('seqno','edition','remarks')->with(['Editions'	=>	function($Q){ $Q->select('code','name')->withPivot('level','description'); }]);
+		return $this->belongsToMany('App\Models\Product','customer_registrations','customer','product')->select('code','name')->withPivot('seqno','edition','installed_on','created_at','remarks')->with(['Editions'	=>	function($Q){ $Q->select('code','name')->withPivot('level','description'); }]);
 	}
 
 }

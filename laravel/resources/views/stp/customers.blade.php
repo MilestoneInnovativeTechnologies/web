@@ -79,6 +79,7 @@ function ProductDetails($Product){
 		})->values();
 		$ProductName = $Nm . ' ' . implode("",$Edns->pluck('name')->toArray()) . ' Edition';
 		if($Prd->pivot->remarks) $ProductName .= ' (' . $Prd->pivot->remarks . ')';
+		$ProductName .= '<br>(' . ($Prd->pivot->installed_on ?: date("Y-m-d",strtotime($Prd->pivot->created_at))) . ')';
 		return $ProductName;
 	})->toArray();
 	return implode("<br>",$Products);
