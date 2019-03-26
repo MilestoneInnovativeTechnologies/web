@@ -12,11 +12,11 @@ class PartnerRelation extends Model
 	protected $fillable = array('partner', 'parent');
 	
 	public function parentDetails(){
-		return $this->belongsTo('App\Models\Partner','parent','code');
+		return $this->belongsTo('App\Models\Partner','parent','code')->withoutGlobalScope('active');
 	}
 	
 	public function childDetails(){
-		return $this->belongsTo('App\Models\Partner','partner','code');
+		return $this->belongsTo('App\Models\Partner','partner','code')->withoutGlobalScope('active');
 	}
 	
 	public function roles(){
