@@ -124,7 +124,7 @@ class Customer extends Model
 	}
 	
 	public function parentDetails(){
-		return $this->belongsToMany('App\Models\Partner','partner_relations','partner','parent')->with('Roles','ParentDetails');
+		return $this->belongsToMany('App\Models\Partner','partner_relations','partner','parent')->withoutGlobalScope('active')->with('Roles','ParentDetails');
 	}
 	
 	public function registration(){
