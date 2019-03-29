@@ -42,13 +42,17 @@
                         below. You can choose the required year.</i></div>
                 <img src="https://raw.githubusercontent.com/MilestoneInnovativeTechnologies/mit-public-articles/master/MPA0545450/005.jpg"
                      width="1036" height="533">
+                <h2>&nbsp;</h2>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/PT4Go9wiqok" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+@endsection
+@push('js')
+    <script type="text/javascript">
+        function login() {
+            $('#loginModal').modal('show');
+        }
+    </script>
 
-                @endsection
-                @push('js')
-                    <script type="text/javascript">
-                        function login() {
-                            $('#loginModal').modal('show');
-                        }
-                    </script>
-
-    @endpush
+@endpush
