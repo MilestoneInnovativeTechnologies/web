@@ -1,0 +1,43 @@
+@extends("pa.articles.layout")
+@section('content')
+
+<div class="page_contents">
+<div class="page pa" style="background-color: #EBEBEB">
+<div class="container">
+<br><br><br><br><br><br><br><h1><b><u><center>How to add new fiscal year on software (2019-2020)</center></u></b></h1>
+	<ul>
+		<li>A fiscal year (FY) is a period that a company or government uses for accounting purposes and preparing financial statements.</li>
+		<li>Follow the below steps It provides options to adjust duration of a fiscal year.</li>
+	</ul>
+<h3>Step 1</h3>
+	<i>Go to Tools >Settings > Fiscal year</i>
+	<img src="https://raw.githubusercontent.com/MilestoneInnovativeTechnologies/mit-public-articles/master/MPA0545450/001.jpg" width="712" height="463">
+
+<h3>Step 2</h3>
+	<i>Select new option.</i>
+	<img src="https://raw.githubusercontent.com/MilestoneInnovativeTechnologies/mit-public-articles/master/MPA0545450/002.jpg" width="588" height="368">
+
+<h3>Step 3</h3>
+	<i>Enter the new fiscal year details as shown below.</i>
+	<img src="https://raw.githubusercontent.com/MilestoneInnovativeTechnologies/mit-public-articles/master/MPA0545450/003.jpg" width="627" height="444">
+
+<h3>Step 4</h3>
+	<i>Save and close the application.</i>
+	<img src="https://raw.githubusercontent.com/MilestoneInnovativeTechnologies/mit-public-articles/master/MPA0545450/004.jpg" width="810" height="500">
+
+<h3>Step 5</h3>
+	<i>Reopen the software.</i>
+
+<h3>Step 6</h3>
+	<i>Now while opening any window on software, a browse window with all fiscal year appears as shown below. You can choose the required year.</i>
+	<img src="https://raw.githubusercontent.com/MilestoneInnovativeTechnologies/mit-public-articles/master/MPA0545450/005.jpg" width="1036" height="533">
+
+@endsection
+@push('js')
+<script type="text/javascript">
+function login(){
+	$('#loginModal').modal('show');
+}
+</script>
+
+@endpush
