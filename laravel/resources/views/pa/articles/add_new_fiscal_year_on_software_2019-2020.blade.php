@@ -16,7 +16,7 @@
                 </ul>
                 <h2>&nbsp;</h2>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/PT4Go9wiqok" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <h2>Step by Step Instruction</h2>
+                <h2><u>Step by Step Instruction</u></h2>
                 <h3>Step 1</h3>
                 <div><i>Go to Tools >Settings > Fiscal year</i></div>
                 <img src="https://raw.githubusercontent.com/MilestoneInnovativeTechnologies/mit-public-articles/master/MPA0545450/001.jpg"
