@@ -69,6 +69,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'ssi' => [
+            'driver' => 'local',
+            'root' => base_path('../public_html/smart_sale_images'),
+            'url' => env('APP_URL').'/smart_sale_images',
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_KEY'),
