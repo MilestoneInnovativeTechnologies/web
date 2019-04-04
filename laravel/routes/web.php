@@ -48,7 +48,7 @@ Route::prefix("test")->group(function(){
 		//\App\Models\Notification::all();
 		//return DB::getQueryLog();
   });
-	Route::get('2', 'Test@index');
+	Route::get('2', '\App\Rules\AMCActiveCustomer@test');
 	Route::get('5', 'TicketController@ttt');
 	Route::get('3', function(){
 	    $Response = \App\Libraries\SMSGateways\SmppSMSHub::init('9495155550','Test Msg From MIT web using API. Time: '.date('Y-m-d H:i:s'))->send();
@@ -890,4 +890,14 @@ Route::group(["middleware"	=>	["rolecheck:pd"], "prefix" => "pd"],function(){
     Route::post('new','PDController@store');
     Route::get('{id}/edit', function(){ return view('pd.form'); })->name('pd.edit');
     Route::post('{id}/edit','PDController@update');
+});
+
+//Smart Sale
+Route::group(["middleware"	=>	["rolecheck:ss"], "prefix" => "ss"],function(){
+    Route::get('', function(){ return view('ss.index'); })->name('ss.index');
+    Route::get('{id}/view', function(){ return view('ss.view'); })->name('ss.view');
+    Route::get('new', function(){ return view('ss.form'); })->name('ss.new');
+    Route::post('new','SmartSaleController@store');
+    Route::get('{id}/edit', function(){ return view('ss.form'); })->name('ss.edit');
+    Route::post('{id}/edit','SmartSaleController@update');
 });
