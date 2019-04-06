@@ -370,9 +370,9 @@ class CustomerController extends Controller
 		return \App\Models\Customer::with('Details','Logins','Roles','ParentDetails')->where(function($Q) use($like){
 			$Q->orWhere('code','like',$like)
 				->orWhere('name','like',$like)
-				->orWhere('remarks','like',$like)
 				->orWhereHas('Details',function($Q) use($like){ $Q->where('phone','like',$like); })
 				->orWhereHas('Logins',function($Q) use($like){ $Q->where('email','like',$like); })
+				->orWhereHas('Register',function($Q) use($like){ $Q->where('remarks','like',$like); })
 				;
 		})->get();
 	}
@@ -408,7 +408,7 @@ class CustomerController extends Controller
 		return $ORM->where(function($Q) use($like){
 			$Q->orWhere('code','like',$like)
 				->orWhere('name','like',$like)
-				->orWhere('remarks','like',$like)
+                ->orWhereHas('Register',function($Q) use($like){ $Q->where('remarks','like',$like); })
 				->orWhereHas('Details',function($Q) use($like){ $Q->where('phone','like',$like); })
 				->orWhereHas('Logins',function($Q) use($like){ $Q->where('email','like',$like); })
 				;
