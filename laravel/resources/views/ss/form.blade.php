@@ -41,12 +41,12 @@
                                     <h3>Tables</h3>
                                     <table class="table table-hover tables table-condensed">
                                         <thead><tr><th>Table Name</th><th>TTL - SYNC to Web (UP)</th><th>TTL - SYNC from Web (DOWN)</th><th>Latest Created DateTime</th><th>Latest Updated DateTime</th></tr></thead>
-                                        <tbody>@php $Tables = \App\Http\Controllers\SmartSaleController::$Tables; $Fields = \App\Http\Controllers\SmartSaleController::$Table_Fields; $ttl_up = \App\Http\Controllers\SmartSaleController::$TTL_UP; $ttl_down = \App\Http\Controllers\SmartSaleController::$TTL_DOWN; $DEFAULT = [$ttl_up,$ttl_down,null,null]; @endphp
+                                        <tbody>@php $Tables = \App\Http\Controllers\SmartSaleController::$Tables; $Fields = \App\Http\Controllers\SmartSaleController::$Table_Fields; $TTL = \App\Http\Controllers\SmartSaleController::$Table_TTL; @endphp
                                         @foreach($Tables as $Table)
                                             <tr>
                                                 <th>{{ $Table }}</th>
                                                 @foreach($Fields as $k => $field)
-                                                    @php $name = $Table . '[' . $field . ']'; $value = $Table . '.' . $field; $default = $DEFAULT[$k]; $myTable = $Data ? $Data->Tables->keyBy('table') : []; @endphp
+                                                    @php $name = $Table . '[' . $field . ']'; $value = $Table . '.' . $field; $default = array_get($TTL,$Table.'.'.$k,null); $myTable = $Data ? $Data->Tables->keyBy('table') : []; @endphp
                                                     <td><input type="text" class="form-control" name="{{ $name }}" value="{{ old($value,array_get($myTable,$value,$default)) }}"></td>
                                                 @endforeach
                                             </tr>
