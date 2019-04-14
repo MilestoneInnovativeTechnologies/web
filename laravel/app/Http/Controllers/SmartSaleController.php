@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CustomerRegistration;
 use App\Models\SmartSale;
 use App\Models\SmartSaleTable;
 use Illuminate\Http\Request;
@@ -47,8 +48,12 @@ class SmartSaleController extends Controller
 
     public function config($id){
         $content = SmartSale::find($id)->load('Tables');
+        $CR = CustomerRegistration::where('customer',$content->customer)->where('seqno',$content->seq)->first()->load(['Product','Edition']);
         $name = implode("",['SS',$content->id]);
-        Storage::put($name,json_encode($content));
+        $ss = $content->toArray();
+        $ss['product'] = $CR->Product->name; $ss['edition'] = $CR->Edition->name; $ss['application'] = implode(" ",[$ss['product'],$ss['edition'],'Edition']);
+        $ss['database'] = $CR->database; $ss['computer'] = $CR->computer;
+        Storage::put($name,json_encode($ss));
         return response()->download(storage_path("app/{$name}"),"{$name}.json")->deleteFileAfterSend(true);
     }
 }
