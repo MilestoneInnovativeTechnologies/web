@@ -33,15 +33,15 @@ class SmartSale extends Model
         return ($CodePrefixChar . (str_pad(++$LastNum,$NumberLength,"0",STR_PAD_LEFT)));
     }
 
-    public $actions = ['view','edit'];
+    public $actions = ['view','config','edit'];
     public $conditional_action = [];
     public $role_groups = [['company'],[]];
-    public $group_actions = [0=>[0,1]];
+    public $group_actions = [0=>[0,1,2]];
     public $default_group = 0;
     public $modal_actions = ['add'];
 
-    public $action_title = ['view' => 'View Details', 'edit' => 'Update Details'];
-    public $action_icon = ['view' => 'fullscreen', 'edit' => 'edit'];
+    public $action_title = ['view' => 'View Details', 'edit' => 'Update Details', 'config' => 'Download Config file for synchronizer'];
+    public $action_icon = ['view' => 'fullscreen', 'edit' => 'edit', 'config' => 'cog'];
 
     public function getImageAttribute($image){
         return $image ? Storage::disk(SmartSaleController::$Storage)->url($image) : null;

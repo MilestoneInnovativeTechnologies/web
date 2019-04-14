@@ -43,4 +43,11 @@ class SmartSaleController extends Controller
             $ss->Tables()->save($sst);
         }
     }
+
+    public function config($id){
+        $content = SmartSale::find($id)->load('Tables');
+        $name = implode("",['SS',$content->id]);
+        Storage::put($name,json_encode($content));
+        return response()->download(storage_path("app/{$name}"),"{$name}.json")->deleteFileAfterSend(true);
+    }
 }
