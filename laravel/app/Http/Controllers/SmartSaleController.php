@@ -7,6 +7,7 @@ use App\Models\SmartSale;
 use App\Models\SmartSaleTable;
 use Illuminate\Http\Request;
 use App\Http\Requests\SmartSaleFormRequest;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 
 class SmartSaleController extends Controller
@@ -55,5 +56,11 @@ class SmartSaleController extends Controller
         $ss['database'] = $CR->database; $ss['computer'] = $CR->computer;
         Storage::put($name,json_encode($ss));
         return response()->download(storage_path("app/{$name}"),"{$name}.json")->deleteFileAfterSend(true);
+    }
+
+    public function apiTableInfo(Request $request){
+        return Arr::get(SmartSale::where($request->only(['customer','seq','id','code']))->with('Tables')->first(),'Tables',collect([]))->map(function($item){
+            return Arr::only($item->toArray(),['table','sync_to_ttl','sync_from_ttl','last_created','last_updated']);
+        });
     }
 }
