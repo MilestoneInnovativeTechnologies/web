@@ -63,4 +63,11 @@ class SmartSaleController extends Controller
             return Arr::only($item->toArray(),['id','table','sync_to_ttl','sync_from_ttl','last_created','last_updated']);
         });
     }
+
+    public function apiTableSet($id,Request $request){
+        $SST = SmartSaleTable::find($id);
+        if($request->has('update')) $SST->last_updated = date('Y-m-d H:i:s',strtotime($request->get('update')));
+        if($request->has('create')) $SST->last_created = date('Y-m-d H:i:s',strtotime($request->get('create')));
+        $SST->save(); return $SST;
+    }
 }
