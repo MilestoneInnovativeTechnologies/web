@@ -33,15 +33,15 @@ class SmartSale extends Model
         return ($CodePrefixChar . (str_pad(++$LastNum,$NumberLength,"0",STR_PAD_LEFT)));
     }
 
-    public $actions = ['view','config','edit'];
+    public $actions = ['view','devices','config','edit'];
     public $conditional_action = [];
     public $role_groups = [['company'],[]];
-    public $group_actions = [0=>[0,1,2]];
+    public $group_actions = [0=>[0,1,2,3]];
     public $default_group = 0;
     public $modal_actions = ['add'];
 
-    public $action_title = ['view' => 'View Details', 'edit' => 'Update Details', 'config' => 'Download Config file for synchronizer'];
-    public $action_icon = ['view' => 'fullscreen', 'edit' => 'edit', 'config' => 'cog'];
+    public $action_title = ['view' => 'View Details','devices' => 'Devices', 'edit' => 'Update Details', 'config' => 'Download Config file for synchronizer'];
+    public $action_icon = ['view' => 'fullscreen','devices' => 'phone', 'edit' => 'edit', 'config' => 'cog'];
 
     public function getImageAttribute($image){
         return $image ? Storage::disk(SmartSaleController::$Storage)->url($image) : null;
@@ -58,5 +58,8 @@ class SmartSale extends Model
     }
     public function Tables(){
         return $this->hasMany(SmartSaleTable::class,'smart_sale','id');
+    }
+    public function Devices(){
+        return $this->hasMany(SmartSaleDevice::class,'smart_sale','id');
     }
 }

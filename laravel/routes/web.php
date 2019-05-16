@@ -896,6 +896,9 @@ Route::group(["middleware"	=>	["rolecheck:pd"], "prefix" => "pd"],function(){
 Route::group(["middleware"	=>	["rolecheck:ss"], "prefix" => "ss"],function(){
     Route::get('', function(){ return view('ss.index'); })->name('ss.index');
     Route::get('{id}/view', function(){ return view('ss.view'); })->name('ss.view');
+    Route::get('{id}/devices', function(){ return view('ss.devices'); })->name('ss.devices');
+    Route::post('{id}/devices','SmartSaleController@device')->name('ss.devices');
+    Route::post('{id}/delete','SmartSaleController@delete')->name('ss.delete');
     Route::get('{id}/config','SmartSaleController@config')->name('ss.config');
     Route::get('new', function(){ return view('ss.form'); })->name('ss.new');
     Route::post('new','SmartSaleController@store');

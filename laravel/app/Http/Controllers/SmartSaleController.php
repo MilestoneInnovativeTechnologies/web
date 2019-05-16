@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CustomerRegistration;
 use App\Models\SmartSale;
+use App\Models\SmartSaleDevice;
 use App\Models\SmartSaleTable;
 use Illuminate\Http\Request;
 use App\Http\Requests\SmartSaleFormRequest;
@@ -69,5 +70,18 @@ class SmartSaleController extends Controller
         if($request->has('update')) $SST->last_updated = date('Y-m-d H:i:s',strtotime($request->get('update')));
         if($request->has('create')) $SST->last_created = date('Y-m-d H:i:s',strtotime($request->get('create')));
         $SST->save(); return $SST;
+    }
+
+    public function device(SmartSale $id, Request $request){
+        $args = $request->only(['name','uuid','imei','serial','code1','code2','code3']);
+        $ssd = new SmartSaleDevice();
+        foreach ($args as $key => $val) $ssd->$key = $val;
+        $id->Devices()->save($ssd);
+        return back()->with(['info' => true, 'type' => 'success', 'text' => 'Device Added Successfully']);
+    }
+
+    public function delete(SmartSaleDevice $id){
+        $id->delete();
+        return back()->with(['info' => true, 'type' => 'warning', 'text' => 'Device Removed Successfully']);
     }
 }
