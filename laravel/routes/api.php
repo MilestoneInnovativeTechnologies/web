@@ -376,6 +376,7 @@ Route::group(["prefix" => "pd", "middleware" => "\\App\\Http\\Middleware\\Cors"]
 });
 
 Route::group(["prefix" => "ss", "middleware" => "\\App\\Http\\Middleware\\Cors"],function(){
+    Route::get('device','SmartSaleController@apiSSGetForDevice');
     Route::group(["prefix" => "sync/table"],function(){
         Route::get('info','SmartSaleController@apiTableInfo');
         Route::get('{id}/set','SmartSaleController@apiTableSet');
