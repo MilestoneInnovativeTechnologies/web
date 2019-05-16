@@ -67,7 +67,7 @@ class SmartSaleController extends Controller
     }
 
     public function apiSSGetForDevice(Request $request){
-        $args = $request->only($this->device_args);
+        $args = array_filter($request->only($this->device_args));
         return Arr::get(SmartSaleDevice::where($args)->with('SmartSale')->first(),'SmartSale');
     }
 
