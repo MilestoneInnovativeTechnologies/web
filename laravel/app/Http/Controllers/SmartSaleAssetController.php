@@ -18,7 +18,7 @@ class SmartSaleAssetController extends Controller
         'sales_order' => ['docno,date,user,customer,fycode,fncode,progress','USER','1','10'],
         'sales_order_items' => ['so,product,rate,quantity','USER','1','10'],
         'settings' => ['name,description,value','APP','24',''],
-        'stock_transfer' => ['out,in,verified_by,verified_at','APPUSER','3',''],
+        'stock_transfer' => ['out,in,verified_by,verified_at','USER','3','1080'],
         'store_product_transactions' => ['store,product,direction,quantity,user,nature,date,type,_ref','USER','1','5'],
         'stores' => ['name','APP','12',''],
         'transaction_details' => ['transaction,spt,price,tax,discount,total,_ref','USER','1','5'],
