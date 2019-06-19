@@ -26,7 +26,7 @@ class SmartSaleAssetController extends Controller
         'stock_transfer' => ['out,in,verified_by,verified_at','USER','3','1080'],
         'user_settings' => ['user,setting,value','APPUSER','12',''],
         'user_store_area' => ['user,store,area','APPUSER','3',''],
-        'users' => ['name','APP','6','']
+        'users' => ['name,code,phone,outstanding_normal,outstanding_overdue,outstanding_critical','APP','6','']
     ];
     public function index(){
         return $this->fields;
