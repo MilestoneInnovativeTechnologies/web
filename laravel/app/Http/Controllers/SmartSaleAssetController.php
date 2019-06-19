@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 class SmartSaleAssetController extends Controller
 {
     private $fields = [
+        'setup' => ['name,value','APP','24',''],
         'area_users' => ['area,user','APPUSER','3',''],
         'areas' => ['name','APP','6',''],
         'fiscalyearmaster' => ['name,start_date,end_date','APP','24',''],
