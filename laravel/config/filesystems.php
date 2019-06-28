@@ -76,6 +76,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'debug' => [
+            'driver' => 'local',
+            'root' => base_path('../public_html/debug'),
+            'url' => env('APP_URL').'/debug/',
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_KEY'),
