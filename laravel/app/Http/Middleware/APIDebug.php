@@ -37,7 +37,7 @@ class APIDebug
     private function content($request){
         $lines = []; $lines[] = self::$separator;
         $lines[] = self::colon_separate(['Date Time',date('D d/M/Y - h:i:s A')]);
-        $lines[] = self::colon_separate(['IP',$request->ip()]); $lines[] = self::colon_separate(['UserAgent',$request->userAgent()]);
+        $lines[] = self::colon_separate(['IP',$request->ip()]); $lines[] = self::colon_separate(['UserAgent',$request->server('HTTP_USER_AGENT')]);
         $lines[] = self::colon_separate(['Full URL',$request->fullUrl()]); $lines[] = self::colon_separate(['Method',$request->method()]);
         $lines[] = self::heading('HTTP Request Headers'); $lines[] = self::name_value($request->headers->all());
         $lines[] = self::heading('Query'); $lines[] = self::name_value($request->toArray());
