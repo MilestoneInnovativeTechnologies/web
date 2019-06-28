@@ -9,7 +9,7 @@ class SmartSaleAssetController extends Controller
         'area_users' => ['area,user','APPUSER','3',''],
         'areas' => ['name','APP','6',''],
         'fiscalyearmaster' => ['name,abr,start_date,end_date','APP','24',''],
-        'functiondetails' => ['format,digit_length','APP','18',''],
+        'functiondetails' => ['code,format,digit_length','APP','18',''],
         'pricelist_header' => ['name','APP','24',''],
         'pricelist' => ['pricelist,product,price','APP','24',''],
         'product_transaction_natures' => ['name','APP','24',''],
