@@ -17,7 +17,7 @@ class SmartSaleController extends Controller
     static public $Table_Fields = ['sync_to_ttl','sync_from_ttl','last_created','last_updated'];
     static public $TTL_UP = 60;
     static public $TTL_DOWN = 60;
-    static public $Fields = ['code','customer','seq','name','brief','date_start','date_end','url_web','url_api','url_interact'];
+    static public $Fields = ['code','customer','seq','name','brief','print_head_line1','print_head_line2','footer_text','date_start','date_end','url_web','url_api','url_interact'];
     static public $Storage = 'ssi';
     static public $Table_TTL = ['setup' => [0,0], 'fiscalyearmaster' => [0,0], 'functiondetails' => [600,0], 'functioninvdetails' => [600,0], 'userprofile' => [600,0], 'usermaster' => [600,0], 'userdetails' => [600,0], 'accountdetails' => [600,0], 'analysismaster' => [600,0], 'areamaster' => [300,0], 'areaaccount' => [300,0], 'invstoremaster' => [300,0], 'branchstore' => [300,0], 'branchmaster' => [0,0], 'companymaster' => [0,0], 'taxruleheader' => [0,0], 'taxruledetails' => [0,0], 'itemgroup' => [600,0], 'itemgroupmaster' => [600,0], 'itemmaster' => [600,0], 'itemunit' => [300,0], 'pricelist' => [300,0], 'pricelistheader' => [600,0], 'hdata' => [15,15], 'idata' => [15,15], 'pihdata' => [15,15], 'piidata' => [15,15], 'billdata' => [15,15], 'chequedetails' => [15,15], 'ddata' => [15,15]];
     private $device_args = ['name','uuid','imei','serial','code1','code2','code3'];
