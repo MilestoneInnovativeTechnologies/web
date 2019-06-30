@@ -27,7 +27,7 @@ class SmartSaleAssetController extends Controller
         'user_settings' => ['user,setting,value','APPUSER','12',''],
         'user_store_area' => ['user,store,area','APPUSER','3',''],
         'users' => ['name,code,phone,outstanding_normal,outstanding_overdue,outstanding_critical','APP','6',''],
-        'receipts' => ['docno,mode,customer,date,user,amount,bank,cheque,cheque_date,_ref','USER','3','10'],
+        'receipts' => ['docno,mode,customer,date,user,amount,bank,cheque,cheque_date,_ref,status','USER','3','10'],
         'fn_reserves' => ['fncode,user,store,start_num,end_num,quantity,current,progress,status','USER','2','120'],
     ];
     public function index(){
