@@ -29,7 +29,7 @@ class SmartSaleAssetController extends Controller
         'users' => ['name,code,phone,outstanding_normal,outstanding_overdue,outstanding_critical','APP','6',''],
         'receipts' => ['docno,fycode,fncode,mode,customer,date,user,amount,bank,cheque,cheque_date,_ref,status','USER','3','10'],
         'fn_reserves' => ['fncode,user,store,start_num,end_num,quantity,current,progress,status','USER','2','120'],
-        'sales_order_sales' => ['so,product,so_quantity,sales,sale_quantity','USER','1','10'],
+        'sales_order_sales' => ['so,product,so_quantity,transaction,sale_quantity','USER','1','10'],
     ];
     public function index(){
         return $this->fields;
