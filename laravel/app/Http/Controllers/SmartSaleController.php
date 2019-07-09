@@ -14,12 +14,11 @@ use Illuminate\Support\Facades\Storage;
 class SmartSaleController extends Controller
 {
     static public $Tables = ['setup','fiscalyearmaster','functiondetails','functioninvdetails','userprofile','usermaster','userdetails','accountdetails','analysismaster','areamaster','areaaccount','invstoremaster','branchstore','branchmaster','companymaster','taxruleheader','taxruledetails','itemgroup','itemgroupmaster','itemmaster','itemunit','pricelistheader','pricelist','pihdata','piidata','hdata','idata','billdata','chequedetails','ddata'];
-    static public $Table_Fields = ['sync_to_ttl','sync_from_ttl','last_created','last_updated'];
-    static public $TTL_UP = 60;
-    static public $TTL_DOWN = 60;
+    static public $Table_Fields = ['type','delay','sync','record'];
+    static public $DELAY = 60;
     static public $Fields = ['code','customer','seq','name','brief','print_head_line1','print_head_line2','footer_text','date_start','date_end','url_web','url_api','url_interact'];
     static public $Storage = 'ssi';
-    static public $Table_TTL = ['setup' => [0,0], 'fiscalyearmaster' => [0,0], 'functiondetails' => [600,0], 'functioninvdetails' => [600,0], 'userprofile' => [600,0], 'usermaster' => [600,0], 'userdetails' => [600,0], 'accountdetails' => [600,0], 'analysismaster' => [600,0], 'areamaster' => [300,0], 'areaaccount' => [300,0], 'invstoremaster' => [300,0], 'branchstore' => [300,0], 'branchmaster' => [0,0], 'companymaster' => [0,0], 'taxruleheader' => [0,0], 'taxruledetails' => [0,0], 'itemgroup' => [600,0], 'itemgroupmaster' => [600,0], 'itemmaster' => [600,0], 'itemunit' => [300,0], 'pricelistheader' => [600,0], 'pricelist' => [300,0], 'pihdata' => [15,15], 'piidata' => [15,15], 'hdata' => [15,15], 'idata' => [15,15], 'billdata' => [15,15], 'chequedetails' => [15,15], 'ddata' => [15,15]];
+    static public $Table_DELAY = ['setup' => ['up',0], 'fiscalyearmaster' => ['up',86400], 'functiondetails' => ['up',0], 'functioninvdetails' => ['up',0], 'userprofile' => ['up',64800], 'usermaster' => ['up',64800], 'userdetails' => ['up',64800], 'accountdetails' => ['up',21600], 'analysismaster' => ['up',0], 'areamaster' => ['up',64800], 'areaaccount' => ['up',64800], 'invstoremaster' => ['up',86400], 'branchstore' => ['up',1296000], 'branchmaster' => ['up',2592000], 'companymaster' => ['up',2592000], 'taxruleheader' => ['up',1296000], 'taxruledetails' => ['up',518400], 'itemgroup' => ['up',518400], 'itemgroupmaster' => ['up',259200], 'itemmaster' => ['up',86400], 'itemunit' => ['up',259200], 'pricelistheader' => ['up',259200], 'pricelist' => ['up',86400], 'pihdata' => ['both',15], 'piidata' => ['both',15], 'hdata' => ['both',15], 'idata' => ['both',15], 'billdata' => ['both',15], 'chequedetails' => ['both',15], 'ddata' => ['both',15]];
     private $device_args = ['name','uuid','imei','serial','code1','code2','code3'];
 
     public function store(SmartSaleFormRequest $request){
@@ -73,8 +72,8 @@ class SmartSaleController extends Controller
 
     public function apiTableSet($id,Request $request){
         $SST = SmartSaleTable::find($id);
-        if($request->has('update')) $SST->last_updated = date('Y-m-d H:i:s',strtotime($request->get('update')));
-        if($request->has('create')) $SST->last_created = date('Y-m-d H:i:s',strtotime($request->get('create')));
+        if($request->has('record')) $SST->record = date('Y-m-d H:i:s',strtotime($request->get('record')));
+        if($request->has('sync')) $SST->sync = date('Y-m-d H:i:s',strtotime($request->get('sync')));
         $SST->save(); return $SST;
     }
 

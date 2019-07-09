@@ -4,7 +4,7 @@
 @section("content")
     <div class="content">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-10 col-md-offset-1">
                 <form method="post" enctype="multipart/form-data" class="">{{ csrf_field() }}
                     <div class="panel panel-default">
                         <div class="panel-heading"><strong>Add New Smart Sale Client</strong>{!! PanelHeadBackButton((url()->current() == url()->previous())?Route('ss.index'):url()->previous()) !!}</div>
@@ -45,15 +45,15 @@
                                 <div class="col-md-12">
                                     <h3>Tables</h3>
                                     <table class="table table-hover tables table-condensed">
-                                        <thead><tr><th>Table Name</th><th>TTL - SYNC to Web (UP)</th><th>TTL - SYNC from Web (DOWN)</th><th>Latest Created DateTime</th><th>Latest Updated DateTime</th></tr></thead>
-                                        <tbody>@php $Tables = \App\Http\Controllers\SmartSaleController::$Tables; $Fields = \App\Http\Controllers\SmartSaleController::$Table_Fields; $TTL = \App\Http\Controllers\SmartSaleController::$Table_TTL; @endphp
+                                        <thead><tr><th>Table Name</th><th>Type</th><th>Delay</th><th>Last Sync Date Time</th><th>Last record create datetime</th></tr></thead>
+                                        <tbody>@php $Tables = \App\Http\Controllers\SmartSaleController::$Tables; $Fields = \App\Http\Controllers\SmartSaleController::$Table_Fields; $DELAY = \App\Http\Controllers\SmartSaleController::$Table_DELAY; @endphp
                                         @foreach($Tables as $Table)
                                             <tr>
                                                 <th>{{ $Table }}</th>
-                                                @foreach($Fields as $k => $field)
-                                                    @php $name = $Table . '[' . $field . ']'; $value = $Table . '.' . $field; $default = array_get($TTL,$Table.'.'.$k,null); $myTable = $Data ? $Data->Tables->keyBy('table') : []; @endphp
-                                                    <td><input type="text" class="form-control" name="{{ $name }}" value="{{ old($value,array_get($myTable,$value,$default)) }}"></td>
-                                                @endforeach
+                                                <td>{!! formGroup(2,$Table . '[type]','select','',old($Table . '[type]',array_get($Data,$Table . '[type]',$DELAY[$Table][0])),['selectOptions' => ['up','down','both'],'labelWidth'=>1]) !!}</td>
+                                                <td>{!! formGroup(2,$Table . '[delay]','text','',old($Table . '[delay]',array_get($Data,$Table . '[delay]',$DELAY[$Table][1])),['labelWidth'=>1]) !!}</td>
+                                                <td>{!! formGroup(2,$Table . '[sync]','text','',old($Table . '[sync]',array_get($Data,$Table . '[sync]')),['labelWidth'=>1]) !!}</td>
+                                                <td>{!! formGroup(2,$Table . '[record]','text','',old($Table . '[record]',array_get($Data,$Table . '[record]')),['labelWidth'=>1]) !!}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>
