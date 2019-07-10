@@ -46,14 +46,19 @@
                                     <h3>Tables</h3>
                                     <table class="table table-hover tables table-condensed">
                                         <thead><tr><th>Table Name</th><th>Type</th><th>Delay</th><th>Last Sync Date Time</th><th>Last record create datetime</th></tr></thead>
-                                        <tbody>@php $Tables = \App\Http\Controllers\SmartSaleController::$Tables; $Fields = \App\Http\Controllers\SmartSaleController::$Table_Fields; $DELAY = \App\Http\Controllers\SmartSaleController::$Table_DELAY; @endphp
+                                        <tbody>@php
+                                            $Tables = \App\Http\Controllers\SmartSaleController::$Tables;
+                                            $Fields = \App\Http\Controllers\SmartSaleController::$Table_Fields;
+                                            $DELAY = \App\Http\Controllers\SmartSaleController::$Table_DELAY;
+                                            $DBTables = $Data ? $Data->Tables->keyBy('table')->toArray() : [];
+                                        @endphp
                                         @foreach($Tables as $Table)
                                             <tr>
                                                 <th>{{ $Table }}</th>
-                                                <td>{!! formGroup(2,$Table . '[type]','select','',old($Table . '[type]',array_get($Data,'type',$DELAY[$Table][0])),['selectOptions' => ['up','down','both'],'labelWidth'=>1]) !!}</td>
-                                                <td>{!! formGroup(2,$Table . '[delay]','text','',old($Table . '[delay]',array_get($Data,'delay',$DELAY[$Table][1])),['labelWidth'=>1]) !!}</td>
-                                                <td>{!! formGroup(2,$Table . '[sync]','text','',old($Table . '[sync]',array_get($Data,'sync')),['labelWidth'=>1]) !!}</td>
-                                                <td>{!! formGroup(2,$Table . '[record]','text','',old($Table . '[record]',array_get($Data,'record')),['labelWidth'=>1]) !!}</td>
+                                                <td>{!! formGroup(2,$Table . '[type]','select','',old($Table . '[type]',array_get($DBTables,$Table.'.type',$DELAY[$Table][0])),['selectOptions' => ['up','down','both'],'labelWidth'=>1]) !!}</td>
+                                                <td>{!! formGroup(2,$Table . '[delay]','text','',old($Table . '[delay]',array_get($DBTables,$Table.'.delay',$DELAY[$Table][1])),['labelWidth'=>1]) !!}</td>
+                                                <td>{!! formGroup(2,$Table . '[sync]','text','',old($Table . '[sync]',array_get($DBTables,$Table.'.sync')),['labelWidth'=>1]) !!}</td>
+                                                <td>{!! formGroup(2,$Table . '[record]','text','',old($Table . '[record]',array_get($DBTables,$Table.'.record')),['labelWidth'=>1]) !!}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>
