@@ -50,10 +50,10 @@
                                         @foreach($Tables as $Table)
                                             <tr>
                                                 <th>{{ $Table }}</th>
-                                                <td>{!! formGroup(2,$Table . '[type]','select','',old($Table . '[type]',array_get($Data,$Table . '[type]',$DELAY[$Table][0])),['selectOptions' => ['up','down','both'],'labelWidth'=>1]) !!}</td>
-                                                <td>{!! formGroup(2,$Table . '[delay]','text','',old($Table . '[delay]',array_get($Data,$Table . '[delay]',$DELAY[$Table][1])),['labelWidth'=>1]) !!}</td>
-                                                <td>{!! formGroup(2,$Table . '[sync]','text','',old($Table . '[sync]',array_get($Data,$Table . '[sync]')),['labelWidth'=>1]) !!}</td>
-                                                <td>{!! formGroup(2,$Table . '[record]','text','',old($Table . '[record]',array_get($Data,$Table . '[record]')),['labelWidth'=>1]) !!}</td>
+                                                <td>{!! formGroup(2,$Table . '[type]','select','',old($Table . '[type]',array_get($Data,'type',$DELAY[$Table][0])),['selectOptions' => ['up','down','both'],'labelWidth'=>1]) !!}</td>
+                                                <td>{!! formGroup(2,$Table . '[delay]','text','',old($Table . '[delay]',array_get($Data,'delay',$DELAY[$Table][1])),['labelWidth'=>1]) !!}</td>
+                                                <td>{!! formGroup(2,$Table . '[sync]','text','',old($Table . '[sync]',array_get($Data,'sync')),['labelWidth'=>1]) !!}</td>
+                                                <td>{!! formGroup(2,$Table . '[record]','text','',old($Table . '[record]',array_get($Data,'record')),['labelWidth'=>1]) !!}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>
