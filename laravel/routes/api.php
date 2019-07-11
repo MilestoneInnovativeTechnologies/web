@@ -375,13 +375,12 @@ Route::group(["prefix" => "pd", "middleware" => "\\App\\Http\\Middleware\\Cors"]
     Route::get('interact/update/{code}','PDController@intupd');
 });
 
-Route::group(["prefix" => "ss", "middleware" => ["\\App\\Http\\Middleware\\Cors","\\App\\Http\\Middleware\\APIDebug"]],function(){
+//,"\\App\\Http\\Middleware\\APIDebug"
+Route::group(["prefix" => "ss", "middleware" => ["\\App\\Http\\Middleware\\Cors"]],function(){
     Route::get('device','SmartSaleController@apiSSGetForDevice');
     Route::get('setup','SmartSaleAssetController@index');
     Route::group(["prefix" => "sync/table"],function(){
         Route::get('info','SmartSaleController@apiTableInfo');
         Route::get('{id}/set','SmartSaleController@apiTableSet');
     });
-    Route::get('interact/{code}','PDController@interact');
-    Route::get('interact/update/{code}','PDController@intupd');
 });
