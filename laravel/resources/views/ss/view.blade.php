@@ -16,10 +16,10 @@
                         </tbody></table></div>
                 <hr>
                 <h4>Tables</h4>
-                <div class="table-responsive"><table class="table table-striped"><thead><tr><th>No</th><th>Table</th><th>SYNC to web (UP) - TTL</th><th>SYNC from web (DOWN) - TTL</th><th>Last Created</th><th>Last Updated</th></tr></thead><tbody>
+                <div class="table-responsive"><table class="table table-striped"><thead><tr><th>No</th><th>Table</th><th>Type</th><th>Delay</th><th>Last Synced</th><th>Latest Record Date</th></tr></thead><tbody>
                         @foreach($Data->Tables as $Table)
                             <tr><td>{{ $loop->iteration }}</td><td>{{ $Table->table }}</td>
-                            @foreach(['sync_to_ttl','sync_from_ttl','last_created','last_updated'] as $Field)
+                            @foreach(['type','delay','sync','record'] as $Field)
                                 <td>{{ $Table->$Field }}</td>
                             @endforeach
                             </tr>
