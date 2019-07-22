@@ -26,7 +26,7 @@ class SmartSaleAssetController extends Controller
         'stock_transfer' => ['out,in,verified_by,verified_at','USER','3','1'],
         'user_settings' => ['user,setting,value','APPUSER','12',''],
         'user_store_area' => ['user,store,area','APPUSER','3',''],
-        'users' => ['name,code,phone,address,outstanding_normal,outstanding_overdue,outstanding_critical','USER','1','1'],
+        'users' => ['name,code,email,phone,address,outstanding_normal,outstanding_overdue,outstanding_critical','USER','1','1'],
         'receipts' => ['docno,fycode,fncode,mode,customer,date,user,amount,bank,cheque,cheque_date,_ref,status','USER','3','1'],
         'fn_reserves' => ['fncode,user,store,start_num,end_num,quantity,current,progress,status','USER','2','1'],
         'sales_order_sales' => ['so,product,quantity,transaction,sale_quantity','USER','1','1'],
