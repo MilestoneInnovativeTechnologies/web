@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Storage;
 
 class SmartSaleController extends Controller
 {
-    static public $Tables = ['setup','fiscalyearmaster','functiondetails','functioninvdetails','function','userprofile','usermaster','userdetails','accountdetails','analysismaster','areamaster','areaaccount','invstoremaster','branchstore','branchmaster','companymaster','taxruleheader','taxruledetails','itemgroup','itemgroupmaster','itemmaster','itemunit','pricelistheader','pricelist','pihdata','piidata','hdata','idata','billdata','chequedetails','ddata','importsales'];
+    static public $Tables = ['setup','fiscalyearmaster','functiondetails','functioninvdetails','function','userprofile','usermaster','userdetails','accountdetails','analysismaster','areamaster','areaaccount','invstoremaster','branchstore','branchmaster','companymaster','taxruleheader','taxruledetails','itemgroup','itemgroupmaster','itemmaster','itemunit','pricelistheader','pricelist','pihdata','piidata','hdata','idata','billdata','chequedetails','ddata','importreceipts'];
     static public $Table_Fields = ['type','delay','sync','record'];
     static public $DELAY = 60;
     static public $Fields = ['code','customer','seq','name','brief','print_head_line1','print_head_line2','footer_text','date_start','date_end','url_web','url_api','url_interact'];
