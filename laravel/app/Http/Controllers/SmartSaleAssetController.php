@@ -14,7 +14,7 @@ class SmartSaleAssetController extends Controller
         'pricelist' => ['pricelist,product,price','APP','24',''],
         'product_transaction_natures' => ['name','APP','24',''],
         'product_transaction_types' => ['name','APP','24',''],
-        'products' => ['name,uom,narration,group1,group2,group3,group4','APP','12',''],
+        'products' => ['name,uom,narration,taxfactor,subtaxfactor,taxfactor02,subtaxfactor02','APP','12',''],
         'sales_order' => ['docno,date,user,customer,fycode,fncode,payment_type,progress,_ref','USER','1','1'],
         'sales_order_items' => ['so,product,rate,quantity,tax,discount,total,_ref','USER','1','1'],
         'settings' => ['name,description,value','APP','24',''],
