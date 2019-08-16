@@ -2,7 +2,7 @@
 @include('BladeFunctions')
 @section("content")
 @php
-$Data = \App\Models\Vacancy::withCount('Applicants')->get();
+$Data = \App\Models\Vacancy::withCount('Applicants')->latest()->get();
 //dd($Data->toArray())
 @endphp
     <div class="content">
