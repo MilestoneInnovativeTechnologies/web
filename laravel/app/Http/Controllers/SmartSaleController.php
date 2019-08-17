@@ -14,11 +14,20 @@ use Illuminate\Support\Facades\Storage;
 class SmartSaleController extends Controller
 {
     static public $Tables = ['setup','fiscalyearmaster','functiondetails','functioninvdetails','function','userprofile','usermaster','userdetails','accountdetails','analysismaster','billsummary','areamaster','areaaccount','invstoremaster','branchstore','branchmaster','companymaster','companydetails','itemmaster','itemunit','pricelistheader','pricelist','taxlist','pihdata','piidata','hdata','idata','ddata','importtransactions'];
-    static public $Table_Fields = ['type','delay','sync','record'];
+    static public $Table_Fields = ['type','delay','condition','sync','record'];
     static public $DELAY = 60;
     static public $Fields = ['code','customer','seq','name','brief','print_head_line1','print_head_line2','footer_text','date_start','date_end','url_web','url_api','url_interact'];
     static public $Storage = 'ssi';
     static public $Table_DELAY = ['setup' => ['up',0], 'fiscalyearmaster' => ['up',86400], 'functiondetails' => ['up',0], 'functioninvdetails' => ['up',0], 'function' => ['up',259200], 'userprofile' => ['up',64800], 'usermaster' => ['up',64800], 'userdetails' => ['up',64800], 'accountdetails' => ['down',300], 'analysismaster' => ['up',0], 'billsummary' => ['up',300], 'areamaster' => ['up',64800], 'areaaccount' => ['up',64800], 'invstoremaster' => ['up',86400], 'branchstore' => ['up',1296000], 'branchmaster' => ['up',2592000], 'companymaster' => ['up',2592000], 'companydetails' => ['up',2592000], 'itemmaster' => ['up',86400], 'itemunit' => ['up',259200], 'pricelistheader' => ['up',259200], 'pricelist' => ['up',86400], 'taxlist' => ['up',86400], 'pihdata' => ['both',15], 'piidata' => ['both',15], 'hdata' => ['both',15], 'idata' => ['both',15], 'ddata' => ['up',15], 'importtransactions' => ['down',15]];
+    static public $Table_CONDITION = [
+        'functiondetails' => '["BR1","BR2","CR1","MT1","MT2","MT3","MT4","SL1","SL2","SL3","SL4","SL5","SO1","SO2","SR1","SR2","SR3"]',
+        'functioninvdetails' => '["BR1","BR2","CR1","MT1","MT2","MT3","MT4","SL1","SL2","SL3","SL4","SL5","SO1","SO2","SR1","SR2","SR3"]',
+        'function' => '["BR1","BR2","CR1","MT1","MT2","MT3","MT4","SL1","SL2","SL3","SL4","SL5","SO1","SO2","SR1","SR2","SR3"]',
+        'analysismaster' => '{"CATCODE": "SE","ISGROUP": "N"}',
+        'hdata' => '{"FNCODE":["BR1","BR2","CR1","MT1","MT2","MT3","MT4","SL1","SL2","SL3","SL4","SL5","SO1","SO2","SR1","SR2","SR3"]}',
+        'idata' => '{"FNCODE":["BR1","BR2","CR1","MT1","MT2","MT3","MT4","SL1","SL2","SL3","SL4","SL5","SO1","SO2","SR1","SR2","SR3"]}',
+        'ddata' => '[{"FNCODE":["BR1","BR2","CR1"]},{"TYPE":"System","operand":"<>"}]',
+        ];
     private $device_args = ['name','uuid','imei','serial','code1','code2','code3'];
 
     public function store(SmartSaleFormRequest $request){
@@ -61,7 +70,7 @@ class SmartSaleController extends Controller
 
     public function apiTableInfo(Request $request){
         return Arr::get(SmartSale::where($request->only(['customer','seq','id','code']))->with('Tables')->first(),'Tables',collect([]))->map(function($item){
-            return Arr::only($item->toArray(),['id','table','type','delay','sync','record']);
+            return Arr::except($item->toArray(),['smart_sale','created_at','updated_at']);
         });
     }
 

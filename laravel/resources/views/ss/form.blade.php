@@ -45,11 +45,12 @@
                                 <div class="col-md-12">
                                     <h3>Tables</h3>
                                     <table class="table table-hover tables table-condensed">
-                                        <thead><tr><th>Table Name</th><th>Type</th><th>Delay</th><th>Last Sync Date Time</th><th>Last record create datetime</th></tr></thead>
+                                        <thead><tr><th>Table Name</th><th>Type</th><th>Delay</th><th>Condition</th><th>Last Sync Date Time</th><th>Last record create datetime</th></tr></thead>
                                         <tbody>@php
                                             $Tables = \App\Http\Controllers\SmartSaleController::$Tables;
                                             $Fields = \App\Http\Controllers\SmartSaleController::$Table_Fields;
                                             $DELAY = \App\Http\Controllers\SmartSaleController::$Table_DELAY;
+                                            $CONDITION = \App\Http\Controllers\SmartSaleController::$Table_CONDITION;
                                             $DBTables = $Data ? $Data->Tables->keyBy('table')->toArray() : [];
                                         @endphp
                                         @foreach($Tables as $Table)
@@ -57,6 +58,7 @@
                                                 <th>{{ $Table }}</th>
                                                 <td>{!! formGroup(2,$Table . '[type]','select','',old($Table . '[type]',array_get($DBTables,$Table.'.type',$DELAY[$Table][0])),['selectOptions' => ['up','down','both'],'labelWidth'=>1]) !!}</td>
                                                 <td>{!! formGroup(2,$Table . '[delay]','text','',old($Table . '[delay]',array_get($DBTables,$Table.'.delay',$DELAY[$Table][1])),['labelWidth'=>1]) !!}</td>
+                                                <td>{!! formGroup(2,$Table . '[condition]','textarea','',old($Table . '[condition]',array_get($DBTables,$Table.'.condition',array_get($CONDITION,$Table,''))),['labelWidth'=>1]) !!}</td>
                                                 <td>{!! formGroup(2,$Table . '[sync]','text','',old($Table . '[sync]',array_get($DBTables,$Table.'.sync')),['labelWidth'=>1]) !!}</td>
                                                 <td>{!! formGroup(2,$Table . '[record]','text','',old($Table . '[record]',array_get($DBTables,$Table.'.record')),['labelWidth'=>1]) !!}</td>
                                             </tr>
@@ -97,4 +99,9 @@
             $(`tr#${code}`).remove();
         }
     </script>
+@endpush
+@push('css')
+    <style>
+        .col-xs-11 { padding-left: 0px !important; padding-right: 0px !important; }
+    </style>
 @endpush
