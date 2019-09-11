@@ -18,7 +18,7 @@ class SmartSaleAssetController extends Controller
         'fiscalyearmaster' => ['code,name,abr,start_date,end_date','APP','download'],
         'functiondetails' => ['code,format,digit_length','APP','download'],
         'product_group_master' => ['name,code,list','APP','download'],
-        'products' => ['name,uom,narration,taxfactor,subtaxfactor,taxfactor02,subtaxfactor02','APP','download'],
+        'products' => ['name,uom,narration,taxcode01,taxfactor01,subtaxfactor01,taxcode02,taxfactor02,subtaxfactor02','APP','download'],
         'product_groups' => ['product,g01,g02,g03,g04,g05,g06,g07,g08,g09,g10','APP','download'],
         'pricelist_header' => ['name','APP','download'],
         'pricelist' => ['pricelist,product,price','APP','download'],
