@@ -9,7 +9,7 @@ class SmartSaleAssetController extends Controller
         'menu' => ['fncode,category,category_display,order,icon,home_display,drawer_display,component,props,status','APP','download'],
         'areas' => ['name','APP','download'],
         'stores' => ['name,cocode,co_abr,brcode,br_abr,currency','APP','download'],
-        'users' => ['name,code,email,phone,address,outstanding,overdue','APP','both'],
+        'users' => ['name,code,email,login,phone,address,outstanding,overdue','APP','both'],
         'area_users' => ['area,user','APPUSER','both'],
         'user_store_area' => ['user,store,area','APPUSER','download'],
         'settings' => ['name,description,value','APP','download'],
