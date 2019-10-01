@@ -24,13 +24,13 @@ class SmartSaleAssetController extends Controller
         'sales_order' => ['docno,date,user,customer,fycode,fncode,payment_type,progress,_ref','USER','both'],
         'sales_order_items' => ['so,product,rate,quantity,taxrule,tax,discount01,discount02,total,_ref','USER','both'],
         'transactions' => ['user,docno,date,customer,store,fycode,fncode,payment_type,_ref','USER','both'],
-        'transaction_details' => ['transaction,product,quantity,direction,store,taxrule,tax,discount01,discount02,soi,total','USER','both'],
+        'transaction_details' => ['transaction,product,quantity,direction,store,taxrule,tax,discount01,discount02,soi','USER','both'],
         'receipts' => ['docno,fycode,fncode,mode,customer,date,user,amount,bank,cheque,cheque_date,_ref,status','USER','both'],
         'stock_transfer' => ['out,in,verified_by,verified_at','USER','both'],
         'fn_reserves' => ['fncode,user,store,start_num,end_num,quantity,current,progress,status','USER','both'],
     ];
     private $menu = [
-        //'NAME' => ['ComponentName','props<coma separated>','FNCodes<coma separated>']
+        //'NAME' => ['ComponentName','props<coma separated>','FNCodes<coma separated>','status']
         'PURCHASE' => ['','fncode,store,fycode','PUR1,PUR2,PUR3,PUR4,PUR5','Inactive'],
         'PURCHASE RETURN' => ['','fncode,store,fycode','PR1,PR2,PR3','Inactive'],
         'PURCHASE ORDER' => ['','fncode,store,fycode','PO1','Inactive'],
