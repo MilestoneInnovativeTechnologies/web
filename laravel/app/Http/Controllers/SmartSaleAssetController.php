@@ -6,7 +6,7 @@ class SmartSaleAssetController extends Controller
 {
     private $fields = [
         'setup' => ['name,value','APP','download'],
-        'menu' => ['fncode,category,category_display,order,icon,name_home,name_drawer,status','APP','download'],
+        'menu' => ['fncode,category,category_display,order,icon,home_display,drawer_display,component,props,status','APP','download'],
         'areas' => ['name','APP','download'],
         'stores' => ['name,cocode,co_abr,brcode,br_abr,currency','APP','download'],
         'users' => ['name,code,email,phone,address,outstanding,overdue','APP','both'],
@@ -36,11 +36,11 @@ class SmartSaleAssetController extends Controller
         'PURCHASE ORDER' => ['','fncode,store,fycode','PO1','Inactive'],
         'PAYMENT' => ['','fncode,store,fycode','CP1,BP1,BP2','Inactive'],
         'SALES' => ['SalesIndex','fncode,store,fycode','SL1,SL2,SL3,SL4,SL5','Active'],
-        'SALES RETURN' => ['SalesReturnIndex','fncode,store,fycode','SR1,SR2','Active'],
+        'SALES RETURN' => ['SalesReturnIndex','fncode,store,fycode','SR1,SR2,SR3','Active'],
         'SALES ORDER' => ['SalesOrderIndex','fncode,store,fycode','SO1,SO2','Active'],
         'RECEIPT' => ['CashReceiptIndex','fncode,store,fycode','CR1,BR1,BR2','Active'],
         'MATERIAL TRANSFER' => ['MaterialTransferIndex','fncode,store,fycode','MT1,MT2','Active'],
-
+        'BRANCH TRANSFER' => ['','fncode,store,fycode','MT3,MT4','Inactive'],
     ];
     public function index(){
         return ['db' => $this->fields, 'menu' => $this->menu];
