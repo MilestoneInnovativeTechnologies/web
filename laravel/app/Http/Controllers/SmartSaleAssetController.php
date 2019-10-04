@@ -7,7 +7,7 @@ class SmartSaleAssetController extends Controller
     private $fields = [
         //'NAME' => ['Fields<coma separated>','TableType','SyncDirection','IndexFields<coma separated>']
         'setup' => ['name,value','APP','download','name'],
-        'menu' => ['fncode,category,category_display,order,icon,home_display,drawer_display,component,props,status','APP','download','fncode,status'],
+        'menu' => ['fncode,category,category_display,name,order,icon,home_display,drawer_display,component,props,status','APP','download','fncode,status'],
         'areas' => ['name','APP','download'],
         'stores' => ['name,code,cocode,co_abr,brcode,br_abr,currency','APP','download','code,cocode,brcode'],
         'users' => ['name,code,email,login,phone,address,outstanding,overdue','APP','both','code'],
