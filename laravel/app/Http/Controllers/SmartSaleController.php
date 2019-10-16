@@ -20,6 +20,8 @@ class SmartSaleController extends Controller
     static public $Storage = 'ssi';
     static public $Table_DELAY = ['setup' => ['up',0], 'fiscalyearmaster' => ['up',86400], 'functiondetails' => ['up',0], 'functioninvdetails' => ['up',0], 'function' => ['up',259200], 'userprofile' => ['up',64800], 'usermaster' => ['up',64800], 'userdetails' => ['up',64800], 'accountdetails' => ['up',300], 'analysismaster' => ['up',0], 'billsummary' => ['up',300], 'areamaster' => ['up',64800], 'areaaccount' => ['up',64800], 'invstoremaster' => ['up',86400], 'branchstore' => ['up',1296000], 'branchmaster' => ['up',2592000], 'companymaster' => ['up',2592000], 'companydetails' => ['up',2592000], 'itemgroupmaster' => ['up',172800], 'itemmaster' => ['up',86400], 'itemunit' => ['up',259200], 'pricelistheader' => ['up',259200], 'pricelist' => ['up',86400], 'taxlist' => ['up',86400], 'pihdata' => ['both',15], 'piidata' => ['both',15], 'hdata' => ['both',15], 'idata' => ['both',15], 'ddata' => ['up',15], 'importtransactions' => ['down',15], 'sscustomers' => ['down',60]];
     static public $Table_CONDITION = [
+        'usermaster' => '{ "ISGROUP":"Y" }',
+        'accountdetails' => '{ "CODE":"1202%","operand":"LIKE" }',
         'functiondetails' => '["BR1","BR2","CR1","MT1","MT2","MT3","MT4","SL1","SL2","SL3","SL4","SL5","SO1","SO2","SR1","SR2","SR3"]',
         'functioninvdetails' => '["BR1","BR2","CR1","MT1","MT2","MT3","MT4","SL1","SL2","SL3","SL4","SL5","SO1","SO2","SR1","SR2","SR3"]',
         'function' => '["BR1","BR2","CR1","MT1","MT2","MT3","MT4","SL1","SL2","SL3","SL4","SL5","SO1","SO2","SR1","SR2","SR3"]',
