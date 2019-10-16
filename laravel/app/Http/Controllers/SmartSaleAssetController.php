@@ -26,7 +26,7 @@ class SmartSaleAssetController extends Controller
         'sales_order_items' => ['so,product,rate,quantity,store,fycode,fncode,taxrule,tax,discount01,discount02,total,_ref','USER','both','so,product'],
         'transactions' => ['user,docno,date,customer,store,fycode,fncode,payment_type,_ref,status','USER','both','user,docno,date,customer,store,fycode,fncode,_ref,status'],
         'transaction_details' => ['transaction,store,direction,product,quantity,rate,taxrule,tax,discount01,discount02,soi','USER','both','transaction,product,direction,store,soi'],
-        'receipts' => ['docno,store,fycode,fncode,mode,customer,date,user,amount,bank,cheque,cheque_date,_ref,status','USER','both','docno,store,fycode,fncode,customer,date,user,_ref,status'],
+        'receipts' => ['docno,store,fycode,fncode,mode,customer,date,user,amount,bank,cheque,cheque_date,_ref,source,status','USER','both','docno,store,fycode,fncode,customer,date,user,_ref,status'],
         'stock_transfer' => ['out,in,verified_by,verified_at','USER','both','in,out'],
         'fn_reserves' => ['fncode,user,store,start_num,end_num,quantity,current,progress,status','USER','both','fncode,user,store,progress,status'],
     ];
@@ -37,10 +37,10 @@ class SmartSaleAssetController extends Controller
         'PURCHASE ORDER' => ['','fncode,store,fycode','PO1','Inactive'],
         'PAYMENT' => ['','fncode,store,fycode','CP1,BP1,BP2','Inactive'],
         'SALES' => ['SalesIndex','fncode,store,fycode','SL1,SL2,SL3,SL4,SL5','Active'],
-        'SALES RETURN' => ['SalesReturnIndex','fncode,store,fycode','SR1,SR2,SR3','Active'],
+        'SALES RETURN' => ['SalesReturnIndex','fncode,store,fycode','SR1,SR2,SR3','Inactive'],
         'SALES ORDER' => ['SalesOrderIndex','fncode,store,fycode','SO1,SO2','Active'],
         'RECEIPT' => ['ReceiptIndex','fncode,store,fycode','CR1,BR1,BR2','Active'],
-        'MATERIAL TRANSFER' => ['MaterialTransferIndex','fncode,store,fycode','MT1,MT2','Active'],
+        'MATERIAL TRANSFER' => ['MaterialTransferIndex','fncode,store,fycode','MT1,MT2','Inactive'],
         'BRANCH TRANSFER' => ['','fncode,store,fycode','MT3,MT4','Inactive'],
     ];
     public function index(){
