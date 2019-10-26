@@ -90,7 +90,8 @@ class SmartSaleController extends Controller
     }
 
     public function device(SmartSale $id, Request $request){
-        $args = $request->only($this->device_args);
+        $args = array_filter($request->only($this->device_args));
+        SmartSaleDevice::where(Arr::except($args,'name'))->delete();
         $ssd = new SmartSaleDevice();
         foreach ($args as $key => $val) $ssd->$key = $val;
         $id->Devices()->save($ssd);
