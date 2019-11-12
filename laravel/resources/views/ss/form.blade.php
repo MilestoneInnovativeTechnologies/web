@@ -22,11 +22,6 @@
                             <div class="row">
                                 <div class="col-md-12">{!! formGroup(1,'brief','textarea','Brief to be displayed in App',old('brief',array_get($Data,'brief'))) !!}</div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">{!! formGroup(1,'print_head_line1','text','Print Head Line 1',old('print_head_line1',array_get($Data,'print_head_line1'))) !!}</div>
-                                <div class="col-md-6">{!! formGroup(1,'print_head_line2','text','Print Head Line 2',old('print_head_line2',array_get($Data,'print_head_line2'))) !!}</div>
-                                <div class="col-md-12">{!! formGroup(1,'footer_text','text','Print Footer Text',old('footer_text',array_get($Data,'footer_text'))) !!}</div>
-                            </div>
                             <hr>
                             <div class="row">
                                 <div class="col-md-6">{!! formGroup(1,'date_start','text','Service Start Date',old('date_start',array_get($Data,'date_start',date('Y-m-d')))) !!}</div>
