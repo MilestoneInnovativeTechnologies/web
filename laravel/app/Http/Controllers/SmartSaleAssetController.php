@@ -41,7 +41,7 @@ class SmartSaleAssetController extends Controller
         'SALES RETURN' => ['SalesReturnIndex','fncode,store,fycode','SR1,SR2,SR3','Inactive'],
         'SALES ORDER' => ['SalesOrderIndex','fncode,store,fycode','SO1,SO2','Active'],
         'RECEIPT' => ['ReceiptIndex','fncode,store,fycode','CR1,BR1,BR2','Active'],
-        'MATERIAL TRANSFER' => ['MaterialTransferIndex','fncode,store,fycode','MT1,MT2','Inactive'],
+        'MATERIAL TRANSFER' => ['MaterialTransferIndex','fncode,store,fycode','MT1,MT2','Active'],
         'BRANCH TRANSFER' => ['','fncode,store,fycode','MT3,MT4','Inactive'],
     ];
     public function index(){
