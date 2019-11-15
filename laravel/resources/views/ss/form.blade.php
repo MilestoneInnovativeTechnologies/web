@@ -24,6 +24,12 @@
                             </div>
                             <hr>
                             <div class="row">
+                                <div class="col-md-4">{!! formGroup(1,'print_line1','text','Print Line 1',old('print_line1',array_get($Data,'print_line1'))) !!}</div>
+                                <div class="col-md-4">{!! formGroup(1,'print_line2','text','Print Line 2',old('print_line2',array_get($Data,'print_line2'))) !!}</div>
+                                <div class="col-md-4">{!! formGroup(1,'print_line3','text','Print Line 3',old('print_line3',array_get($Data,'print_line3'))) !!}</div>
+                            </div>
+                            <hr>
+                            <div class="row">
                                 <div class="col-md-6">{!! formGroup(1,'date_start','text','Service Start Date',old('date_start',array_get($Data,'date_start',date('Y-m-d')))) !!}</div>
                                 <div class="col-md-6">{!! formGroup(1,'date_end','text','Service End Date',old('date_end',array_get($Data,'date_end',date('Y-m-d',strtotime("+1 year"))))) !!}</div>
                             </div>
