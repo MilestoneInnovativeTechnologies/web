@@ -34,7 +34,7 @@
 
         private function getFileContents($file){
             $content = Storage::exists($file) ? Storage::get($file) : "";
-            return preg_split("/\r\n|\n|\r/", $content);
+            return array_filter(preg_split("/\r\n|\n|\r/", $content),function($line){ return trim($line) !== ''; });
         }
 
         public function compose(View $view){
