@@ -19,7 +19,7 @@ $Customer = \App\Models\Customer::whereCode(Request()->code)->with(['Details.Ind
 				</tbody></table></div>
 				<div class="table table-responsive"><table class="table striped"><tbody>
 					@if($Dealer = getParent($Customer->ParentDetails[0],'dealer'))<tr><th>Dealer</th><th>:</th><td><a href="{{ Route(((session()->get('_company'))?'mit.':'').'dealer.panel',$Dealer->code) }}" style="text-decoration: none; color: inherit">{{ $Dealer->name }}</a></td><th>&nbsp;</th><th>&nbsp;</th><td>&nbsp;</td></tr>@endif
-					@if($Dist = getParent($Customer->ParentDetails[0],'distributor'))<tr><th>Distributor</th><th>:</th><td><a href="{{ Route('distributor.panel',$Dist->code) }}" style="text-decoration: none; color: inherit">{{ $Dist->name }}</td><th>&nbsp;</th><th>&nbsp;</th><td>&nbsp;</td></tr>@endif
+					@if($Dist = getParent($Customer->ParentDetails[0],'distributor'))<tr><th>Distributor</th><th>:</th><td><a href="{{ Route('distributor.panel',$Dist->code) }}" style="text-decoration: none; color: inherit">{{ $Dist->name }}</a></td><th>&nbsp;</th><th>&nbsp;</th><td>&nbsp;</td></tr>@endif
 				</tbody></table></div>				
 			</div></div>
 		</div>
@@ -53,7 +53,7 @@ $Customer = \App\Models\Customer::whereCode(Request()->code)->with(['Details.Ind
 		</div></div></div>
 	</div>
 	<div class="panel panel-default"><div class="panel-heading"><span class="panel-title">Customer Ongoing Tickets</span><a href="{{ Route('customer.tickets',Request()->code) }}" class="btn btn-xs btn-default pull-right">View Customer's all Tickets</a></div><div class="panel-body">
-	@component('tkt.comp_tickets',['Tickets' => $Customer->Tickets->filter(function($Item){ return !in_array($Item->Cstatus->status,['RECREATED','CLOSED','COMPLETED','DISMISSED']); })]) @endcomponent
+	@component('tkt.comp_tickets',['Tickets' => $Customer->Tickets->filter(function($Item){ return ($Item->Cstatus && !in_array($Item->Cstatus->status,['RECREATED','CLOSED','COMPLETED','DISMISSED'])); })]) @endcomponent
 	</div></div>
 </div>
 
