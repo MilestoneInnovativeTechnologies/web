@@ -25,5 +25,11 @@
 <body>
 	@include("home.nav")
 	@yield('content')
+    <script type="text/javascript">
+        var $zoho=$zoho || {};$zoho.salesiq = $zoho.salesiq ||
+            {widgetcode:"dc5ef62c96d607a9f0f0a9ab33a8c109176eeef3687ddf182efe474fbdda2fbd7d58a2f3813c0ccb343f6b76c3e18078", values:{},ready:function(){}};
+        var d=document;s=d.createElement("script");s.type="text/javascript";s.id="zsiqscript";s.defer=true;
+        s.src="https://salesiq.zoho.in/widget";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);d.write("<div id='zsiqwidget'></div>");
+    </script>
 </body>
 </html>
