@@ -13,12 +13,12 @@ use Illuminate\Support\Facades\Storage;
 
 class SmartSaleController extends Controller
 {
-    static public $Tables = ['setup','fiscalyearmaster','userprofile','usermaster','userdetails','accountmaster','accountdetails','analysismaster','billsummary','areamaster','areaaccount','invstoremaster','branchstore','branchmaster','companymaster','companydetails','itemgroupmaster','itemmaster','itemunit','pricelistheader','pricelist','functiondetails','functioninvdetails','function','functionprint','taxlist','pihdata','piidata','hdata','idata','ddata','importtransactions','sscustomers'];
+    static public $Tables = ['setup','fiscalyearmaster','userprofile','usermaster','userdetails','accountmaster','accountdetails','analysismaster','billsummary','areamaster','areaaccount','invstoremaster','branchstore','branchmaster','companymaster','companydetails','itemgroupmaster','itemmaster','itemunit','pricelistheader','pricelist','shdata','sddata','setupshift','functiondetails','functioninvdetails','function','functionprint','taxlist','pihdata','piidata','hdata','idata','ddata','importtransactions','sscustomers'];
     static public $Table_Fields = ['type','delay','condition','sync','record'];
     static public $DELAY = 60;
     static public $Fields = ['code','customer','seq','name','brief','date_start','date_end','url_web','url_api','url_interact'];
     static public $Storage = 'ssi';
-    static public $Table_DELAY = ['setup' => ['up',0], 'fiscalyearmaster' => ['up',86400], 'functiondetails' => ['up',0], 'functioninvdetails' => ['up',0], 'function' => ['up',259200], 'functionprint' => ['up',259200], 'userprofile' => ['up',64800], 'usermaster' => ['up',64800], 'userdetails' => ['up',64800], 'accountmaster' => ['up',300], 'accountdetails' => ['up',300], 'analysismaster' => ['up',0], 'billsummary' => ['up',300], 'areamaster' => ['up',64800], 'areaaccount' => ['up',64800], 'invstoremaster' => ['up',86400], 'branchstore' => ['up',1296000], 'branchmaster' => ['up',2592000], 'companymaster' => ['up',2592000], 'companydetails' => ['up',2592000], 'itemgroupmaster' => ['up',172800], 'itemmaster' => ['up',86400], 'itemunit' => ['up',259200], 'pricelistheader' => ['up',259200], 'pricelist' => ['up',86400], 'taxlist' => ['up',86400], 'pihdata' => ['both',15], 'piidata' => ['both',15], 'hdata' => ['both',15], 'idata' => ['both',15], 'ddata' => ['up',15], 'importtransactions' => ['down',15], 'sscustomers' => ['down',60]];
+    static public $Table_DELAY = ['setup' => ['up',0], 'fiscalyearmaster' => ['up',86400], 'functiondetails' => ['up',0], 'functioninvdetails' => ['up',0], 'function' => ['up',259200], 'functionprint' => ['up',259200], 'userprofile' => ['up',64800], 'usermaster' => ['up',64800], 'userdetails' => ['up',64800], 'accountmaster' => ['up',300], 'accountdetails' => ['up',300], 'analysismaster' => ['up',0], 'billsummary' => ['up',300], 'areamaster' => ['up',64800], 'areaaccount' => ['up',64800], 'invstoremaster' => ['up',86400], 'branchstore' => ['up',1296000], 'branchmaster' => ['up',2592000], 'companymaster' => ['up',2592000], 'companydetails' => ['up',2592000], 'itemgroupmaster' => ['up',172800], 'itemmaster' => ['up',86400], 'itemunit' => ['up',259200], 'pricelistheader' => ['up',259200], 'pricelist' => ['up',86400],'shdata' => ['both',300],'sddata' => ['both',120],'setupshift' => ['up',86400], 'taxlist' => ['up',86400], 'pihdata' => ['both',15], 'piidata' => ['both',15], 'hdata' => ['both',15], 'idata' => ['both',15], 'ddata' => ['up',15], 'importtransactions' => ['down',15], 'sscustomers' => ['down',60]];
     static public $Table_CONDITION = [
         'usermaster' => '{ "ISGROUP":"Y" }',
         'accountmaster' => '[{ "PCODE":"1202%","operand":"LIKE" },{ "LEVEL":"5" }]',
@@ -31,6 +31,7 @@ class SmartSaleController extends Controller
         'hdata' => '{"FNCODE":["BR1","BR2","CR1","MT1","MT2","MT3","MT4","SL1","SL2","SL3","SL4","SL5","SO1","SO2","SR1","SR2","SR3"]}',
         'idata' => '{"FNCODE":["BR1","BR2","CR1","MT1","MT2","MT3","MT4","SL1","SL2","SL3","SL4","SL5","SO1","SO2","SR1","SR2","SR3"]}',
         'ddata' => '[{"FNCODE":["BR1","BR2","CR1"]},{"TYPE":"System","operand":"<>"}]',
+        'shdata' => '[{"STATUS":"Completed","operand":"<>"}]',
         ];
     private $device_args = ['name','uuid','imei','serial','code1','code2','code3'];
 
