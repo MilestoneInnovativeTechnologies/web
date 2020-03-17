@@ -88,7 +88,7 @@ $_MENU = [
 		'Product'	=>	[
 			['Products','products'], ['Editions','editions'], ['Packages','packages'], 'divider',
 			['Features','features'], ['Interact','','stp.product.interact'], 'divider',
-            ['FAQ','','faq.index']
+            ['FAQ Manage','','faq.index'], ['FAQ List','','faq.list']
 		],
 		'Package'	=>	[
 			['View Latest Packages','package/latest'], ['Upload Package','package/upload'], ['Verify Package','verify'], ['Delete Package Record','pkg/delete'], ['Approve Package','approve'], ['Revert Package','revert']
@@ -120,7 +120,7 @@ $_MENU = [
 		'Product'	=>	[
 			['Products','products'], ['Editions','editions'], ['Packages','packages'], 'divider',
             ['Features','features'], ['Interact','','stp.product.interact'], 'divider',
-            ['FAQ','','faq.index']
+			['FAQ Manage','','faq.index'], ['FAQ List','','faq.list']
 		],
 		'Package'	=>	[
 			['View Latest Packages','package/latest'], ['Upload Package','package/upload'], ['Verify Package','verify'], ['Delete Package Record','pkg/delete'], ['Approve Package','approve'], ['Revert Package','revert']
