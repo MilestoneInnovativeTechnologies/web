@@ -69,19 +69,8 @@ $_MENU = [
 	],
 	'webdeveloper'	=>	[
 		['Roles','role'], ['Resources','resource'],/* ['Actions','action'],*/
-		'Maintenance'	=>	[
-			['Add New','','mc.sc'], ['Upcoming Contracts','','mc.upcoming'], 'divider',
-			['All Active','','mc.index'], ['Expiring Soon','','mc.es'], 'divider',
-			['All Inactive','','mc.inactive'], ['Just Expired','','mc.jexp'],
-		],
 		'Distributor Branding' =>	[
 			['Index','','db.index'], ['Form','','db.new']
-		],
-        ['Public Print Objects','','ppo.index'],
-		'Tickets 2'	=>	[
-			['Create ticket','','tkt.create'], ['New Tickets','','tkt.new'], ['Opened Tickets','','tkt.opened'], 'divider',
-			['Active tickets','','tkt.index'], ['In Progress Tickets','','tkt.inprogress'], ['Holded Tickets','','tkt.holded'], 'divider',
-			['Closed Tickets','','tkt.closed'], ['Completed tickets','','tkt.completed']
 		],
 	],
 	'supportteam'	=>	[
