@@ -36,7 +36,7 @@
 			<p align="left"><b>Now while opening any window on software, a browse window with all fiscal year appears as
 					shown below. You can choose the required year.</b></p>
 			<img src="https://lh3.googleusercontent.com/8YXPYvPo7hWgVu-ami6hCh2Za_PdO0j6OowsnnT54SSV-yNaefAZ1aJOk0qVJPKeGJPN4od-ToM8UhgKmizeII1fWVelZhPjFyu_NDIO56kHfFnxuh_l8VX_iDzNxBisqn0QNC9Rc1NV-EHFdXpU4cN3oxwtkFAOR4V0hHm1jaTtYA0__H8nTdzp-_95OUtlaw0XjaiI4mH8XEzA1nkMnmqz7T5MmlPpH5s2aJxcFUe2LOQPGxdqbBpCku-mNCSQJbzDCPXaq2Gun5i8MPs8qFtDHJTZrOfJugH_n3wmd3jNHrOaQ_KTsN5P9txryRxX4YBzX7869PWEB28Hp_YgMqhR7hxZgrED_PTpAKeIPW7kwrYfzhk6MRN7834eFotiSUIFsXpilvWpqZeOXjQbL0A5Lz3IcTWYDIXtA9wR2c8rqXPkwHgjIEv1e0XckvnKeLVP4m8LAjdIqxyOhikTHHXD5vY3jopnpniwG1yevVWdI5wgJC2Wf4cS6uZN3HGDXcUJ2NwwYW37KwGhGKn1MqZH4jWxMEVfgnCgakjlsMy9qDwYNf83gxn3-R3gm9vciiv8uaID4OzKr_SVk9b-62FtbBzWU1hENkoOXn-wjaOOcqiTyV52T7Bbv0F1-GK2iaZ25LOalKKC2Up1wLLPfq68JO6-jvUX1g5FVHQr0goVRknJfWUESd8=w1343-h537-no"
-				 alt="image003">
+				 alt="image003"><br><br><br>
 
 		</div>
 	</div>@include("home.section_contact_wo_map")</div>
