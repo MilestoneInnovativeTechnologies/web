@@ -16,17 +16,17 @@
 			</p>
 
 			<h2><u>
-					<center>How to add new fiscal year on software (2020)</center>
+					<center>How to add new fiscal year on software (2020 - 2021)</center>
 				</u></h2>
 			<h3 align="left"><b><u>Step 1:</u></b></h3>
 			<h2 align="left"> >> Open the ePlus software.</h2>
 			<h2 align="left"> >> In Tools menu select the option fiscal year.</h2>
 			<p align="left"><b>Go to Tools >Settings > Fiscal year</b></p>
-			<img src="https://lh3.googleusercontent.com/xhRHid2vM86okD0usHM72Ifoh3Ro23QFNgKYfPWKqziHgJ9tudayVg-4OcWV-Db7AMhz5eA5nte07_bR4uNcyw-_jVZmh_pYjXmHAL3MET2SyZ5qa_bz2vjOpL034yRhvNpYV3H0HBQeHHdo7lR6QehRJgm_7psS5Cm_zsMlhdG51ZNwDJVZQ_0uZTLAC2V00I9c5D0cIReLJoTg-vGvaWz5spUiJuNeFRhMVZTsraR4jIFFs_S6F30rm_4tAHvTghscN9nBvOvlyI5e9_upfV-H-35ENwCH_kO_IAG3y6pa-T4I17iiYLaCyCarRdAsR2-ElFYqxNjkkyDaFkTewrK6aVe72CUKr1k5ICSQdq8fksgQEn2Mbw8zMzq2_OoghKX8-H7rsXTVAkkS7fT8Ufnd7_pgHa7TkL8OoIy6Zz2TF8ceRrpe598VOsrrEKDDGJz4sI67HDneW5WxYpObDgYpkuVruir8AH9qBHkiiks0EA_ITrHVQIGFxzGMsqPxrD_snLmGTFrx-JDKOSnBmT0om5i2oK2chFtsDIu8XdRArEHj5PYYAXPEA1z0PFVWv-BH4RvjXMQAubyP40pUsRmV0i9U5xfFBZd0JuV1767ud1Q8QbS9TrUsx1xXyLQWujYUSLgryjtYdqRSOoNIYC1JCUqNgNNTGa96JBu8krmvibwg2cNqjfM=w1112-h625-no"
+			<img src="https://lh3.googleusercontent.com/-RXBM86Imd9CRFmERCor4zRSA53UJE6S4pWoRwBKO1BQO-9hMn4iUunWn5xX5n3c-Vzh2w_bqnABytajFEYBDDKYWYsYgIFrH81391SJ6B9z1FkuezRG2Z6w0EKH43Gd-bmz3MxVPxmNA9WtYtU6h__6hSmEpo7XR9jI2C4br3FT1Z7d63tCFJfwa8Y8uSeH4cTjiBu-IKz9fcTjtYxrQR-HdwNTiNv9fa-rMK-SkWkNNxfsBxvw0_Hdjq3Z0p0TlSA_2wvWBa0TCaesxpz5E8DnUrkNylbk_SMUSG2pcCs9uOIVaZ94QPH4MWOTJPekhe9LgA_wpexKJzLGCioQkm_o0VQh5ROsfUCdKvV1KgfSvux24EDHUvJe47HwVHa0NWCO1-NZYRhyV4-CSY83LC4gWkEYcf2Bs7yEff1D9_qE40pxXOoP1-KRSfUCcz3B-rg8M73Q22LaUFrEZdLHUwrhdyEtmhCDnhiDUhXpDPtuCiZmJFviBIc73KnG7rKoOtEgtz0rQ3zwCXETuGj19p0M4su_T9__y0GP7LPxSmjTfdL0rpID5esJtzGwh1BuGyJyDcy4L_bOn6rbsNbIkXsKms3EWcufLTGa7_lLn4-gsu1_hwTxevYeUZQr06RxDuQB7rkyTHnMJxmxp3Tk4EaPHPCZJnEnGzIqbmmpeVG5ihs_ATz-QqGT9w9EQNJ_UG8=s1112-w1112-h625-no"
 				 alt="image001">
 			<h3 align="left"><b><u>Step 2:</u></b></h3>
 			<p align="left"><b>Select new option. And enter the new fiscal year details as shown below.</b></p>
-			<img src="https://lh3.googleusercontent.com/MAMNwpX9LV5QdBBGumw-CuCZZVOxHIOlIwfjssBpO_IqsYaVcUrueWalPMJfeAI72yTyi0HUKdxyTnBcwb0IMp-ul6XrKYnDr1Et2F1HnEWo-KweIdbvi_ONs2YShJoAYag71F4UB0Vqb-bnZFdDBPXq_F1JDZ0RPm3ko3nvSwrSYjmYUeWa2tuCohWNU2Mkl-eUgL6YS0AlP-sAufeOoGotC8_Jy15UenYsnHEDylMUSkR0tLW5CPszW_wAftOlq-8dvOjdIvG3sK0dIXGzM5oPGYrP0sdoPJeqjQF9DJzK6EiUV9RTihHWN_Ki7nAa27tsHd8h1oRJ332zozMuiHg8c58jIiaMwYCaKVESHrClm2VbD8VIZmLNJSPVzl91dFDr15MvI7tz7gV8NOEBmYN-MnHCF5oNLam8FiYFYPZgdc9u_shwBXJjZv6GxDexGy0v1axNMYgPEl1cz6359pgS4mLXR_o0POg2ZXyB9DmRJS2I-6R2lR-1ms_qKEu0KpNP5J3P4z3xx-iY4qIKdt-qU5xZ7pf9s0i-wQvvUvDRKoECZtUzmk81H_o2nUwb3YVrdyCeZfXQDZ6iJnQxeFgtyLTXRpWdy-D14RdGJwUjl_xDRKovPUD9R-N2mZgYpDuN5C1d9UwkW2LCydCsmW6DFzQ-3rLJ5Fk4821X13LsyJA64USPzUk=w1350-h540-no"
+			<img src="https://lh3.googleusercontent.com/r-yoX_Q2CklFMdd27HfZbQOmMuzToAZV5y5W8V2mHeza9KVUyIyaVXmrzWea5Sr3O8kuzH8-QeHc60w87Ho3tfIXLVe8u5lg2iT57cSVodCKeIWHAQnVT1L0b6aUTmlsW55b1_SHZkF4gfhhmLS0l6uZ77gSOqaH2LEH4_7U6_J5V7XyIwRABwFu9JoZOivQOCUdeWp_9sQHWMxEsQAxSVGM9bTpCR2jBQ0KXb2wY__WhWYKXLcw6lOp1TlkrpfgUd8j8VdKrezHzcdFNj8P0d2MWqOvxdadn21n1eif7KG-8v5OcIJzNgIACPCF2-Te9o0qtAfKNlXv9Mlb21eVfb20SaoKUQNSJwhTzTDo-jyMCscy2XRaRNaxfeuIDoYgFUtgFxsHNJrw4osbbjPs0asuLu5i9M14Wxcwx3RNo2L5S3Nh8T_X_GJTlzUzkXZBikHZ7XmDRNsytUNrfGhiep0vuKls4kC6Ss0m8s3IqgyVC3b4bBojJWUFrsLRmrhdW3o9W109cQ-3Us1dh3rDiXN4KMs79Ssv3P2MlP7-bo8KNG0lkkLW9vilL_4EoXlveHmYoh5ED_n6TMR7wwrqmkDM22soBIpGi1WLpHxKLL9LL-XtQQrtyrOOUDLz9bAiOi99RUEXFGeCOH05zgkUhc28aEBJ0UIEwdht_nws0F7jnfGyCX7_gT9YSNk=s1350-w1350-h540-no"
 				 alt="image002">
 			<h3 align="left"><b><u>Step 3:</u></b></h3>
 			<p align="left"><b>Save and close the application.</b></p>
@@ -35,7 +35,7 @@
 			<h3 align="left"><b><u>Step 5:</u></b></h3>
 			<p align="left"><b>Now while opening any window on software, a browse window with all fiscal year appears as
 					shown below. You can choose the required year.</b></p>
-			<img src="https://lh3.googleusercontent.com/8YXPYvPo7hWgVu-ami6hCh2Za_PdO0j6OowsnnT54SSV-yNaefAZ1aJOk0qVJPKeGJPN4od-ToM8UhgKmizeII1fWVelZhPjFyu_NDIO56kHfFnxuh_l8VX_iDzNxBisqn0QNC9Rc1NV-EHFdXpU4cN3oxwtkFAOR4V0hHm1jaTtYA0__H8nTdzp-_95OUtlaw0XjaiI4mH8XEzA1nkMnmqz7T5MmlPpH5s2aJxcFUe2LOQPGxdqbBpCku-mNCSQJbzDCPXaq2Gun5i8MPs8qFtDHJTZrOfJugH_n3wmd3jNHrOaQ_KTsN5P9txryRxX4YBzX7869PWEB28Hp_YgMqhR7hxZgrED_PTpAKeIPW7kwrYfzhk6MRN7834eFotiSUIFsXpilvWpqZeOXjQbL0A5Lz3IcTWYDIXtA9wR2c8rqXPkwHgjIEv1e0XckvnKeLVP4m8LAjdIqxyOhikTHHXD5vY3jopnpniwG1yevVWdI5wgJC2Wf4cS6uZN3HGDXcUJ2NwwYW37KwGhGKn1MqZH4jWxMEVfgnCgakjlsMy9qDwYNf83gxn3-R3gm9vciiv8uaID4OzKr_SVk9b-62FtbBzWU1hENkoOXn-wjaOOcqiTyV52T7Bbv0F1-GK2iaZ25LOalKKC2Up1wLLPfq68JO6-jvUX1g5FVHQr0goVRknJfWUESd8=w1343-h537-no"
+			<img src="https://lh3.googleusercontent.com/gyeP9T0rMBRPNHyPjYXQvW1H_Uwx_bW7sniEXFNZkslkvAKOoBcFOhgEtYYPndRc9ZJcB2h6IqIAQTpmLda8TB_L7eyP9aZRY1W4HklGn3WOUWYeW3G83ulbQpgQa2Kxjswtp6G917PHtg10Yhjksmn1OhO7HPJq53eruXtD4fEoIF9LXpJyD4QrZenpRalXFlJeg-C6lWVTbTHwn_xdmIA6Aftcfgmy1rXDV8ZBEU_xtYwxRsxpZN6wuW7uwGiL86pg-R1HCQaDtJDRmKTXKNr7BFEfH0Chl8zKhZ12bX9TMS09uEnIBJ5EMXeUIhFX1rGZ1aG-BWMvJKhjdPSGGz64piof2VK1B4zcYYHChkJzUE9bMjjL_rdUveLkhlXs2sLIEr_61rn9I4uQxuxaBTdOMykjHe_V-VIJVjQaRgUxk-65R4U-10PHo5QVtl3-mvkhg3bPdyaC9OFFM6OQDHsXTbvkT47S10WUPKiNMkz2LCrwUQbSfZZZYVaVrDJdQ10ZqclGTXMOELfhCPGaXDTbGgOqTMKDA5Ltlt6rGQFTSi0NVQV9d97hxNZmpnvRp7qWYThjvuIsR1ORmUr8elsc7Sff0QldTwJPrqMTVVChyM_NgRpJnLelUhPageolo4afmrQfUgzqX2DjbzAkMHDRgd1oHhj1HAHRGe_94Lal_853Mkv34rTAU00=s1343-w1343-h537-no"
 				 alt="image003"><br><br><br>
 
 		</div>
