@@ -14,7 +14,8 @@
 					<li><a href="javascript:topage('home')">Home</a></li>
 					<li><a href="javascript:topage('products')">Products</a></li>
 					<li><a href="javascript:topage('features')">Features</a></li>
-					<li><a href="javascript:topage('contact')">Contact</a></li>@if(Auth::check())
+					<li><a href="javascript:topage('contact')">Contact</a></li>
+					<li><a href="http://milestoneit.online" target="_blank">Shop</a></li>@if(Auth::check())
 					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dashboard <span class="caret"></span></a>
 						<ul class="dropdown-menu nav">
 							<li class="nav-link"><a href="{{ Route('dashboard') }}">Dashboard</a></li>@if(session("_rolename") != "company")

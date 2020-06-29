@@ -30,7 +30,7 @@
 <nav class="navbar navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="javascript:goHome()"><div class="logo visible-lg-block"></div><div class="logo visible-md-block"></div><div class="logo visible-sm-block"></div><div class="logo visible-xs-block"></div></a>
+			<a class="navbar-brand" href="http://milestoneit.net"><div class="logo visible-lg-block"></div><div class="logo visible-md-block"></div><div class="logo visible-sm-block"></div><div class="logo visible-xs-block"></div></a>
 			<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbarCollapse">
 				<span class="sr-only"></span>
 				<span class="icon-bar"></span>
@@ -43,7 +43,8 @@
 				<li><a href="/home">Home</a></li>
 				<li><a href="/home">Products</a></li>
 				<li><a href="/home">Features</a></li>
-				<li><a href="/home">Contact</a></li>@if(Auth::check())
+				<li><a href="/home">Contact</a></li>
+				<li><a href="http://milestoneit.online" target="_blank">Shop</a></li>@if(Auth::check())
 					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dashboard <span class="caret"></span></a>
 						<ul class="dropdown-menu nav">
 							<li class="nav-link"><a href="{{ Route('dashboard') }}">Dashboard</a></li>@if(session("_rolename") != "company")
@@ -131,5 +132,5 @@
 			</form></div>
 	</div>
 </div>
-
+</body>
 </html>
