@@ -35,20 +35,20 @@ Route::prefix("keycode")->group(function(){
 });
 
 Route::prefix("v1")->group(function(){
-	
+
 	Route::group(["middleware"	=>	"wapi:*"],function(){
 		Route::post("L2D","LicenceToData@upload");
 		Route::get("get_packages","ProductInformationController@packages");
 		Route::get("get_download_link","ProductInformationController@download_link");
 		Route::get("partner/get/dcs","PartnerController@detail_search");
 	});
-	
+
 	Route::group(["middleware"	=>	"wapi:customers,dealers"],function(){
 		Route::get("countries","GeoLocationApi@Countries");
 		Route::get('{Customer}/resetlogin',"CustomerController@resetlogin");
 		Route::get('customer/get/dcs','CustomerController@detail_search');
 	});
-	
+
 	Route::group(["middleware"	=>	"wapi:customers"],function(){
 		Route::get("{Customer}/{Product}/editions","CustomerController@editions");
 		Route::get("email/unique/{email}","CustomerController@uniqueemailcheck");
@@ -61,14 +61,14 @@ Route::prefix("v1")->group(function(){
 			Route::get("unique/{name}","CustomerController@uniquenamecheck");
 		});
 	});
-	
+
 	Route::group(["middleware"	=>	"wapi:customerdashboard"],function(){
 		Route::prefix("customer")->group(function(){
 			Route::get("reginfo/{seqno}","CustomerPage@reginfo");
 			Route::get("packages","CustomerPage@packages");
 		});
 	});
-	
+
 	Route::group(["middleware"	=>	"wapi:dealerdashboard"],function(){
 		Route::prefix("dealer")->group(function(){
 			Route::get("myproducts","DealerController@myproducts");
@@ -77,7 +77,7 @@ Route::prefix("v1")->group(function(){
 			Route::get("myparent","DealerController@myparent");
 		});
 	});
-	
+
 	Route::group(["middleware"	=>	"wapi:dealers"],function(){
 		Route::prefix("dealer")->group(function(){
 			Route::get("list/{page}/{items?}","DealerController@lists");
@@ -85,7 +85,7 @@ Route::prefix("v1")->group(function(){
 			Route::get('get/dds','DealerController@detail_search');
 		});
 	});
-	
+
 	Route::group(["middleware"	=>	"wapi:distributordashboard"],function(){
 		Route::prefix("dd")->group(function(){
 			Route::get("content","DistributorController@content");
@@ -95,13 +95,13 @@ Route::prefix("v1")->group(function(){
 			Route::get("sputc","ProductInformationController@sputc");
 		});
 	});
-	
+
 	Route::group(["middleware"	=>	"wapi:distributordashboard,dealerdashboard,supportteam,supportagent"],function(){
 		Route::get("my_customers","ProductInformationController@my_customers");
 		Route::get("get_my_product_customers","ProductInformationController@my_product_customers");
 		Route::get("vpd","ProductInformationController@vpd");
 	});
-	
+
 	Route::group(["middleware"	=>	"wapi:distributors"],function(){
 		Route::prefix("distributor")->group(function(){
 			Route::get("list/{page}/{items?}","DistributorController@lists");
@@ -109,7 +109,7 @@ Route::prefix("v1")->group(function(){
 			Route::get('get/dds','DistributorController@detail_search');
 		});
 	});
-	
+
 	Route::group(["middleware"	=>	"wapi:pricelist"],function(){
 			Route::get("pricelist/all","PriceListController@apigetall");
 	});
@@ -161,7 +161,7 @@ Route::prefix("v1")->group(function(){
 			});
 		});
 	});
-	
+
 	Route::group(["middleware"	=>	"wapi:log"],function(){
 		Route::prefix('log')->group(function(){
 			Route::prefix('unusr')->group(function(){
@@ -174,7 +174,7 @@ Route::prefix("v1")->group(function(){
 			});
 		});
 	});
-	
+
 	Route::group(["middleware"	=>	"wapi:supportteam"],function(){
 		Route::prefix('tst')->group(function(){
 			Route::prefix('action')->group(function(){
@@ -187,7 +187,7 @@ Route::prefix("v1")->group(function(){
 			});
 		});
 	});
-	
+
 	Route::group(["middleware"	=>	"wapi:supportagent"],function(){
 		Route::prefix('tsa')->group(function(){
 			Route::prefix('get')->group(function(){
@@ -195,7 +195,7 @@ Route::prefix("v1")->group(function(){
 			});
 		});
 	});
-	
+
 	Route::group(["middleware"	=>	"wapi:supportteampage"],function(){
 		Route::prefix('tst')->group(function(){
 			Route::prefix('action')->group(function(){
@@ -220,7 +220,7 @@ Route::prefix("v1")->group(function(){
 			});
 		});
 	});
-	
+
 	Route::group(["middleware"	=>	"wapi:customercookie"],function(){
 		Route::prefix('tscc')->group(function(){
 			Route::prefix('action')->group(function(){
@@ -229,7 +229,7 @@ Route::prefix("v1")->group(function(){
 			});
 		});
 	});
-	
+
 	Route::group(["middleware"	=>	"wapi:remoteconnection"],function(){
 		Route::prefix('crc')->group(function(){
 			Route::prefix('action')->group(function(){
@@ -238,7 +238,7 @@ Route::prefix("v1")->group(function(){
 			});
 		});
 	});
-	
+
 	Route::group(["middleware"	=>	"wapi:ticket"],function(){
 		Route::prefix('tkt')->group(function(){
 			Route::prefix('action')->group(function(){
@@ -295,7 +295,7 @@ Route::prefix("v1")->group(function(){
 			});
 		});
 	});
-	
+
 	Route::group(["middleware"	=>	"wapi:maintenancecontract"],function(){
 		Route::prefix('mc')->group(function(){
 			Route::prefix('get')->group(function(){
@@ -308,7 +308,7 @@ Route::prefix("v1")->group(function(){
 			});
 		});
 	});
-	
+
 	Route::group(["middleware"	=>	"wapi:customerprintobject"],function(){
 		Route::prefix('cpo')->group(function(){
 			Route::prefix('get')->group(function(){
@@ -320,7 +320,7 @@ Route::prefix("v1")->group(function(){
 			});
 		});
 	});
-	
+
 	Route::group(["middleware"	=>	"wapi:generaluploads"],function(){
 		Route::prefix('gu')->group(function(){
 			Route::prefix('action')->group(function(){
@@ -332,7 +332,7 @@ Route::prefix("v1")->group(function(){
 			});
 		});
 	});
-	
+
 	Route::group(["middleware"	=>	"wapi:databasebackup"],function(){
 		Route::prefix('dbb')->group(function(){
 			Route::prefix('get')->group(function(){
@@ -340,7 +340,7 @@ Route::prefix("v1")->group(function(){
 			});
 		});
 	});
-	
+
 	Route::group(["middleware"	=>	"wapi:mail"],function(){
 		Route::prefix('mail')->group(function(){
 			Route::prefix('get')->group(function(){
@@ -350,7 +350,7 @@ Route::prefix("v1")->group(function(){
 			});
 		});
 	});
-	
+
 	Route::group(["middleware"	=>	"wapi:notification"],function(){
 		Route::prefix('n')->group(function(){
 			Route::prefix('get')->group(function(){
@@ -366,7 +366,7 @@ Route::prefix("v1")->group(function(){
 	    Route::post('faq/addAppLogController/fct','FAQController@fct');
 	});
 
-	
+
 });
 
 Route::group(["prefix" => "pd", "middleware" => "\\App\\Http\\Middleware\\Cors"],function(){
@@ -383,4 +383,9 @@ Route::group(["prefix" => "ss", "middleware" => ["\\App\\Http\\Middleware\\Cors"
         Route::get('info','SmartSaleController@apiTableInfo');
         Route::get('{id}/set','SmartSaleController@apiTableSet');
     });
+});
+
+// eBis
+Route::prefix("ebis")->group(function(){
+    Route::get('{code}', 'eBisController@api');
 });

@@ -21,4 +21,15 @@ class eBisController extends Controller
         eBisSubscription::rearrange();
         return redirect()->route('ebis.view',$eBis->id)->with(['info' => true, 'text' => 'New subscription added successfully!!', 'type' => 'success']);
     }
+
+    public function cancel(eBisSubscription $id){
+        $id->status = 'Cancelled'; $id->save();
+        eBisSubscription::rearrange();
+        return back()->with(['info' => true, 'type' => 'warning', 'text' => 'Subscription cancelled successfully!!']);
+    }
+
+    public function api($code){
+        eBisSubscription::rearrange();
+        return eBis::with(['Customer','Subscriptions'])->where('code',$code)->first();
+    }
 }
