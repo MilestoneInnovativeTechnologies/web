@@ -913,6 +913,7 @@ Route::group(["middleware"	=>	["rolecheck:ebis"], "prefix" => "ebis"],function()
     Route::get('{id}/view', function(){ return view('ebis.view'); })->name('ebis.view');
     Route::get('{id}/add', function(){ return view('ebis.add'); })->name('ebis.add');
     Route::post('{eBis}/add', 'eBisController@subscription');
+    Route::post('{id}/cancel', 'eBisController@cancel')->name('ebis.cancel');
     Route::get('new', function(){ return view('ebis.form'); })->name('ebis.new');
     Route::post('new','eBisController@store');
     Route::get('{id}/delete',function(){ return view('ebis.delete'); })->name('ebis.delete');

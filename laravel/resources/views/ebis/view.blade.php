@@ -15,12 +15,13 @@
                         </tbody></table></div>
                 <hr>
                 <h4>Subscriptions</h4>
-                <div class="table-responsive"><table class="table table-striped"><thead><tr><th>No</th><th>Package</th><th>Domain</th><th>Start Date</th><th>End Date</th><th>Status</th></tr></thead><tbody>
+                <div class="table-responsive"><table class="table table-striped"><thead><tr><th>No</th><th>Package</th><th>Domain</th><th>Start Date</th><th>End Date</th><th>Status</th><th>&nbsp;</th></tr></thead><tbody>
                         @foreach($Data->Subscriptions as $subscription)
                             <tr><td>{{ $loop->iteration }}</td>
                             @foreach(['package','domain','start','end','status'] as $Field)
                                 <td>{{ $subscription->$Field }}</td>
                             @endforeach
+                                <td><form method="post" action="{!! route('ebis.cancel',$subscription->id) !!}">{{ csrf_field() }}<input type="submit" value="Cancel" class="btn btn-warning btn-sm" /></form></td>
                             </tr>
                         @endforeach
                         </tbody></table></div>
