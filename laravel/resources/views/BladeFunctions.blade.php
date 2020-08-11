@@ -72,7 +72,7 @@ function selectOptions($optAry,$default = NULL){
 			$T = $VAry;
 			$V = is_int($Key)?$T:$Key;
 			$A = 'value="'.$V.'"' . (($V == $default)?' selected="selected"':'');
-			
+
 		} elseif(array_key_exists('text',$VAry) && array_key_exists('value',$VAry)){
 			$T = array_key_exists('text',$VAry) ? $VAry['text'] : '';
 			$A = array_key_exists('attr',$VAry) ? $VAry['attr'] : '';
@@ -177,8 +177,8 @@ function PanelHeadAddButton($Action,$Label){
 	return PanelHeadButton($Action,$Label,'add','info','sm');
 }
 
-function PanelFooterButton($Action){
-	return formElement('submit','submit',$Action,['class'=>'pull-right btn btn-info']);
+function PanelFooterButton($Action,$type = 'info'){
+	return formElement('submit','submit',$Action,['class'=>"pull-right btn btn-$type"]);
 }
 
 
