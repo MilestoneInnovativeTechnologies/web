@@ -34,7 +34,7 @@ $_MENU = [
 			['Log :: Unknown Users','','log.unusr'], ['SMS Gateways','','smsg.index'], 'divider',
 			['Public Articles','','pa.index'], ['Private Articles','','pra.index'], 'divider',
 			['Notification','','notification.index'], ['Third Party Applications','','tpa.index'], 'divider',
-			['Product Demonstration','','pd.index'], ['Smart Sale','','ss.index']
+			['Product Demonstration','','pd.index'], ['Smart Sale','','ss.index'], ['eBis','','ebis.index']
 		],
 		'Tickets'	=>	[
 			['Create ticket','','tkt.create'], ['New Tickets','','tkt.new'], ['Opened Tickets','','tkt.opened'], 'divider',
