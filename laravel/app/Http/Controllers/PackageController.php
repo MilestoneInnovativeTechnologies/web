@@ -50,7 +50,7 @@ class PackageController extends Controller
 			$Rules = $packages->MyValidationRules();
 			$validator = Validator::make($request->all(),$Rules);
 			if($validator->fails()) { return redirect()->back()->withErrors($validator)->withInput(); }
-			
+
 
 			$packages->create(array(
 				"code"	=>	$packages->NextCode(),
@@ -58,9 +58,9 @@ class PackageController extends Controller
 				"base_name"	=>	$request->base_name,
 				"type"	=>	$request->type,
 				"description_public"	=>	$request->description,
-				"description_internal"	=>	$request->description_internal,	
+				"description_internal"	=>	$request->description_internal,
 			));
-			
+
 			$IndexData = array("info"=>true,"type"=>"success","text"=>"The new Package: ".$request->name.", Added successfully..","packages"=>$packages->take(10)->get(),"ItemsPerPage"=>10,"PageNumber"=>1);
 			return view("packages.index",$IndexData);
     }
@@ -130,7 +130,7 @@ class PackageController extends Controller
 			$name = $package->name; $package->active = "0"; $package->save();
 			return redirect()->back()->with(array("info"=>true,"type"=>"info","text"=>"The Package: " . $name . ", deleted successfully.."));
     }
-	
+
 		public function upload($Product = NULL, $Edition = NULL, $Package = NULL){
 			if(is_null($Product)){
 				$Product = Product::whereActive("1")->get();
@@ -155,7 +155,7 @@ class PackageController extends Controller
 				return view("packages.form",compact("Product","Edition","Package","Details"));
 			}
 		}
-	
+
 	public function doupload(Product $Product, Edition $Edition, Package $Package, Request $Request){
 		$version_string = $Product->basename . $Edition->name . "Edition" . $Package->base_name;
 		$version_numeric = $Request->major_version . "." . $Request->minor_version . "." . $Request->build_version . "." . $Request->revision;
@@ -197,7 +197,7 @@ class PackageController extends Controller
 				}
 			//} else {
 			//	return redirect()->back()->with(array("info"=>true,"type"=>"danger","text"=>"Uploaded file is not valid"));
-			//}			
+			//}
 		}
 		$PV->create([
 			"product" => $Product->code,
@@ -218,13 +218,13 @@ class PackageController extends Controller
 		]);
 		return redirect()->back()->with(array("info"=>true,"type"=>"info","text"=>$StatusText));
 	}
-	
+
 	public function verify(){
 		$data = PackageVersion::awaiting()->with("product","edition","package")->orderBy("deploy_date","desc")->orderBy("version_sequence","desc")->get()->toArray();
 		$status = "AWAITING UPLOAD";
 		return view("packages.status",compact("data","status"));
 	}
-	
+
 	public function doverify(Request $Request){
 		$Obj = PackageVersion::awaiting()->where(["product"=>$Request->product,"edition"=>$Request->edition,"package"=>$Request->package,"version_sequence"=>$Request->sequence]);
 		if($Obj->get()->count()){
@@ -239,7 +239,7 @@ class PackageController extends Controller
 			return redirect()->back()->with(["info"=>true,"type"=>"danger","text"=>"No packages to verify."]);
 		}
 	}
-	
+
 	public function approve(){
 		$Obj = PackageVersion::pending()->with("product","edition","package")->orderBy("deploy_date","desc")->orderBy("version_sequence","desc");
 		if($Obj->get()->count()){
@@ -250,7 +250,7 @@ class PackageController extends Controller
 		$status = "PENDING";
 		return view("packages.status",compact("data","status"));
 	}
-	
+
 	public function doapprove(Request $Request){
 		$Obj = PackageVersion::pending()->where(["product"=>$Request->product,"edition"=>$Request->edition,"package"=>$Request->package,"version_sequence"=>$Request->sequence]);
 		if($Obj->get()->count()){
@@ -275,7 +275,7 @@ class PackageController extends Controller
 			return redirect()->back()->with(["info"=>true,"type"=>"danger","text"=>"No such package to verify."]);
 		}
 	}
-	
+
 	public function revert(){
 		$status = "APPROVED";
 		$Condition = PackageVersion::status($status)->select('product','edition','package',\DB::raw('MAX(version_sequence) AS version'))->groupBy('product','edition','package')->get()
@@ -288,7 +288,7 @@ class PackageController extends Controller
 		$data = ($Obj)?:[];
 		return view("packages.status",compact("data","status"));
 	}
-	
+
 	public function dorevert(Request $request){
 		$status = "APPROVED";
 		$PV = PackageVersion::where(['product'=>$request->product,'edition'=>$request->edition,'package'=>$request->package,'version_sequence'=>$request->sequence,'status'=>$status]);
@@ -297,7 +297,7 @@ class PackageController extends Controller
         if($request->package === "PKG003") AppInitController::SetProductVersion($request->product,$request->edition,PackageVersionController::get_latest($request->product,$request->edition,'PKG003')->version_numeric);
 		return redirect()->back()->with(["info"=>true,"type"=>"success","text"=>"Package Reverted Successfully"]);
 	}
-	
+
 	public function delete(){
 		$Obj = PackageVersion::whereIn('status',['AWAITING UPLOAD','PENDING'])->with("product","edition","package")->latest()->get()
 			//->keyBy(function($item){ return implode('-',[$item->product,$item->edition,$item->package,$item->version_sequence]); })
@@ -308,15 +308,16 @@ class PackageController extends Controller
 		$status = "DELETE";
 		return view("packages.status",compact("data","status"));
 	}
-	
+
 	public function dodelete(Request $request){
 		PackageVersion::whereIn('status',['AWAITING UPLOAD','PENDING'])->where(['product'=>$request->product,'edition'=>$request->edition,'package'=>$request->package,'version_sequence'=>$request->sequence])->delete();
 		return redirect()->back()->with(["info"=>true,"type"=>"warning","text"=>"Package Deleted Succesfully"]);
 	}
-	
+
 	protected $PV;
-	
+
 	public function latest(){
+        error_reporting(E_ERROR & ~E_WARNING);
 		$Product = \App\Models\Product::select('code','name')->with(['Editions'	=> function($Q){
 			$Q->oldest('pivot_level')->select('code','name')->with(['Packages'	=>	function($Q){
 				$Q->select('code','name');
@@ -339,24 +340,24 @@ class PackageController extends Controller
 		}
 		return view("packages.latest",compact("Data"));
 	}
-	
+
 	private function LatestVersion($PR, $ED, $PK){
 		$Result = $this->PV->whereStatus('APPROVED')->latest('version_sequence')->select('version_numeric','build_date','version_sequence')->where(['product'	=>	$PR, 'edition'	=>	$ED, 'package'	=>	$PK])->first();
 		return ($Result) ? $Result->toArray() : null;
 	}
-	
+
 	private function GetPackageFile($PR,$ED,$PK,$SQ){
 		return PackageVersion::where(['product'	=>	$PR, 'edition'	=>	$ED, 'package'	=>	$PK, 'status'	=>	'APPROVED', 'version_sequence'	=>	$SQ])->first()->file;
 	}
-	
+
 	public function download($PR,$ED,$PK,$SQ){
 		$File = $this->GetPackageFile($PR,$ED,$PK,$SQ);
 		//return storage_path("app/".$File);
 		return response()->download(storage_path("app/".$File));
 	}
-	
-	
-	
+
+
+
 }
 
 

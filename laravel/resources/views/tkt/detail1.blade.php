@@ -1,6 +1,7 @@
 @extends("tkt.page")
 @section("content")
 @php
+error_reporting(E_ERROR & ~E_WARNING);
 $Ticket = \App\Models\Ticket::whereCode(Request()->code)->with(['Product','Edition','CreatedBy','Customer','Team','conversations','Tasks' => function($Q){ $Q->with('Stype','CreatedBy','Responder.Assigner'); },'Closure','Feedback','Attachments'])->first();
 //dd($Ticket->toArray());
 @endphp
