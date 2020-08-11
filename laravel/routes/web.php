@@ -568,12 +568,12 @@ Route::group(["middleware"	=>	["rolecheck:tickettask"]],function(){
 		Route::get('{tsk}/work', 'TicketTaskController@work')->name('tsk.work');
 		Route::get('{tsk}/hold', 'TicketTaskController@hold')->name('tsk.hold');
 		Route::get('{tsk}/close', 'TicketTaskController@close')->name('tsk.close');
-		
+
 		Route::post('{tsk}/hold', 'TicketTaskController@dohold');
 		Route::post('{tsk}/recheck', 'TicketTaskController@dorecheck');
 		Route::post('{tsk}/edit', 'TicketTaskController@update');
 		Route::post('{tsk}/chngrsp', 'TicketTaskController@update_responder');
-		
+
 		Route::get('new', 'TicketTaskController@tasks_new')->name('tsk.new');
 		Route::get('working', 'TicketTaskController@tasks_working')->name('tsk.working');
 		Route::get('holded', 'TicketTaskController@tasks_holded')->name('tsk.holded');
@@ -904,4 +904,17 @@ Route::group(["middleware"	=>	["rolecheck:ss"], "prefix" => "ss"],function(){
     Route::post('new','SmartSaleController@store');
     Route::get('{id}/edit', function(){ return view('ss.form'); })->name('ss.edit');
     Route::post('{id}/edit','SmartSaleController@update');
+});
+
+
+//eBis
+Route::group(["middleware"	=>	["rolecheck:ebis"], "prefix" => "ebis"],function(){
+    Route::get('', function(){ return view('ebis.index'); })->name('ebis.index');
+    Route::get('{id}/view', function(){ return view('ebis.view'); })->name('ebis.view');
+    Route::get('{id}/add', function(){ return view('ebis.add'); })->name('ebis.add');
+    Route::post('{eBis}/add', 'eBisController@subscription');
+    Route::get('new', function(){ return view('ebis.form'); })->name('ebis.new');
+    Route::post('new','eBisController@store');
+    Route::get('{id}/delete',function(){ return view('ebis.delete'); })->name('ebis.delete');
+    Route::post('{id}/delete',function($id){ \App\Models\eBis::find($id)->delete(); return redirect()->route('ebis.index')->with(['info' => true, 'text' => 'Deleted Successfully', 'type' => 'danger']); });
 });
