@@ -26,8 +26,10 @@ class CheckRole
 			if(in_array(session("_role"),$request->user()->roles()->pluck("code")->toArray())){
 				$Role = new Role();
 				$Resources = $Role->find(session("_role"))->resources()->pluck("name")->toArray();
-				//dd(	$RequestResource,$Resources );
-				if(in_array($RequestResource,$Resources)) return $next($request);
+				if(in_array($RequestResource,$Resources)){
+                    error_reporting(E_ERROR & ~E_WARNING);
+                    return $next($request);
+                }
 			}
 			return redirect()->route("roledenied");
     }
