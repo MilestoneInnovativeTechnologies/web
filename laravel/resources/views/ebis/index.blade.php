@@ -13,7 +13,7 @@
 @section("content")
     <div class="content">
         <div class="panel panel-default">
-            <div class="panel-heading"><strong>ePlus Business Intelligence</strong>{!! PanelHeadAddButton(Route('ebis.new'),'Add New') !!}</div>
+            <div class="panel-heading"><strong>ePlus Business Information System</strong>{!! PanelHeadAddButton(Route('ebis.new'),'Add New') !!}</div>
             <div class="panel-body">
                 <div class="clearfix pagination">
                     <div class="pull-left col-xs-4 p0"><div class="input-group"><form><input type="text" name="search_text" class="form-control" placeholder="Search" value="{{ Request()->search_text }}" autofocus></form><a href="javascript:SearchText()" class="input-group-addon"><span class="glyphicon glyphicon-search"></span></a></div></div>
