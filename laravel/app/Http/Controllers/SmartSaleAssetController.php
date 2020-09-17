@@ -16,7 +16,7 @@ class SmartSaleAssetController extends Controller
         'settings' => ['name,description,value,status','APP','download','name'],
         'user_settings' => ['user,setting,value,status','APPUSER','both','user,setting'],
         'fiscalyearmaster' => ['code,name,abr,start_date,end_date','APP','download','code'],
-        'functiondetails' => ['code,format,digit_length,pricelist,tax,taxselection,shift_active,list,ratewithtax,discount01,discount02,discount02base,discount03,discountmode,discount','APP','download','code'],
+        'functiondetails' => ['code,format,digit_length,pricelist,user_type,tax,taxselection,shift_active,list,ratewithtax,discount01,discount02,discount02base,discount03,discountmode,discount','APP','download','code'],
         'printing' => ['name,description,fncode,query1,query2,query3,query1_props,query2_props,query3_props,header1,header2,header3,footer1,footer2,footer3,template,object,status','APP','download','fncode,name'],
         'product_group_master' => ['name,code,list','APP','download','code,name'],
         'products' => ['name,code,uom,narration,taxcode01,taxfactor01,subtaxfactor01,taxcode02,taxfactor02,subtaxfactor02','APP','download'],
