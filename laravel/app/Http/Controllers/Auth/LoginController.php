@@ -30,38 +30,33 @@ class LoginController extends Controller
      */
     protected $redirectTo = 'dashboard';
 
-		protected function redirectTo(){
-			$user = Request()->user();
-			if($user->roles()->count() > 1){
-				return "roleselect";
-			}	else {
-				$roleObj = $user->roles->first();
-				session()->put("_role",$roleObj->code);
-				session()->put("_rolename",$roleObj->name);
+    protected function redirectTo(){
+        $user = Request()->user();
+        if($user->roles()->count() > 1){
+            return "roleselect";
+        }	else {
+            $roleObj = $user->roles->first();
+            session()->put("_role",$roleObj->code);
+            session()->put("_rolename",$roleObj->name);
 
-				$_company = ($user->roles->first()->name == "company")?1:0;
-				session()->put("_company",$_company);
-				$api_token = implode("|",[$roleObj->code,str_random(15),$_company,$roleObj->name]);
-				
-				$user->update(["api_token"	=> $api_token]);
-				Cookie::queue("api_token",$api_token);
-				
-				event(new \App\Events\LogUserLogin($user,$roleObj->name));
-			}
-			return $this->redirectTo;
-		}
+            $_company = ($user->roles->first()->name == "company")?1:0;
+            session()->put("_company",$_company);
+            $api_token = implode("|",[$roleObj->code,str_random(15),$_company,$roleObj->name]);
 
-		public function logout()
-    {
-				$this->guard()->logout();
+            $user->update(["api_token"	=> $api_token]);
+            Cookie::queue("api_token",$api_token);
 
+            event(new \App\Events\LogUserLogin($user,$roleObj->name));
+        }
+        return $this->redirectTo;
+    }
+
+    public function logout(){
+        $this->guard()->logout();
         session()->flush();
-
         session()->regenerate();
-			
-				Cookie::queue(Cookie::forget('api_token'));
-
-        return redirect('home');
+        Cookie::queue(Cookie::forget('api_token'));
+        return redirect()->route('home');
     }
     /**
      * Create a new controller instance.
