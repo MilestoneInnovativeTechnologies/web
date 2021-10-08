@@ -19,7 +19,10 @@ class CreateEbisSubscriptionTable extends Migration
             $table->enum('package',['Basic'])->index()->default('Basic');
             $table->date('start')->index()->nullable();
             $table->date('end')->index()->nullable();
-            $table->string('domain',64)->nullable();
+            $table->string('host',64)->nullable();
+            $table->string('database',128)->nullable();
+            $table->string('username',128)->nullable();
+            $table->string('password',128)->nullable();
             $table->enum('status',['New','Upcoming','Active','Expired','Inactive','Cancelled'])->index()->default('New');
             $table->timestamps();
             $table->foreign('code')->references('code')->on('ebis')->onUpdate('cascade')->onDelete('cascade');
