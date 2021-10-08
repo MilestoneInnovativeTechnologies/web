@@ -25,6 +25,7 @@
 // If the requesting role have the resource, mentioned in wapi are allowed..
 
 Route::get('/', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index');
 Route::get('/print_objects', function(){ return view('home.print_objects'); });
 Route::get('/vacancy', function(){ return view('home.vacancies'); });
 Route::get('/print_object/{code}/download', "PublicPrintObjectController@download")->name('home.print_object.download');
@@ -365,6 +366,8 @@ Route::group(["middleware"	=>	["rolecheck:company"]],function(){
 		Route::get("/","CompanyController@index")->name("company.dashboard");
 	});
 	Route::get("regreqs","CompanyController@regreqs")->name("registration.requests");
+	Route::get("encode","KeyCodeEncDecController@encode");
+	Route::get("decode/{code}","KeyCodeEncDecController@decode");
 });
 
 

@@ -16,7 +16,7 @@ class eBisController extends Controller
     }
 
     public function subscription(eBis $eBis, Request $request){
-        $subscription = new eBisSubscription($request->only(['domain','package','start','end']));
+        $subscription = new eBisSubscription($request->only(['host','package','start','end','database','username','password']));
         $eBis->Subscriptions()->save($subscription);
         eBisSubscription::rearrange();
         return redirect()->route('ebis.view',$eBis->id)->with(['info' => true, 'text' => 'New subscription added successfully!!', 'type' => 'success']);

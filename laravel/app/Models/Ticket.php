@@ -102,8 +102,8 @@ class Ticket extends Model
 	}
 	
 	public function get_responders(){
-		if($this->Tasks->isEmpty()) return collect([]);
-		return $this->Tasks->map(function($item){ return ($item->Responder) ? $item->Responder->Responder->name : null; })->filter()->unique();
+		if(!$this->Tasks || $this->Tasks->isEmpty()) return collect([]);
+		return $this->Tasks->map(function($item){ return ($item->Responder && $item->Responder->Responder) ? $item->Responder->Responder->name : null; })->filter()->unique();
 	}
 	
 	public function category(){

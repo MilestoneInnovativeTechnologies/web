@@ -32,13 +32,13 @@ class eBisFormRequest extends FormRequest
             'package' => 'required',
             'start' => 'required',
             'end' => 'required',
-            'domain' => 'required'
+            'host' => 'required'
         ];
     }
 
     public function store($data){
         $eBis = (new eBis)->create(array_only($data,['code','customer','seq','product']));
-        $subscriptions = new eBisSubscription(array_only($data,['package','start','end','domain']));
+        $subscriptions = new eBisSubscription(array_only($data,['package','start','end','host','database','username','password']));
         $eBis->Subscriptions()->save($subscriptions);
         eBisSubscription::rearrange();
         return $eBis;

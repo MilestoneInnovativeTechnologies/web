@@ -13,13 +13,18 @@
                                 <div class="col-md-3">{!! formGroup(1,'package','select','Package',old('package',array_get($Data,'package')),['selectOptions' => ['Basic']]) !!}</div>
                                 <div class="col-md-3">{!! formGroup(1,'start','text','Start Date (yyyy-mm-dd)',old('start',array_get($Data,'start',date('Y-m-d'))),['attr' => 'placeholder="'.date('Y-m-d').'"']) !!}</div>
                                 <div class="col-md-3">{!! formGroup(1,'end','text','End Date (yyyy-mm-dd)',old('end',array_get($Data,'end',date('Y-m-d',strtotime("+1 year")))),['attr' => 'placeholder="'.date('Y-m-d',strtotime("+1 year")).'"']) !!}</div>
-                                <div class="col-md-3">{!! formGroup(1,'domain','text','URL',old('domain',array_get($Data,'domain')),['attr' => 'placeholder="http://example.org"']) !!}</div>
+                                <div class="col-md-3">{!! formGroup(1,'host','text','URL',old('host',array_get($Data,'host')),['attr' => 'placeholder="example.org"']) !!}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">{!! formGroup(1,'database','text','Database',old('database',array_get($Data,'database'))) !!}</div>
+                                <div class="col-md-4">{!! formGroup(1,'username','text','Username',old('username',array_get($Data,'username'))) !!}</div>
+                                <div class="col-md-4">{!! formGroup(1,'password','text','Password',old('password',array_get($Data,'password'))) !!}</div>
                             </div>
                             <h3>Current Subscriptions</h3>
-                            <div class="table-responsive"><table class="table table-striped"><thead><tr><th>No</th><th>Package</th><th>Domain</th><th>Start Date</th><th>End Date</th><th>Status</th></tr></thead><tbody>
+                            <div class="table-responsive"><table class="table table-striped"><thead><tr><th>No</th><th>Package</th><th>Host</th><th>Start Date</th><th>End Date</th><th>Status</th></tr></thead><tbody>
                                     @foreach($Data->Subscriptions as $subscription)
                                         <tr><td>{{ $loop->iteration }}</td>
-                                            @foreach(['package','domain','start','end','status'] as $Field)
+                                            @foreach(['package','host','start','end','status'] as $Field)
                                                 <td>{{ $subscription->$Field }}</td>
                                             @endforeach
                                         </tr>

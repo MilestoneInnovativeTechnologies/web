@@ -22,7 +22,8 @@ $Category = $Tickets->groupBy(function($item){ return ($item->category) ? $item-
 				<small><strong>Customer:</strong> <a href="{{ Route('customer.panel',$t->customer) }}" style="color: inherit">{{ $t->Customer->name }}</a></small><br>
 				<small><strong>Status:</strong> {{ $t->Cstatus->status }}</small>
 			</td>
-			<td>@php $rs = $t->get_responders() @endphp @if($rs  && $rs->isNotEmpty()) <ol style="padding-left: 10px"><li><small>{!! $rs->implode('</small></li><li><small>') !!}</small></li></ol> @endif</td>
+			<td>@php $rs = $t->get_responders(); @endphp @if($rs && $rs->isNotEmpty()) <ol style="padding-left: 10px"><li><small>{!! $rs->implode('</small></li><li><small>') !!}</small></li></ol> @endif</td>
+{{--			<td>{{ $t->code }}</td>--}}
 		</tr>
 		@endforeach
 	</tbody></table>

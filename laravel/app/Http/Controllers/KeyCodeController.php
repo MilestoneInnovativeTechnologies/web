@@ -76,6 +76,8 @@ class KeyCodeController extends Controller
 		$E[$G-1] = str_replace("$","",end($E));
 		$A = join("",$D); $B = join("",$E);
 		//return [$Key,$M,$L,$N[0],$C,$N[1],$U,$O,$F,$P,$G,$N[2],$J,$V,$D,$E,$A,$B];
+//        $N0 = $N[0]; $N1 = $N[1]; $N2 = $N[2];
+//        return compact('Key','M','L','N0','C','N1','U','O','F','P','G','N2','J','V','D','E','A','B');
 		return[explode("|",base64_decode($A)),explode("|",base64_decode($B))];
 	}
 
