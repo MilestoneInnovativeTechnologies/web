@@ -31,7 +31,7 @@
                             @foreach($Data as $sk)
                                 <tr>
                                     <td><div class="small">{{ $sk->code }}</div>{{ $sk->name }}<br /><br /><div class="small">{{ $sk->Partner->code }}<br />{{ $sk->Partner->name }}</div></td>
-                                    <td>{{ $sk->status }}</td>
+                                    <td>{{ $sk->Branches->implode('name',', ') }}</td>
                                     <td nowrap><a href="{!! route('sk.detail',['id' => $sk->id]) !!}" class="btn btn-info">Details</a></td>
                                 </tr>
                             @endforeach
