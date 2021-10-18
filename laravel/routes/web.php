@@ -922,3 +922,32 @@ Route::group(["middleware"	=>	["rolecheck:ebis"], "prefix" => "ebis"],function()
     Route::get('{id}/delete',function(){ return view('ebis.delete'); })->name('ebis.delete');
     Route::post('{id}/delete',function($id){ \App\Models\eBis::find($id)->delete(); return redirect()->route('ebis.index')->with(['info' => true, 'text' => 'Deleted Successfully', 'type' => 'danger']); });
 });
+
+
+//SK
+Route::group(["middleware"	=>	["rolecheck:sk"], "prefix" => "sk"],function(){
+    Route::group(["prefix" => "features"],function(){
+        Route::get('/',function(){ return view('sk.features'); })->name('sk.features');
+        Route::post('add', 'SKFeatureController@add')->name('sk.feature.add');
+        Route::get('code', 'SKFeatureController@code')->name('sk.feature.code');
+        Route::get('{feature}/editions',function($feature){ return view('sk.feature_editions',['feature' => $feature]); })->name('sk.feature.editions');
+        Route::post('{feature}/editions','SKFeatureController@update');
+    });
+    Route::group(["prefix" => "editions"],function(){
+        Route::get('/',function(){ return view('sk.editions'); })->name('sk.editions');
+        Route::post('add', 'SKFeatureController@add_edition')->name('sk.edition.add');
+        Route::get('{edition}/features',function($edition){ return view('sk.edition_features',['edition' => $edition]); })->name('sk.edition.features');
+        Route::post('{edition}/features','SKFeatureController@edition_update');
+    });
+    Route::get('', function(){ return view('sk.index'); })->name('sk.index');
+    Route::post('{client}/branch/create','SKController@addBranch')->name('sk.new_branch');
+    Route::any('branch/{branch}/features','SKController@addBranchFeatures')->name('sk.branch_features');
+    Route::post('subscription/{subscription}/cancel', 'SKController@cancel')->name('sk.cancel');
+    Route::get('branch/{branch}',function($branch){ return view('sk.branch',compact('branch')); })->name('sk.branch_detail');
+    Route::post('branch/{branch}','SKController@updateBranch');
+    Route::get('{id}/detail', function($id){ return view('sk.detail',compact('id')); })->name('sk.detail');
+    Route::post('{id}/detail','SKController@update');
+    Route::post('{branch}/generate', 'SKController@generate')->name('sk.key');
+    Route::post('{branch}/subscription', 'SKController@subscription')->name('sk.subscription');
+    Route::post('add', 'SKController@add')->name('sk.add');
+});
