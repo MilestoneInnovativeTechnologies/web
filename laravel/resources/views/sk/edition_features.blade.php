@@ -7,7 +7,7 @@
 @section("content")
     <div class="content">
         <div class="panel panel-default">
-            <div class="panel-heading">{{ $Edition->name }}</div>
+            <div class="panel-heading"><span style="line-height: 2">{{ $Edition->name }}</span> {!! PanelHeadBackButton(route('sk.editions'),'Back to Editions') !!}</div>
             <div class="panel-body">
                 <form action="{!! route('sk.edition.features',['edition' => $Edition->id]) !!}" method="post">{{ csrf_field() }}
                 <div class="row">
