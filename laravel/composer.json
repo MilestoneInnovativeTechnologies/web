@@ -10,7 +10,8 @@
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "mopo922/laravel-treats": "^1.0",
-        "mpociot/laravel-composite-key": "^1.0"
+        "mpociot/laravel-composite-key": "^1.0",
+        "ext-json": "*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
