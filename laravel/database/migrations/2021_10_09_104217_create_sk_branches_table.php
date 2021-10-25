@@ -25,7 +25,8 @@ class CreateSkBranchesTable extends Migration
             $table->string('ip_address',128)->nullable();
             $table->dateTime('ip_address_date')->nullable();
             $table->string('hostname',128)->nullable();
-            $table->string('db_port',6)->default('3306')->nullable();
+            $table->string('port',6)->default('3306')->nullable();
+            $table->string('database',128)->nullable();
             $table->string('db_username',128)->nullable();
             $table->string('db_password',128)->nullable();
             $table->enum('status',['Active','Inactive'])->default('Active');

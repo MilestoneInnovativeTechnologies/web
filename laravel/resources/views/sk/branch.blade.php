@@ -88,7 +88,8 @@
                             {!! formGroup(2,'status','select','Status',$Branch->status,['selectOptions' => ['Active','Inactive']]) !!}
                             <br /><strong>Database</strong><br /><br />
                             {!! formGroup(2,'hostname','text','Host',$Branch->hostname) !!}
-                            {!! formGroup(2,'db_port','text','Port',$Branch->db_port) !!}
+                            {!! formGroup(2,'port','text','Port',$Branch->port) !!}
+                            {!! formGroup(2,'database','text','Database',$Branch->database) !!}
                             {!! formGroup(2,'db_username','text','User',$Branch->db_username) !!}
                             {!! formGroup(2,'db_password','text','Pass',$Branch->db_password) !!}
                         </div>

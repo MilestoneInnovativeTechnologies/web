@@ -19,7 +19,7 @@ class SKController extends Controller
     }
 
     public function addBranch($client, BranchFormRequest $request){
-        $branch = $request->store($request->only(['client','name','code','edition','date','serial','ip_address','hostname','db_port','db_username','db_password','status']));
+        $branch = $request->store($request->only(['client','name','code','edition','date','serial','ip_address','hostname','port','database','db_username','db_password','status']));
         return redirect()->route('sk.branch_features',['branch' => $branch->id]);
     }
 
@@ -52,7 +52,7 @@ class SKController extends Controller
 
     public function updateBranch(Branch $branch, Request $request){
         $oldEdition = $branch->edition;
-        $branch->update($request->only(['name','code','serial','edition','ip_address','status','hostname','db_port','db_username','db_password']));
+        $branch->update($request->only(['name','code','serial','edition','ip_address','status','hostname','port','database','db_username','db_password']));
         if($oldEdition !== $branch->edition || $branch->edition == 1) return redirect()->route('sk.branch_features',['branch' => $branch->id]);
         return back()->with(['info' => true, 'type' => 'success', 'text' => 'Branch details updated!!']);
     }
