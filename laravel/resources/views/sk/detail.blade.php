@@ -27,7 +27,7 @@
                             <div class="col-md-6">{!! formGroup(1,'hostname','text','Host Name',old('host',''),['attr' => 'placeholder="sk.dyndns.org"']) !!}</div>
                         </div>
                         <div class="row">
-                            <div class="col-md-3">{!! formGroup(1,'Database','text','Database',old('database','')) !!}</div>
+                            <div class="col-md-3">{!! formGroup(1,'database','text','Database',old('database','')) !!}</div>
                             <div class="col-md-3">{!! formGroup(1,'db_username','text','DB Username',old('db_username','')) !!}</div>
                             <div class="col-md-3">{!! formGroup(1,'db_password','text','DB Password',old('db_password','')) !!}</div>
                             <div class="col-md-3">{!! formGroup(1,'port','number','DB Port',old('port','3306')) !!}</div>

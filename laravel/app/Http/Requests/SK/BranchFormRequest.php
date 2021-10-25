@@ -36,7 +36,7 @@ class BranchFormRequest extends FormRequest
         $this->merge([
             'status' => $this->get('status','Active'),
             'date' => $this->get('date',date('Y-m-d')),
-            'db_port' => $this->get('db_port','3306'),
+            'port' => $this->get('port','3306'),
         ]);
     }
 
