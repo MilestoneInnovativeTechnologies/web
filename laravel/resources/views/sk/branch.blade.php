@@ -58,7 +58,7 @@
                                 <table class="table table-condensed table-hover table-bordered">
                                     <thead><tr><th>Date</th><th>Edition</th><th>Remarks</th><th>Expiry</th></tr></thead>
                                     <tbody>
-                                    @foreach($Branch->Subscriptions->where('status','Expired') as $sub)
+                                    @foreach($Branch->Subscriptions->where('status','Expired')->sortByDesc('id')->take(10) as $sub)
                                         <tr>
                                             <td>{{ $sub->code_date }}</td>
                                             <td>{{ $sub->Edition->name }}</td>
