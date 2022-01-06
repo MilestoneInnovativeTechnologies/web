@@ -106,7 +106,7 @@
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table class="table table-condensed table-bordered">
-                            <thead><tr><th>Feature</th><th>Detail</th><th>Default</th><th>Value</th></tr></thead>
+                            <thead><tr><th>Feature</th><th>Detail</th><th>Default</th><th style="width: 200px">Value</th></tr></thead>
                             <tbody>
                             @foreach($Features as $feature)
                                 <tr>
