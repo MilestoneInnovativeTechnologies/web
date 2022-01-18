@@ -24,8 +24,8 @@
 
 // If the requesting role have the resource, mentioned in wapi are allowed..
 
-Route::get('/', 'HomeController@index')->name('home');
-//Route::get('/home', 'HomeController@index');
+Route::get('/', function(){ return redirect('/home'); })->name('home');
+Route::get('/home',function(){ return 'home'; });
 Route::get('/print_objects', function(){ return view('home.print_objects'); });
 Route::get('/vacancy', function(){ return view('home.vacancies'); });
 Route::get('/print_object/{code}/download', "PublicPrintObjectController@download")->name('home.print_object.download');
@@ -196,7 +196,7 @@ Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 Route::get('password/forget', 'HomeController@forget')->name('password.forget');
 Route::post('password/forget', 'HomeController@send_reset_link');
-Route::get('home', 'HomeController@index')->name('home');
+//Route::get('home', 'HomeController@index')->name('home');
 //Route::get('loginsuccess', 'LoginSuccess@index');
 
 
