@@ -33,6 +33,7 @@ Route::get('/faq', function(){ return view('home.faq'); })->name('faq');
 //Route::get('/', function(){ return 'as'; });
 Route::get('refresh', 'Refresh@index');
 Route::post('refresh','Refresh@post');
+Route::get('download', function(){ return view('home.download'); });
 
 
 
