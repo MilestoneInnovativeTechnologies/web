@@ -15,7 +15,9 @@
                         <tr><th>Image</th><th>:</th><td><img src="{{ $Data->image }}"></td></tr>
                         </tbody></table></div>
                 <hr>
-                <h4>Tables</h4>
+                <h4 class="pull-left">Tables</h4>
+                <form method="post" enctype="multipart/form-data" class="pull-right">{{ csrf_field() }}<input type="submit" name="submit" value="Clear Sync Times" class="btn btn-warning btn-sm pull-right"></form>
+                <div class="clearfix">&nbsp;</div>
                 <div class="table-responsive"><table class="table table-striped"><thead><tr><th>No</th><th>Table</th><th>Type</th><th>Delay</th><th>Last Synced</th><th>Latest Record Date</th></tr></thead><tbody>
                         @foreach($Data->Tables as $Table)
                             <tr><td>{{ $loop->iteration }}</td><td>{{ $Table->table }}</td>

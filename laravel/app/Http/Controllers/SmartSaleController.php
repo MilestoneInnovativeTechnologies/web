@@ -104,4 +104,9 @@ class SmartSaleController extends Controller
         $id->delete();
         return back()->with(['info' => true, 'type' => 'warning', 'text' => 'Device Removed Successfully']);
     }
+
+    public function clear($id){
+        SmartSaleTable::where('smart_sale',$id)->update(['sync' => null,'record' => null]);
+        return back()->with(['info' => true, 'type' => 'warning', 'text' => 'Sync Times Cleared Successfully']);
+    }
 }
