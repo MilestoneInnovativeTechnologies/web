@@ -3,7 +3,7 @@
 @section("content")
 @php $ORM = new \App\Models\PublicArticle; @endphp
 @php if(Request()->search_text){ $st = '%'.Request()->search_text.'%'; $ORM = $ORM->where(function($Q)use($st){ $Q->where('name','like',$st)->orWhere('code','like',$st)->orWhere('title','like',$st); }); } @endphp
-@php $Data = $ORM->paginate(30); @endphp
+@php $Data = $ORM->latest()->paginate(30); @endphp
 
 <div class="content">
 	<div class="panel panel-default">
