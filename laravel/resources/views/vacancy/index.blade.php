@@ -15,7 +15,7 @@ $Data = \App\Models\Vacancy::withCount('Applicants')->latest()->get();
                         <thead><tr><th>No</th><th>Details</th><th>Status</th><th>Date</th><th>Action</th></tr></thead>
                         <tbody>
                             @foreach($Data as $Vacancy)
-                                <tr><td>{{ $loop->iteration }}</td><td><strong>{{ $Vacancy->title }}</strong><br>{!! nl2br($Vacancy->description) !!}</td><td><strong>Live: </strong>{{ ["No","Yes"][$Vacancy->live] }}<br><strong>Status: </strong>{{ $Vacancy->status }}<br><strong>Views: </strong>{{ $Vacancy->views }}<br><strong>Applicants: </strong>{{ $Vacancy->applicants_count }}</td><td>{{ date("D d/M/Y",strtotime($Vacancy->date)) }}</td><td>{!! ActionsToListIcons($Vacancy) !!}</td></tr>
+                                <tr><td>{{ $loop->iteration }}</td><td><strong @if($Vacancy->live) style="color: #28cb09" @endif>{{ $Vacancy->title }}</strong><br>{!! nl2br($Vacancy->description) !!}</td><td><strong>Live: </strong>{{ ["No","Yes"][$Vacancy->live] }}<br><strong>Status: </strong>{{ $Vacancy->status }}<br><strong>Views: </strong>{{ $Vacancy->views }}<br><strong>Applicants: </strong>{{ $Vacancy->applicants_count }}</td><td>{{ date("D d/M/Y",strtotime($Vacancy->date)) }}</td><td>{!! ActionsToListIcons($Vacancy) !!}</td></tr>
                             @endforeach
                         </tbody>
                     </table>
