@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CustomerRegistration;
 use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Http\Requests\NewCustomerFormRequest;
@@ -31,12 +32,12 @@ class CustomerController extends Controller
 			return $MyArray;
 		},$Obj),$Names];
 	}
-	
+
 	public function add(){
 		$Partner = new Partner(); $Code = $Partner->CustomerNextCode();
 		return view("customer.new",compact("Code"));
 	}
-	
+
 	public function create(NewCustomerFormRequest $Request){
 		$PartnerCode = $this->NewPartner($Request); $created_by = $Request->user()->partner; $created_at = date("Y-m-d H:i:s"); $updated_at = date("Y-m-d H:i:s");
 		$Partner = Partner::find($PartnerCode);
@@ -56,13 +57,13 @@ class CustomerController extends Controller
 		Mail::init()->queue(new NewCustomer($PartnerCode,$Request->email,$login))->to($Partner)->send();
 		return redirect()->route("dashboard");
 	}
-	
+
 	private function NewPartner($Request){
 		$Partner = new Partner(); $PartnerCode = $Partner->CustomerNextCode();
 		$Partner->create(["code"	=>	$PartnerCode, "name"	=> $Request->name, "status"	=>	"PENDING", "created_by"	=>	$Request->user()->partner]);
 		return $PartnerCode;
 	}
-	
+
 	private function NewPartnerDetails($PartnerCode, $Request){
 		$industry = $this->ProcessCustomerIndustry($Request);
 		$PD = new PartnerDetails; $DetailCode = $PD->NextCode();
@@ -71,7 +72,7 @@ class CustomerController extends Controller
 	}
 
 	private function ProcessCustomerIndustry($Request){
-		$Code = $Request->industry; 
+		$Code = $Request->industry;
 		$CI = new CustomerIndustry();
 		if($Code == "-1"){
 			if($Request->new_industry){
@@ -84,24 +85,24 @@ class CustomerController extends Controller
 		return ($CI->whereCode($Code)->get()->isEmpty()) ? NULL : $Code;
 	}
 
-	
+
 	public function uniquenamecheck($name){
 		return ["unique" => Partner::whereName($name)->get()->isEmpty(),"name"	=>	$name];
 	}
-	
+
 	public function industries(){
 		return \App\Models\CustomerIndustry::get();
 	}
-	
+
 	public function uniqueemailcheck($email){
 		return ["unique" => \App\Models\User::whereEmail($email)->get()->isEmpty(),"email"	=>	$email];
 	}
-	
+
 	public function products(){
 		$user = Auth()->guard("api")->user()->partner;
 		return \App\Models\PartnerProduct::select("product","edition")->where(["partner"=>$user])->with("products")->get()->groupBy("product");
 	}
-	
+
 	public function editions($product){
 		$user = Auth()->guard("api")->user()->partner;
 		return \App\Models\PartnerProduct::select("edition")->where(["partner"=>$user,"product"=>$product])->with("editions")->get()->groupBy("edition");
@@ -111,11 +112,11 @@ class CustomerController extends Controller
 		$RWC = Partner::find(Auth()->guard("api")->user()->partner)->RoleWithChildren();
 		return Partner::select("code","name")->whereIn("code",array_column($RWC["dealer"],0))->whereStatus("ACTIVE")->pluck("name","code");
 	}
-	
+
 	public function index(){
 		return view("customer.index");
 	}
-	
+
 	public function lists($page, $items){
 		if(Auth()->guard("api")->user()->Roles->contains('name','company')){
 			return $this->GetRegDetails(false, ($page-1 > 0)?:0);
@@ -125,7 +126,7 @@ class CustomerController extends Controller
 			return $this->GetRegDetails($AllChilds, ($page-1 > 0)?:0);
 		}
 	}
-	
+
 	private function GetRegDetails($Partners, $page=0, $items=40){
 		$ORM = \App\Models\CustomerRegistration::select("customer","seqno","product","edition","created_at AS added_on","registered_on","presale_enddate","presale_extended_to","serialno","key")
 			->with(["customer"	=>	function($Q){
@@ -142,14 +143,14 @@ class CustomerController extends Controller
 		if($Partners !== false) $ORM->whereIn("customer",$Partners);
 		return $ORM->get();
 	}
-	
+
 	public function show(Partner $Customer){
 		//$With = ["details.city.state.country"];//,"logins","register.product","register.edition","register.extender"
 		//if(session()->get("_rolename") == "dealer") $With[] = "parentDetails.roles";
 		$Data = $Customer;//->with($With)->whereCode($Customer->code)->first();
 		return view("customer.show",compact("Data"));
 	}
-	
+
 	public function presale(Partner $Customer){
 		//return $Customer;
 		//$Data = $Customer->with("register.product","register.edition")->whereCode($Customer->code)->first();
@@ -157,7 +158,7 @@ class CustomerController extends Controller
 		$Data = $Customer;
 		return view("customer.presale",compact("Data"));
 	}
-	
+
 	public function storepresale(Partner $Customer, Request $request){
 		$E = $request->E;
 		$X = $request->X;
@@ -170,7 +171,7 @@ class CustomerController extends Controller
 		}
 		return redirect()->back()->with(["info"=>true,"type"=>"success","text"=>"Presale dates updated successfully."]);
 	}
-	
+
 	public function register($Customer, $Seqno){
 		$Data = Partner::with(["details.city.state.country","register"	=>	function($Q) use($Seqno){
 			$Q->where("seqno",$Seqno);
@@ -183,7 +184,7 @@ class CustomerController extends Controller
 		}])->whereCode($Customer)->first()->toArray();
 		return view("customer.register",compact("Data","Seqno"));
 	}
-	
+
 	public function edit($Customer){
 		$Customer = \App\Models\Customer::whereCode($Customer)->with('Parent1.ParentCountries')->first();
 		//return $Customer->Parent1->ParentCountries->mapWithKeys(function($item){ return [$item->Country->id => $item->Country->name]; })->toArray();
@@ -191,7 +192,7 @@ class CustomerController extends Controller
 		$Industries = $this->industries();
 		return view("customer.edit",compact("Customer","Countries","Industries"));
 	}
-	
+
 	public function update(Partner $Customer, Request $Request){
 		if($Request->email != "" && filter_var($Request->email, FILTER_VALIDATE_EMAIL) == $Request->email) {
 			$Login = $Customer->whereCode($Customer->code)->with('Logins.Roles')->whereHas('Logins.Roles',function($Q){ $Q->whereRolename('customer'); })->first();
@@ -214,7 +215,7 @@ class CustomerController extends Controller
 		$this->checkCustomerSupportTeam($Customer->Register);
 		return redirect()->back()->with(["info"=>true,"type"=>"success","text"=>"Details updated successfully."]);
 	}
-	
+
 	public function regrequest($Customer, $Seqno, Request $Request){
 		$Data = (array) simplexml_load_string(\Storage::get($FilePath = $Request->file("licence")->store("upload/licence")));
 		$CR = \App\Models\CustomerRegistration::whereCustomer($Customer)->whereSeqno($Seqno);
@@ -225,7 +226,7 @@ class CustomerController extends Controller
 		(new \App\Http\Controllers\TransactionController())->CustomerRegistrationInitialized($CR->with("Customer.ParentDetails","product","edition")->first());
 		return redirect()->route("customer.index")->with(["info"=>true,"type"=>"success","text"=>"Registration Request Submitted Successfully."]);
 	}
-	
+
 	private function GetNewRequisition(){
 		$CodePrefixChar = "MITSFTREG"; $TotalCodeLength = 15;
 		$LastNum = 0; $PrefixLength = strlen($CodePrefixChar); $NumberLength = $TotalCodeLength - $PrefixLength;
@@ -235,7 +236,7 @@ class CustomerController extends Controller
 			$LastNum = intval(mb_substr($LastCode[0],$PrefixLength));
 		return $CodePrefixChar . (str_pad(++$LastNum,$NumberLength,"0",STR_PAD_LEFT));
 	}
-	
+
 	public function resetlogin($Customer){
 		$Partner = Partner::whereCode($Customer)->with('Logins','Parent.ParentDetails.Roles')->first();
 		$Logins = $Partner->Logins[0];
@@ -246,14 +247,14 @@ class CustomerController extends Controller
 		return redirect()->back()->with(["info"=>true,"type"=>"success","text"=>"Login reset instructions have been mailed to, ".$Partner->Logins[0]->email]);
 		//return [$Partner->code, $Partner->name, $Partner->Logins[0]->email];
 	}
-	
+
 	public function productregister($Customer){
 		$Regs = \App\Models\CustomerRegistration::where(function($Q)use($Customer){ $Q->where('customer',$Customer)->whereNull('registered_on'); })->get();
 		if($Regs->isEmpty()) return redirect()->back()->with(["info"=>true,"type"=>"warning","text"=>"You have no products to register."]);
 		if($Regs->count() == 1) return redirect()->action('CustomerController@register',['Customer' => $Customer, 'Seqno' => $Regs[0]->seqno]);
 		return view('customer.productregister',compact('Regs'));
 	}
-	
+
 	private function addCustomerSupportTeam($Reg){
 		$Partner = Partner::find($Reg->customer);
 		$Distributor = $this->getDistributor($Partner);
@@ -272,73 +273,73 @@ class CustomerController extends Controller
 			return $CST->create(array_merge($Cond,$Data));
 		}
 	}
-	
+
 	private function checkCustomerSupportTeam($Regs){
 		$Regs->each(function($Reg, $Key){
 			if(!$this->hasRegCustomerSupportTeamAssigned($Reg))
 				$this->addCustomerSupportTeam($Reg);
 		});
 	}
-	
+
 	private function hasRegCustomerSupportTeamAssigned($Reg){
 		$Cust = $Reg->customer; $Prod = $Reg->product; $Edit = $Reg->edition;
 		$CST = new \App\Models\CustomerSupportTeam();
 		$Cond = ['customer'	=>	$Cust, 'product'	=>	$Prod, 'edition'	=>	$Edit];
 		return $CST->where($Cond)->get()->isNotEmpty();
 	}
-	
+
 	public function get_distributor_of_partner($Partner){
 		return $this->getDistributor(Partner::whereCode($Partner)->with('Parent')->first());
 	}
-	
+
 	private function getDistributor($Partner){
 		$Parent = $this->getParent($Partner);
 		if($this->PartnerHasRole($Parent,'distributor')) return $Parent;
 		if($this->PartnerHasRole($Parent,'company') || $this->PartnerHasRole($Parent,'COMPANY')) return null;
 		return $this->getDistributor($Parent);
 	}
-	
+
 	private function getParent($Partner){
 		return Partner::find($Partner->Parent->parent);
 	}
-	
+
 	private function PartnerHasRole($Partner,$Role){
 		$Roles = $this->getRolesCollection($Partner);
 		return $Roles->contains($Role);
 	}
-	
+
 	private function getRolesCollection($Partner){
 		return $Partner->Roles->pluck('name');
 	}
-	
+
 	private function getSupportteamOfDistributor($Dist){
 		$DST = \App\Models\DistributorSupportTeam::whereDistributor($Dist->code)->get();
 		if($DST->isNotEmpty()) return $DST->first()->Team;
 		return null;
 	}
-	
+
 	private function getDefaultSupportTeam(){
 		$DST = \App\Models\DefaultSupportTeam::all();
 		if($DST->isNotEmpty()) return $DST->first()->Partner;
 		return null;
 	}
-	
+
 	private function addDistributorSupportteam($Distributor, $SupportTeam){
 		$DST = new \App\Models\DistributorSupportTeam();
 		$DST->whereDistributor($Distributor->code)->update(['status'=>'INACTIVE']) ;
 		$DST->create(['distributor'	=>	$Distributor->code,	'supportteam'	=>	$SupportTeam->code, 'assigned_by'	=>	$this->getAuthUser()->partner]);
 	}
-	
+
 	private function getAuthUser(){
 		return (Auth()->user())?:Auth()->guard('api')->user();
 	}
-	
+
 	public function changeproduct($Customer, $Sequence){
 		if(!$this->isCustomerOfPartner($Customer,$this->getAuthUser()->partner)) return redirect()->back()->with(["info"=>true,"type"=>"danger","text"=>"Customer not belogs to you."]);
 		$Customer = \App\Models\CustomerRegistration::where(['customer'	=>	$Customer, 'seqno'	=>	$Sequence])->whereNull('registered_on')->select('customer','product','edition','created_at','presale_enddate','presale_extended_to')->select('customer','product','edition')->first();
 		return view('customer.changeproduct',compact('Customer'));
 	}
-	
+
 	private function isCustomerOfPartner($Customer,$Parent){
 		return \App\Models\Customer::whereCode($Customer)->get()->isNotEmpty();
 		/* $Partner = new \App\Models\Partner();
@@ -349,7 +350,7 @@ class CustomerController extends Controller
 		$DistDealers = $Partner->find($Parent)->Children->pluck('partner')->toArray();
 		return $Partner->whereIn('code',$DistDealers)->get()->contains('code',$Customer); */
 	}
-	
+
 	public function dochangeproduct($Customer, $Sequence, Request $Request){
 		if(!$this->isCustomerOfPartner($Customer,$this->getAuthUser()->partner)) return redirect()->route('customer.index')->with(["info"=>true,"type"=>"danger","text"=>"Customer not belogs to you."]);
 		$ORM = \App\Models\CustomerRegistration::where(['customer'	=>	$Customer, 'seqno'	=>	$Sequence])->whereNull('registered_on');
@@ -358,13 +359,13 @@ class CustomerController extends Controller
 		else $ORM->update(['edition'	=>	$Request->edition, 'product'	=>	$Request->product]);
 		return redirect()->route('customer.index')->with(["info"=>true,"type"=>"success","text"=>"Changes saved successfully."]);
 	}
-	
+
 	public function tickets($Customer = null){
 		$Cust = $Customer?:Auth()->guard("api")->user()->partner;
 		$Tickets = \App\Models\Ticket::where('customer',$Cust)->with(['Product','Edition','Cstatus'])->paginate(100);
 		return view('customer.tickets',compact('Tickets'));
 	}
-	
+
 	public function search(Request $request){
 		$like = '%'.$request->term.'%';
 		return \App\Models\Customer::with('Details','Logins','Roles','ParentDetails')->where(function($Q) use($like){
@@ -376,7 +377,7 @@ class CustomerController extends Controller
 				;
 		})->get();
 	}
-	
+
 	public function detail_search(Request $request){
 		$ORM = new \App\Models\Customer;
 		if($request->customer) $ORM = $this->ModifyORMForSearch($ORM,$request->customer);
@@ -387,7 +388,22 @@ class CustomerController extends Controller
 		if($request->edition) $ORM = $this->ModifyORMForFilter($ORM,'Edition',$request->edition);
 		return $ORM->get();
 	}
-	
+
+	public function add_product($code){
+		$Customer = \App\Models\Customer::with(['registration' => function($Q){ return $Q->with(['product','edition']); }])->find($code);
+		return view('customer.add_product',compact('Customer'));
+	}
+
+	public function doadd_product($code,Request $Request){
+        $Partner = Partner::find($code);
+        $created_by = $Request->user()->partner; $created_at = date("Y-m-d H:i:s"); $updated_at = date("Y-m-d H:i:s");
+        $product = $Request->product; $edition = $Request->edition; $remarks = $Request->remarks;
+        $max = CustomerRegistration::where('customer',$code)->max('seqno'); $seqno = $max ? intval($max)+1 : 1;
+        $Register = $Partner->register()->create(compact('product','edition','seqno','remarks','created_at','updated_at','created_by'));
+        $this->addCustomerSupportTeam($Register);
+        return redirect()->back()->with(['info' => true, 'type' => 'success', 'text' => 'Product added successfully!!']);
+    }
+
 	public function change_distributor($code){
 		$Customer = \App\Models\Customer::find($code)->load('ParentDetails');
 		if(session()->get('_rolename') == 'distributor') $Parents = \App\Models\Dealer::all();
@@ -395,14 +411,14 @@ class CustomerController extends Controller
 		//return $Parents;
 		return view('customer.change_distributor',compact('Customer','Parents'));
 	}
-	
+
 	public function dochange_distributor($code, Request $request){
 		if(!$request->parent) return redirect()->back()->with(['info' => true, 'type' => 'danger', 'text' => 'Parent/Distributor cannot be empty.']);
 		$PR = \App\Models\PartnerRelation::find($code);
 		$PR->parent = $request->parent; $PR->save();
 		return redirect()->back()->with(['info' => true, 'type' => 'success', 'text' => 'Distributor/Parent updated successfully.']);
 	}
-	
+
 	private function ModifyORMForSearch($ORM,$Term){
 		$like = '%'.$Term.'%';
 		return $ORM->where(function($Q) use($like){
@@ -414,7 +430,7 @@ class CustomerController extends Controller
 				;
 		});
 	}
-	
+
 	private function ModifyORMForFilter($ORM,$Item,$Term){
 		switch($Item){
 			case 'Dealer':
@@ -445,5 +461,5 @@ class CustomerController extends Controller
 		}
 		return $ORM;
 	}
-	
+
 }

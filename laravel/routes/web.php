@@ -170,6 +170,8 @@ Route::group(["middleware"	=>	["rolecheck:customers"]],function(){
 				Route::get('register',"CustomerController@register")->name("customer.register");
 				Route::post('register',"CustomerController@regrequest");
 			});
+			Route::get('product/add',"CustomerController@add_product")->name('customer.add_product');
+			Route::post('product/add',"CustomerController@doadd_product");
 			Route::get('distributor/change',"CustomerController@change_distributor")->name("customer.changedistributor");
 			Route::post('distributor/change',"CustomerController@dochange_distributor");
 			Route::get('ondemancategories',"CustomerController@ondemancategories")->name("customer.ondemancategories");
